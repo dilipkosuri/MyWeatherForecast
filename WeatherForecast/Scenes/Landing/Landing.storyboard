@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="awi-Mc-Wle">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="10.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Landing View Controller-->
+        <scene sceneID="RRN-QY-PyC">
+            <objects>
+                <viewController storyboardIdentifier="LandingViewController" id="KJ8-kd-UHe" customClass="LandingViewController" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rnR-fu-6hI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OtH-Ld-EM8">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7bp-Fk-fCA">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellIdentifer" id="gF6-yV-qir">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3lR-aq-iNR">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="KJ8-kd-UHe" id="K9x-9A-FvV"/>
+                                    <outlet property="delegate" destination="KJ8-kd-UHe" id="4bG-eB-ZuY"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ZeV-cJ-7iH" firstAttribute="trailing" secondItem="OtH-Ld-EM8" secondAttribute="trailing" id="7aW-LU-zum"/>
+                            <constraint firstItem="ZeV-cJ-7iH" firstAttribute="bottom" secondItem="OtH-Ld-EM8" secondAttribute="bottom" id="Htw-He-5sp"/>
+                            <constraint firstItem="OtH-Ld-EM8" firstAttribute="leading" secondItem="ZeV-cJ-7iH" secondAttribute="leading" id="T3E-rs-cox"/>
+                            <constraint firstItem="OtH-Ld-EM8" firstAttribute="top" secondItem="ZeV-cJ-7iH" secondAttribute="top" id="dkL-XS-L9L"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZeV-cJ-7iH"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="OtH-Ld-EM8" id="EyZ-a2-ikp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BBz-ci-ds3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="74"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="rgj-OC-0J3">
+            <objects>
+                <viewController storyboardIdentifier="MKMapViewController" id="awi-Mc-Wle" customClass="MKMapViewController" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VKX-2y-jQx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CUS-vA-pJZ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="CUS-vA-pJZ" secondAttribute="bottom" id="NEa-9U-y4U"/>
+                            <constraint firstItem="CUS-vA-pJZ" firstAttribute="leading" secondItem="ItG-1p-qdh" secondAttribute="leading" id="PtP-qM-jJk"/>
+                            <constraint firstItem="CUS-vA-pJZ" firstAttribute="top" secondItem="VKX-2y-jQx" secondAttribute="top" id="aIY-fe-5tC"/>
+                            <constraint firstItem="CUS-vA-pJZ" firstAttribute="trailing" secondItem="ItG-1p-qdh" secondAttribute="trailing" id="oyS-yz-8yN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ItG-1p-qdh"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="CUS-vA-pJZ" id="J09-tL-Mm3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fuz-IU-bUi" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+        </scene>
+    </scenes>
+</document>

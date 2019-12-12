@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Light.ttf">
+            <string>Montserrat-Light</string>
+        </array>
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowEmptyMessageView" customModule="WeatherForecast" customModuleProvider="target">
+            <connections>
+                <outlet property="helpTextSecondary" destination="mmP-JM-7fG" id="jiI-OU-wX4"/>
+                <outlet property="primaryTextLabel" destination="s3e-BM-tws" id="i6A-gt-K9M"/>
+                <outlet property="view" destination="iN0-l3-epB" id="1mt-8q-E4J"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="413" height="95"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" id="CYy-0w-ep8">
+                    <rect key="frame" x="0.0" y="17" width="413" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4La-2U-p8M">
+                            <rect key="frame" x="0.0" y="0.0" width="413" height="60"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_fav" translatesAutoresizingMaskIntoConstraints="NO" id="FBD-oV-2uU">
+                                    <rect key="frame" x="0.0" y="0.0" width="413" height="60"/>
+                                </imageView>
+                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="KwH-tT-16w">
+                                    <rect key="frame" x="20" y="0.0" width="96.5" height="88"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rain Showers" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3e-BM-tws">
+                                            <rect key="frame" x="0.0" y="0.0" width="96.5" height="18"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22°" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmP-JM-7fG">
+                                            <rect key="frame" x="0.0" y="34" width="96.5" height="54"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="44"/>
+                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="FBD-oV-2uU" firstAttribute="centerY" secondItem="4La-2U-p8M" secondAttribute="centerY" id="CBb-d0-LL6"/>
+                                <constraint firstAttribute="bottom" secondItem="FBD-oV-2uU" secondAttribute="bottom" id="Frv-aX-e7B"/>
+                                <constraint firstAttribute="trailing" secondItem="FBD-oV-2uU" secondAttribute="trailing" id="ZK9-LB-SIT"/>
+                                <constraint firstItem="FBD-oV-2uU" firstAttribute="leading" secondItem="4La-2U-p8M" secondAttribute="leading" id="aeF-hn-Lxe"/>
+                                <constraint firstItem="KwH-tT-16w" firstAttribute="centerX" secondItem="4La-2U-p8M" secondAttribute="centerX" id="bmd-Lf-SSn"/>
+                                <constraint firstItem="FBD-oV-2uU" firstAttribute="top" secondItem="4La-2U-p8M" secondAttribute="top" id="ps3-7V-tUV"/>
+                                <constraint firstItem="KwH-tT-16w" firstAttribute="centerY" secondItem="4La-2U-p8M" secondAttribute="centerY" id="sCU-ep-rO5"/>
+                                <constraint firstItem="FBD-oV-2uU" firstAttribute="centerX" secondItem="4La-2U-p8M" secondAttribute="centerX" id="z72-1s-ThS"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="136.95652173913044" y="-160.37946428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="no_fav" width="640" height="960"/>
+    </resources>
+</document>
