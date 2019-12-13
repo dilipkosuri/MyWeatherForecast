@@ -12,7 +12,6 @@ public final class LandingRouter: Coordinator
   // MARK: Navigation
   public func start() {
     let landingVC = LandingViewController.instantiate(with: "Landing")
-    self.navigationController.navigationBar.isHidden = false
     landingVC.onAddButtonClick = doNavigation
     navigationController.pushViewController(landingVC, animated: true)
   }
