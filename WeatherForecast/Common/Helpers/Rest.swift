@@ -15,7 +15,7 @@ typealias JSONObject = [String:Any]
 typealias JSONResult = Result<JSONObject>
 
 protocol JSONValidation {
-  static func validJson(from data: Data?, needToValidateJson: Bool) throws -> JSONObject
+    static func validJson(from data: Data?, needToValidateJson: Bool) throws -> JSONObject
 }
 
 class Rest {
@@ -23,7 +23,6 @@ class Rest {
     case put = "PUT"
     case get = "GET"
     case post = "POST"
-    case delete = "DELETE"
   }
 
   internal class func connect(method: String,
@@ -54,49 +53,55 @@ class Rest {
                               needToValidateJson: Bool = false,
                               completion: @escaping (JSONResult) -> Void) throws {
     // Setup Request
+    guard var components = URLComponents(string: "\(url)") else {
+        throw ValidationError.invalid("baseURL", url)
+    }
+    if let validQuery = query, !validQuery.isEmpty {
+        components.query = validQuery
+    }
+    guard let url = components.url else {
+        throw ValidationError.invalid("path", components.path)
+    }
+    
+    // Setup Request
     var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30)
     request.httpMethod = method
     request.allHTTPHeaderFields = headers
     request.timeoutInterval = 5000.00
     // Setup JSON
     if let jsonObject = jsonObject {
-      guard JSONSerialization.isValidJSONObject(jsonObject) else {
-        print("Invalid JSON Object received: \(jsonObject)")
-        throw ValidationError.invalid("jsonObject", jsonObject)
-      }
-
-      let jsonData = try JSONSerialization.data(withJSONObject: jsonObject,
-                                                options: [])
-      request.setValue("application/json", forHTTPHeaderField: "content-type")
-      request.httpBody = jsonData
+        guard JSONSerialization.isValidJSONObject(jsonObject) else {
+            print("Invalid JSON Object received: \(jsonObject)")
+            throw ValidationError.invalid("jsonObject", jsonObject)
+        }
+        
+        let jsonData = try JSONSerialization.data(withJSONObject: jsonObject,
+                                                  options: [])
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
+        request.httpBody = jsonData
     }
 
     request.prettyPrint()
 
-    // Make the call
-    URLSession.defaultSession.dataTask(with: request, completionHandler: { data, response, error in
-
-      DispatchQueue.main.async {
-        response?.nicePrint(data: data, error: error, for: request)
-        do {
-          // Check response errors
-          if let responseError = error { throw responseError }
-
-          var jsonObject = try validJson(from: data, needToValidateJson: needToValidateJson)
-          if captureResponseHeaders, let httpResponse = response as? HTTPURLResponse {
-            jsonObject["responseHeaders"] = httpResponse.allHeaderFields
-          }
-
-          // Successful result
-          completion(JSONResult.success(result: jsonObject))
-
-        } catch let theError {
-          let error = theError as NSError
-          print("Rest Error: \(error.localizedDescription)")
-          completion(JSONResult.failure(error: theError))
+    URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+        DispatchQueue.main.async {
+            response?.nicePrint(data: data, error: error, for: request)
+            do {
+                if let responseError = error { throw responseError }
+                
+                var jsonObject = try validJson(from: data, needToValidateJson: needToValidateJson)
+                if captureResponseHeaders, let httpResponse = response as? HTTPURLResponse {
+                    jsonObject["responseHeaders"] = httpResponse.allHeaderFields
+                }
+                completion(JSONResult.success(result: jsonObject))
+                
+            } catch let theError {
+                let error = theError as NSError
+                print("Rest Error: \(error.localizedDescription)")
+                completion(JSONResult.failure(error: theError))
+            }
         }
-      }
-
+        
     }).resume()
 
   }
@@ -162,73 +167,6 @@ extension URLSessionConfiguration {
     var headers: [String : String] = [:]
     headers["Accept-Language"] = "EN"
     return headers
-  }
-}
-
-extension URLSession {
-  
-  @nonobjc static var urlSessionDefault: URLSession?
-  
-  /// Just like sharedSession, returns a shared singleton
-  /// session object.
-  class var defaultSession: URLSession {
-    // The session is stored in a nested struct because
-    // you can't do a 'static let' singleton in a
-    // class extension.
-    struct Instance {
-      // The singleton URL session, configured
-      // to use our custom config and delegate.
-      var session = URLSession(
-        configuration: URLSessionConfiguration.SessionConfiguration(),
-        // Delegate is retained by the session.
-        delegate: DefaultSessionDelegate(),
-        delegateQueue: nil)
-    }
-    
-    if let current = urlSessionDefault {
-      return current
-    }
-    urlSessionDefault = Instance().session
-    return urlSessionDefault!
-  }
-  
-}
-
-class DefaultSessionDelegate: NSObject, URLSessionDelegate {
-  func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge,
-                  completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-
-    // Check for Server Trust challenge, and get remote certificate
-    if challenge.protectionSpace.authenticationMethod == (NSURLAuthenticationMethodServerTrust),
-      let serverTrust: SecTrust = challenge.protectionSpace.serverTrust,
-      let certificate: SecCertificate = SecTrustGetCertificateAtIndex(serverTrust, 0) {
-
-      // Set SSL policies for domain name check
-      let policies = NSMutableArray()
-      policies.add(SecPolicyCreateSSL(true, challenge.protectionSpace.host as CFString?))
-      SecTrustSetPolicies(serverTrust, policies)
-
-      // Evaluate server certificate
-      var result: SecTrustResultType = .invalid
-      SecTrustEvaluate(serverTrust, &result)
-      let isServerTrusted: Bool = (result == .unspecified || result == .proceed)
-
-      // Check server trust, and get certificates data
-      if isServerTrusted,
-        let remoteCertificateData = CFBridgingRetain(SecCertificateCopyData(certificate)),
-        let cerPath: String = Bundle.main.path(forResource: "certificate", ofType: "der"),
-        let localCertificateData = NSData(contentsOfFile:cerPath) {
-
-        // Server is trusted, compare certificates
-        if remoteCertificateData.isEqual(localCertificateData) == true {
-          let credential: URLCredential = URLCredential(trust: serverTrust)
-          completionHandler(.useCredential, credential)
-          return
-        }
-      }
-    }
-
-    completionHandler(.cancelAuthenticationChallenge, nil)
   }
 }
 
@@ -320,16 +258,5 @@ extension Rest : JSONValidation {
       else { throw ReturnError.invalidJSON }
 
     return jsonObject
-  }
-}
-
-// MARK: - Crashlytics Log
-
-extension Rest {
-  static func logMessage(message: String) {
-    #if !DEBUG
-      print("Crashlytics.info: \(message)")
-      CLSLogv("%@", getVaList([message]))
-    #endif
   }
 }

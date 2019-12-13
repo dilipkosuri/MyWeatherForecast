@@ -9,9 +9,8 @@ class LandingWorker {
     locationsStore = store
   }
   
-  func getLocations(completion: @escaping (UserResult<LocationResult>) -> Void) {
-    locationsStore?.getLocations() { (result) in
-      // Keep last result
+    func getLocations(request: Home.GetLocationResult.Request, completion: @escaping (UserResult<LocationResult>) -> Void) {
+        locationsStore?.getLocations(request: request) { (result) in
       switch result {
       case .success(result: var resultSummary):
         completion(UserResult.success(result: resultSummary))

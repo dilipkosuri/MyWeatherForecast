@@ -3,7 +3,7 @@ import Foundation
 // MARK: - Deposit store API
 
 protocol LocationStoreProtocol {
-  func getLocations(completion: @escaping (Result<LocationResult>) -> Void)
+    func getLocations(request: Home.GetLocationResult.Request, completion: @escaping (Result<LocationResult>) -> Void)
 }
 
 class HomeWorker {
@@ -15,16 +15,15 @@ class HomeWorker {
     locationsStore = store
   }
   
-  func getLocations(completion: @escaping (UserResult<LocationResult>) -> Void) {
-    locationsStore?.getLocations() { (result) in
-      // Keep last result
-      switch result {
-      case .success(result: var resultSummary):
-        completion(UserResult.success(result: resultSummary))
-      case .failure(error: let error):
-        completion(UserResult.failure(userError: error.userError()))
-      }
-    }
+  func getLocations(request: Home.GetLocationResult.Request, completion: @escaping (UserResult<LocationResult>) -> Void) {
+    locationsStore?.getLocations(request: request, completion: { result in
+        switch result {
+        case .success(result: let resultSummary):
+            completion(UserResult.success(result: resultSummary))
+        case .failure(error: let error):
+            completion(UserResult.failure(userError: error.userError()))
+        }
+    })
   }
 }
 

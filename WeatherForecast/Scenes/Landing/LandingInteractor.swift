@@ -19,7 +19,7 @@ class LandingInteractor: LandingInteractorInterface, LandingDataStore
   
   // MARK: Do something
   func getLocations(request: Home.GetLocationResult.Request) {
-    landingWorker.getLocations { [weak self] userResult in
+    landingWorker.getLocations(request: request) { [weak self] userResult in
       if case .success(let result) = userResult {
         self?.generateLocationResult = result
       }
