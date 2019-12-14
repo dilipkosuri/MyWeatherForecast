@@ -14,8 +14,11 @@
         <attribute name="weatherIconDesc" optional="YES" attributeType="String"/>
         <attribute name="weatherID" optional="YES" attributeType="String"/>
         <attribute name="wind" optional="YES" attributeType="String"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MasterLocation"/>
     </entity>
+    <entity name="MasterLocation" representedClassName="MasterLocation" syncable="YES" codeGenerationType="class"/>
     <elements>
-        <element name="FavouriteDataSourceModel" positionX="-63" positionY="-18" width="128" height="238"/>
+        <element name="FavouriteDataSourceModel" positionX="-63" positionY="-18" width="128" height="253"/>
+        <element name="MasterLocation" positionX="-526.00390625" positionY="-7.6875" width="128" height="43"/>
     </elements>
 </model>

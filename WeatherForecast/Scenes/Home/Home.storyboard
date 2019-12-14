@@ -146,7 +146,6 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fuo-cP-tt1" firstAttribute="top" secondItem="CEs-Kf-B3e" secondAttribute="topMargin" id="HH6-4j-hM0"/>
                             <constraint firstAttribute="bottomMargin" secondItem="fuo-cP-tt1" secondAttribute="bottom" id="Neb-uy-COO"/>
@@ -159,6 +158,7 @@
                         <outlet property="circleTitleLabel" destination="hKT-Jy-LBV" id="JaO-6x-Sbz"/>
                         <outlet property="circleView" destination="PEq-bY-f1J" id="ZLM-uk-Kmi"/>
                         <outlet property="date" destination="hKT-Jy-LBV" id="7tp-df-zCK"/>
+                        <outlet property="homeScreenView" destination="CEs-Kf-B3e" id="dQn-8Z-Lss"/>
                         <outlet property="humidityLabelText" destination="10A-8J-lGt" id="htB-2f-Nkf"/>
                         <outlet property="humidityLabelValue" destination="fyu-Sj-LFE" id="PvH-Yp-ukR"/>
                         <outlet property="localTime" destination="b35-jR-z7y" id="shd-jp-iyH"/>

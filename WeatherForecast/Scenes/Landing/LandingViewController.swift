@@ -9,6 +9,7 @@ protocol LandingViewControllerInterface: class
 
 class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDelegate {
   
+  @IBOutlet var landingView: UIView!
   var interactor: LandingInteractorInterface?
   let reuseIdentifier = "weatherCellIdentifier";
   internal var insideSpace: CGFloat = 8
@@ -54,12 +55,31 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   }
   
   func setupConfiguration() {
+    self.landingView.applyGradient()
     //deleteData()
     var sampleData = [Home.CircleViewModel.LocationData]()
     //createData(model: sampleData, mock: true)
     var data: [Home.CircleViewModel.LocationData] = []
     //retrieveData()
     //bookMarkList = []
+   // fetchRecords()
+  }
+  
+  func fetchRecords() {
+    let bookmarkedList: [FavouriteDataModel] = retrieveData()
+    var locationCoordinates: [String: String] = [:]
+    if bookmarkedList.count > 0 {
+      for item  in bookmarkedList {
+        locationCoordinates[item.latitude] = item.longitude
+        // call interactor to fetch each record item
+        // call getLocations from interactor with WeatherReportType as CurrentWeather
+      }
+    }
+  }
+  
+  func loadDetailsOfAnItem() {
+    // load 5 days forcast
+    // call interactor data getLocations with WeatherReportType as Forecast
   }
   
   func setNavigationBar() {

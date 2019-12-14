@@ -2,7 +2,7 @@ import UIKit
 
 protocol HomeInteractorInterface
 {
-  func getLocations(request: Home.GetLocationResult.Request)
+  func getLocations(request: Home.GetLocationResult.Request, requestType: WeatherReportType)
 }
 
 protocol HomeDataStore
@@ -18,8 +18,8 @@ class HomeInteractor: HomeInteractorInterface, HomeDataStore
   //var name: String = ""
   
   // MARK: Do something
-  func getLocations(request: Home.GetLocationResult.Request) {
-    homeWorker.getLocations(request: request) { [weak self] userResult in
+  func getLocations(request: Home.GetLocationResult.Request, requestType: WeatherReportType) {
+    homeWorker.getLocations(request: request, requestType: requestType) { [weak self] userResult in
       if case .success(let result) = userResult {
         self?.generateLocationResult = result
       }

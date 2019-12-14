@@ -2,7 +2,7 @@ import UIKit
 
 protocol LandingInteractorInterface
 {
-  func getLocations(request: Home.GetLocationResult.Request)
+  func getLocations(request: Home.GetLocationResult.Request, requestType: WeatherReportType)
 }
 
 protocol LandingDataStore
@@ -18,8 +18,8 @@ class LandingInteractor: LandingInteractorInterface, LandingDataStore
   //var name: String = ""
   
   // MARK: Do something
-  func getLocations(request: Home.GetLocationResult.Request) {
-    landingWorker.getLocations(request: request) { [weak self] userResult in
+  func getLocations(request: Home.GetLocationResult.Request, requestType: WeatherReportType) {
+    landingWorker.getLocations(request: request, requestType: requestType) { [weak self] userResult in
       if case .success(let result) = userResult {
         self?.generateLocationResult = result
       }

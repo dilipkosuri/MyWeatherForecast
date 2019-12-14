@@ -91,6 +91,7 @@
 		DAB7F80723A4B84E005DA9E5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB7F80623A4B84E005DA9E5 /* CoreData.framework */; };
 		DAB7F80923A4BA57005DA9E5 /* UtilityKeyIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F80823A4BA57005DA9E5 /* UtilityKeyIdentifiers.swift */; };
 		DAB7F80B23A4C992005DA9E5 /* CoreDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F80A23A4C992005DA9E5 /* CoreDataUtils.swift */; };
+		DAB7F81523A529EE005DA9E5 /* Colors+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F81423A529ED005DA9E5 /* Colors+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +186,7 @@
 		DAB7F80623A4B84E005DA9E5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DAB7F80823A4BA57005DA9E5 /* UtilityKeyIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityKeyIdentifiers.swift; sourceTree = "<group>"; };
 		DAB7F80A23A4C992005DA9E5 /* CoreDataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUtils.swift; sourceTree = "<group>"; };
+		DAB7F81423A529ED005DA9E5 /* Colors+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				DAB7F78723A0AF95005DA9E5 /* View+Extension.swift */,
+				DAB7F81423A529ED005DA9E5 /* Colors+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 				DAB7F79423A0B0EE005DA9E5 /* ThemeProtocols.swift in Sources */,
 				DAB7F7BB23A157CD005DA9E5 /* MKMapViewController.swift in Sources */,
 				DAB7F70523A0919C005DA9E5 /* Rainfall.swift in Sources */,
+				DAB7F81523A529EE005DA9E5 /* Colors+Extension.swift in Sources */,
 				DAB7F70823A0919C005DA9E5 /* Weather.swift in Sources */,
 				DA6A7242239EA9D700F0770E /* HomeWorker.swift in Sources */,
 				DA485DDB239E4753009F8BF2 /* CityCoordinator.swift in Sources */,
