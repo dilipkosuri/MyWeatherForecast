@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="FavouriteDataSourceModel" representedClassName="FavouriteDataSourceModel" syncable="YES" codeGenerationType="class">
+        <attribute name="currentLocation" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="humidity" optional="YES" attributeType="String"/>
+        <attribute name="imageName" optional="YES" attributeType="String"/>
+        <attribute name="latitude" optional="YES" attributeType="String"/>
+        <attribute name="longitude" optional="YES" attributeType="String"/>
+        <attribute name="precipitation" optional="YES" attributeType="String"/>
+        <attribute name="pressureCheck" optional="YES" attributeType="String"/>
+        <attribute name="temperature" optional="YES" attributeType="String"/>
+        <attribute name="temperatureDesc" optional="YES" attributeType="String"/>
+        <attribute name="weatherIconDesc" optional="YES" attributeType="String"/>
+        <attribute name="weatherID" optional="YES" attributeType="String"/>
+        <attribute name="wind" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="FavouriteDataSourceModel" positionX="-63" positionY="-18" width="128" height="238"/>
+    </elements>
 </model>

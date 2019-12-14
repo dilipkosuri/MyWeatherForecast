@@ -13,7 +13,7 @@ protocol HomeViewControllerInterface: class
 class HomeViewController: UIViewController, HomeViewControllerInterface, Storyboarded
 {
     var interactor: HomeInteractorInterface?
-    var router: (NSObjectProtocol & HomeDataPassing)?
+    var router: (NSObjectProtocol)?
     internal weak var delegate: HomeViewControllerDelegate?
     @IBOutlet weak var humidityLabelText: UILabel!
     @IBOutlet weak var humidityLabelValue: UILabel!
@@ -82,7 +82,6 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
         interactor.presenter = presenter
         presenter.viewController = viewController
         router.viewController = viewController
-        router.dataStore = interactor
     }
     
     // MARK: Routing

@@ -26,13 +26,3 @@ class HomeWorker {
     })
   }
 }
-
-//////////////////////////////////////////
-// MARK: - Mapping of known Backend errors
-//////////////////////////////////////////
-
-extension HomeWorker {
-  static let errorMap: ErrorMap = [
-    "1011": (type: UserError.ErrorType.discreet, message: nil)
-  ]
-}

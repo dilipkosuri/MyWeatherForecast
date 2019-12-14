@@ -5,15 +5,9 @@ import UIKit
   //func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
-protocol HomeDataPassing
-{
-  var dataStore: HomeDataStore? { get }
-}
-
-class HomeRouter: NSObject, HomeDataPassing, Coordinator
+class HomeRouter: NSObject, Coordinator
 {
   weak var viewController: HomeViewController?
-  var dataStore: HomeDataStore?
   private let navigationController: UINavigationController
   private var cityCoordinator: CityCoordinator?
   
