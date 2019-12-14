@@ -86,6 +86,11 @@
 		DAB7F7B823A12A84005DA9E5 /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F7B623A12A83005DA9E5 /* FavouritesView.swift */; };
 		DAB7F7B923A12A84005DA9E5 /* ShowEmptyMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAB7F7B723A12A84005DA9E5 /* ShowEmptyMessageView.xib */; };
 		DAB7F7BB23A157CD005DA9E5 /* MKMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F7BA23A157CD005DA9E5 /* MKMapViewController.swift */; };
+		DAB7F80123A4B15D005DA9E5 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F7FF23A4B15D005DA9E5 /* TodayView.swift */; };
+		DAB7F80223A4B15D005DA9E5 /* TodayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAB7F80023A4B15D005DA9E5 /* TodayView.xib */; };
+		DAB7F80723A4B84E005DA9E5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB7F80623A4B84E005DA9E5 /* CoreData.framework */; };
+		DAB7F80923A4BA57005DA9E5 /* UtilityKeyIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F80823A4BA57005DA9E5 /* UtilityKeyIdentifiers.swift */; };
+		DAB7F80B23A4C992005DA9E5 /* CoreDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F80A23A4C992005DA9E5 /* CoreDataUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +180,11 @@
 		DAB7F7B623A12A83005DA9E5 /* FavouritesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		DAB7F7B723A12A84005DA9E5 /* ShowEmptyMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowEmptyMessageView.xib; sourceTree = "<group>"; };
 		DAB7F7BA23A157CD005DA9E5 /* MKMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapViewController.swift; sourceTree = "<group>"; };
+		DAB7F7FF23A4B15D005DA9E5 /* TodayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		DAB7F80023A4B15D005DA9E5 /* TodayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayView.xib; sourceTree = "<group>"; };
+		DAB7F80623A4B84E005DA9E5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DAB7F80823A4BA57005DA9E5 /* UtilityKeyIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityKeyIdentifiers.swift; sourceTree = "<group>"; };
+		DAB7F80A23A4C992005DA9E5 /* CoreDataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAB7F80723A4B84E005DA9E5 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +221,7 @@
 				DA485D0F239C0136009F8BF2 /* WeatherForecastTests */,
 				DA485D1A239C0136009F8BF2 /* WeatherForecastUITests */,
 				DA485CF7239C0134009F8BF2 /* Products */,
+				DAB7F80523A4B84D005DA9E5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -291,6 +303,8 @@
 				DA485DCB239E10CA009F8BF2 /* Storyboarded.swift */,
 				DA485DCE239E44CB009F8BF2 /* Coordinator.swift */,
 				DA485DD1239E4562009F8BF2 /* AppRouter.swift */,
+				DAB7F80823A4BA57005DA9E5 /* UtilityKeyIdentifiers.swift */,
+				DAB7F80A23A4C992005DA9E5 /* CoreDataUtils.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -400,6 +414,8 @@
 		DAB7F77D23A0AE83005DA9E5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DAB7F7FF23A4B15D005DA9E5 /* TodayView.swift */,
+				DAB7F80023A4B15D005DA9E5 /* TodayView.xib */,
 				DAB7F7B623A12A83005DA9E5 /* FavouritesView.swift */,
 				DAB7F7B723A12A84005DA9E5 /* ShowEmptyMessageView.xib */,
 				DAB7F79B23A0B7AB005DA9E5 /* FavouritesView.xib */,
@@ -451,6 +467,14 @@
 				DAB7F7A423A102E0005DA9E5 /* Montserrat-SemiBold.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		DAB7F80523A4B84D005DA9E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DAB7F80623A4B84E005DA9E5 /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -558,6 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAB7F7A823A102E0005DA9E5 /* Montserrat-Light.ttf in Resources */,
+				DAB7F80223A4B15D005DA9E5 /* TodayView.xib in Resources */,
 				DA485D06239C0135009F8BF2 /* LaunchScreen.storyboard in Resources */,
 				DA485D03239C0135009F8BF2 /* Assets.xcassets in Resources */,
 				DAB7F71923A0923E005DA9E5 /* CardViewController.xib in Resources */,
@@ -619,6 +644,7 @@
 				DAB7F71823A0923E005DA9E5 /* CardViewController.swift in Sources */,
 				DAB7F70C23A0919C005DA9E5 /* Rain.swift in Sources */,
 				DAB7F78E23A0B0CF005DA9E5 /* SceneDelegate.swift in Sources */,
+				DAB7F80123A4B15D005DA9E5 /* TodayView.swift in Sources */,
 				DA485DCF239E44CB009F8BF2 /* Coordinator.swift in Sources */,
 				DAB7F73423A09419005DA9E5 /* LandingPresenter.swift in Sources */,
 				DAB7F73223A09419005DA9E5 /* LandingInteractor.swift in Sources */,
@@ -626,10 +652,12 @@
 				DA485D4A239CFE84009F8BF2 /* CityModels.swift in Sources */,
 				DAB7F70423A0919C005DA9E5 /* LocationResult.swift in Sources */,
 				DA485D4E239CFE84009F8BF2 /* CityInteractor.swift in Sources */,
+				DAB7F80923A4BA57005DA9E5 /* UtilityKeyIdentifiers.swift in Sources */,
 				DA485DB8239D1D13009F8BF2 /* Error.swift in Sources */,
 				DAB7F73823A0A041005DA9E5 /* LandingWorker.swift in Sources */,
 				DAB7F70B23A0919C005DA9E5 /* Coord.swift in Sources */,
 				DAB7F70A23A0919C005DA9E5 /* List.swift in Sources */,
+				DAB7F80B23A4C992005DA9E5 /* CoreDataUtils.swift in Sources */,
 				DAB7F7A223A0D5C5005DA9E5 /* LandingViewController+Extension.swift in Sources */,
 				DAB7F6F223A09126005DA9E5 /* HomeRouter.swift in Sources */,
 				DA485DBA239D1D13009F8BF2 /* Rest.swift in Sources */,
@@ -708,6 +736,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv7s,
+					armv7,
+					arm64,
+				);
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -758,6 +791,8 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
+				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -768,6 +803,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv7s,
+					armv7,
+					arm64,
+				);
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -811,6 +851,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
+				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

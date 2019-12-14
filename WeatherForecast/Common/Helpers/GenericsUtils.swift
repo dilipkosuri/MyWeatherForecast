@@ -1,4 +1,5 @@
 import Foundation
+
 open class GenericDecoder<IN, OUT: Decodable> {
     public class func decode(json inObject: IN) -> OUT? {
         fatalError("Generic Error - Unexpected")

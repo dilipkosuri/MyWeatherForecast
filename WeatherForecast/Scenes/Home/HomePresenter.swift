@@ -21,7 +21,6 @@ class HomePresenter: HomePresentationInterface
     typealias DisplayedGroup = Home.CircleViewModel
     
     switch response.result {
-    
     case .success(result: let locationData):
         
         if let locationResponse = locationData.list {
