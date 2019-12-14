@@ -15,7 +15,6 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
     internal var numberOfRecordsInStore: Int = 0
     internal var defaultIndexToShow: Int = 0
     internal var onAddButtonClick: ((_ tappedText: String) -> Void)?
-    let locationManager = CLLocationManager()
     var bookMarkList = ["Dilip one", "Dilip two", "Dilip three"]
    // var bookMarkList :[String] = [] // for empty
     typealias HomeScreenData = [Home.CircleViewModel.HomeViewDataSourceModel]
@@ -48,27 +47,9 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
         self.setNavigationBar()
     }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[locations.count - 1]
-        if location.horizontalAccuracy > 0 {
-            locationManager.stopUpdatingLocation()
-            locationManager.delegate = nil
-            print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)" )
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-        self.title = "Location unavailable"
-    }
-    
+  
     func setNavigationBar() {
         let screenSize: CGRect = UIScreen.main.bounds
         let navBar = UINavigationBar(frame: CGRect(x: 0, y: 44, width: screenSize.width, height: 44))
