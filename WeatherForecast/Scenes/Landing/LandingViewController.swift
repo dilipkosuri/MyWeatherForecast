@@ -17,8 +17,9 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   internal var numberOfRecordsInStore: Int = 0
   internal var defaultIndexToShow: Int = 0
   internal var onAddButtonClick: ((_ tappedText: String) -> Void)?
- // var bookMarkList = ["Dilip one", "Dilip two", "Dilip three"]
-  var bookMarkList: [FavouriteDataModel] = [] // for empty
+  var bookMarkList = ["Dilip one", "Dilip two", "Dilip three"]
+  var genericLocationData: [FavouriteDataModel] = []
+  //var bookMarkList: [FavouriteDataModel] = [] // for empty
   typealias HomeScreenData = [Home.CircleViewModel.HomeViewDataSourceModel]
   
   // MARK: Object lifecycle
@@ -50,18 +51,15 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   override func viewDidLoad() {
     super.viewDidLoad()
     setupConfiguration()
-    setNavigationBar()
   }
   
   func setupConfiguration() {
+    //deleteData()
     var sampleData = [Home.CircleViewModel.LocationData]()
     //createData(model: sampleData, mock: true)
-    
-    bookMarkList = [
-    FavouriteDataModel(icon: "", currentLocation: "", temperature: "", humidity: "humidity 1", precipitation: "", pressureCheck: "", wind: "", date: ""),
-    FavouriteDataModel(icon: "", currentLocation: "", temperature: "", humidity: "humidity 2", precipitation: "", pressureCheck: "", wind: "", date: "")]//retrieveData()
+    var data: [Home.CircleViewModel.LocationData] = []
+    //retrieveData()
     //bookMarkList = []
-    //deleteData()
   }
   
   func setNavigationBar() {

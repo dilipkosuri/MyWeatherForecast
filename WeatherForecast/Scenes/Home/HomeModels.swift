@@ -20,12 +20,14 @@ enum Home
       var pressureCheck: String?
       var weatherID: String?
       var weatherIconDesc: String?
+      var latitude: String?
+      var longitude: String?
       
       init(humidity: KeyData = KeyData(), temperature: String = "", day: String = "",
            imageName: String = "", temperatureDesc: String = "", wind: KeyData = KeyData(),
            date: String = "", time: String = "", dateFromServer: String = "",
            currentLocation: String = "", precipitation: String = "", pressureCheck: String = "",
-           weatherID: String = "", weatherIconDesc: String = "") {
+           weatherID: String = "", weatherIconDesc: String = "", latitude: String = "", longitude: String = "" ) {
         self.humidity = humidity
         self.temperature = temperature
         self.day = convertDate(date: day, type: .Server)
@@ -40,6 +42,8 @@ enum Home
         self.pressureCheck = pressureCheck
         self.weatherID = weatherID
         self.weatherIconDesc = weatherIconDesc
+        self.latitude = latitude
+        self.longitude = longitude
       }
       
       mutating func getWeatherIcon(condition: Int = 0) -> String {

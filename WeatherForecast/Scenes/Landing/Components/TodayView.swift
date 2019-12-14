@@ -16,6 +16,9 @@ struct FavouriteDataModel {
   var pressureCheck: String = ""
   var wind: String = ""
   var date: String = ""
+  var tempDesc: String = ""
+  var longitude: String = ""
+  var latitude: String = ""
 }
 
 import UIKit
