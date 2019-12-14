@@ -8,7 +8,7 @@ class CardViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableview.separatorStyle = .none
         tableview.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
@@ -19,12 +19,15 @@ class CardViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "Cell with text \(indexPath.row)"
+        cell.selectionStyle = .none
+        let cellView = FavouritesView.init(frame: cell.contentView.frame)
+        cell.addSubview(cellView)
+//        cell.textLabel?.text = "Cell with text \(indexPath.row)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 156
     }
 
 }
