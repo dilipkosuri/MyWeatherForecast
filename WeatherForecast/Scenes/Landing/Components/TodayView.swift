@@ -21,7 +21,7 @@ struct FavouriteDataModel {
 import UIKit
 
 public class TodayView: UIView {
-  @IBOutlet weak var view: UIView!
+  //@IBOutlet weak var view: UIView!
   @IBOutlet weak var navigationBar: UINavigationBar! {
     didSet {
       let attrs: [NSAttributedString.Key: Any] = [
@@ -119,10 +119,9 @@ public class TodayView: UIView {
   }
   
   private func commonInit() {
-    Bundle.main.loadNibNamed("TodayView", owner: self, options: nil)
-    addSubview(view)
-    view.frame = self.bounds
-    view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    let aView = Bundle.main.loadNibNamed("TodayView", owner: self, options: nil)!.first as! UIView
+    self.frame = aView.frame
+    addSubview(aView)
   }
   
 }

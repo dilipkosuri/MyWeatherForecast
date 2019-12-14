@@ -50,12 +50,16 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   override func viewDidLoad() {
     super.viewDidLoad()
     setupConfiguration()
+    setNavigationBar()
   }
   
   func setupConfiguration() {
     var sampleData = [Home.CircleViewModel.LocationData]()
     //createData(model: sampleData, mock: true)
-    bookMarkList = retrieveData()
+    
+    bookMarkList = [
+    FavouriteDataModel(icon: "", currentLocation: "", temperature: "", humidity: "humidity 1", precipitation: "", pressureCheck: "", wind: "", date: ""),
+    FavouriteDataModel(icon: "", currentLocation: "", temperature: "", humidity: "humidity 2", precipitation: "", pressureCheck: "", wind: "", date: "")]//retrieveData()
     //bookMarkList = []
     //deleteData()
   }

@@ -23,10 +23,7 @@ extension LandingViewController: UICollectionViewDataSource, UICollectionViewDel
                              sizeForItemAt indexPath: IndexPath) -> CGSize {
     
     let width = collectionView.frame.width
-    var height = (collectionView.bounds.height - (insideSpace * CGFloat(max(6, 1) - 1)))/CGFloat(6)
-    if bookMarkList.count == 0 {
-      height = collectionView.frame.height
-    }
+    let height = bookMarkList.count == 0 ? collectionView.frame.height : 350
     return CGSize(width: width, height: height)
   }
   
@@ -39,8 +36,7 @@ extension LandingViewController: UICollectionViewDataSource, UICollectionViewDel
       cell.showEmptyView = true
     } else {
       cell.showEmptyView = false
-      var viewForCell = TodayView()
-      cell.todayView = viewForCell
+        cell.todayView.humidityLabel.text = bookMarkList[indexPath.row].humidity
     }
     return cell
   }
@@ -54,7 +50,7 @@ class WeatherCell: UICollectionViewCell {
   
   var showEmptyView : Bool = false {
     didSet {
-      todayView.isHidden = !showEmptyView
+      todayView.isHidden = showEmptyView
       emptyImgView.isHidden = !showEmptyView
       emptyTextLabel.isHidden = !showEmptyView
     }
