@@ -7,7 +7,7 @@ protocol LandingViewControllerInterface: class
   func displayLandingView(viewModel: [Home.CircleViewModel.HomeViewDataSourceModel])
 }
 
-class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDelegate {
+class LandingViewController: UIViewController, Storyboarded {
   
   @IBOutlet var landingView: UIView!
   var interactor: LandingInteractorInterface?
@@ -57,7 +57,7 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
     setupConfiguration()
     setNavigationBar()
   }
-  
+    
   func setupConfiguration() {
     self.landingView.applyGradient()
     fetchRecords()

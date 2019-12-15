@@ -51,12 +51,13 @@ class MKMapViewController: UIViewController, Storyboarded {
     interactor.mapPresenter = mapPresenter
     mapPresenter.viewController = viewController as? MKMapViewControllerInterface
   }
+    
   func setCurrentLocation() {
+    mapView.showsUserLocation = true
     locationManager.delegate = self
     locationManager.desiredAccuracy = kCLLocationAccuracyBest
     locationManager.requestWhenInUseAuthorization()
     locationManager.requestLocation()
-    mapView.delegate = self
   }
   
   func setNavigationBar() {
@@ -124,6 +125,7 @@ class MKMapViewController: UIViewController, Storyboarded {
 extension MKMapViewController: MKMapViewDelegate {
   
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    guard !(annotation is MKUserLocation) else { return nil }
     guard annotation is MKPointAnnotation else { print("no mkpointannotaions"); return nil }
     
     let reuseId = "pin"
@@ -140,19 +142,7 @@ extension MKMapViewController: MKMapViewDelegate {
     }
     return pinView
   }
-  
-  func didNextTapped() {
-    print("pin is clicked")
-  }
-  
-  func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-    if control == view.rightCalloutAccessoryView {
-      if let doSomething = view.annotation?.title! {
-        print("do something")
-        // delegate?.didNextTapped()
-      }
-    }
-  }
+
 }
 
 
@@ -167,7 +157,7 @@ extension MKMapViewController : CLLocationManagerDelegate {
     guard let location = locations.first else { return }
     let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
     let region = MKCoordinateRegion(center: location.coordinate, span: span)
-    mapView.setRegion(region, animated: true)
+    self.mapView.setRegion(region, animated: true)
   }
   
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
