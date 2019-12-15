@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -182,7 +179,6 @@
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" name="shareColor"/>
             <constraints>
                 <constraint firstItem="HNQ-3A-Zz8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2Cs-pm-eav"/>
                 <constraint firstItem="kRo-bs-n2o" firstAttribute="leading" secondItem="bhb-FW-ykO" secondAttribute="leading" id="9ze-Sz-37W"/>
@@ -215,8 +211,5 @@
         <image name="pressure" width="30" height="30"/>
         <image name="wind" width="30" height="30"/>
         <image name="wind-direction" width="30" height="30"/>
-        <namedColor name="shareColor">
-            <color red="1" green="0.53299999237060547" blue="0.27799999713897705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

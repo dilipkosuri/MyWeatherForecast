@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -146,7 +148,6 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fuo-cP-tt1" firstAttribute="top" secondItem="CEs-Kf-B3e" secondAttribute="topMargin" id="HH6-4j-hM0"/>
                             <constraint firstAttribute="bottomMargin" secondItem="fuo-cP-tt1" secondAttribute="bottom" id="Neb-uy-COO"/>
@@ -159,6 +160,7 @@
                         <outlet property="circleTitleLabel" destination="hKT-Jy-LBV" id="JaO-6x-Sbz"/>
                         <outlet property="circleView" destination="PEq-bY-f1J" id="ZLM-uk-Kmi"/>
                         <outlet property="date" destination="hKT-Jy-LBV" id="7tp-df-zCK"/>
+                        <outlet property="homeScreenView" destination="CEs-Kf-B3e" id="dQn-8Z-Lss"/>
                         <outlet property="humidityLabelText" destination="10A-8J-lGt" id="htB-2f-Nkf"/>
                         <outlet property="humidityLabelValue" destination="fyu-Sj-LFE" id="PvH-Yp-ukR"/>
                         <outlet property="localTime" destination="b35-jR-z7y" id="shd-jp-iyH"/>
