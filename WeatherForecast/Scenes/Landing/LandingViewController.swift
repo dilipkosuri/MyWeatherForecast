@@ -19,7 +19,7 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   internal var defaultIndexToShow: Int = 0
   internal var onAddButtonClick: ((_ tappedText: String) -> Void)?
   internal var onSettingsClick: ((_ tappedText: String) -> Void)?
-  internal var onCollectionDidClick: ((_ tappedText: String) -> Void)?
+  internal var onCollectionDidClick: ((_ favModel: FavouriteDataModel) -> Void)?
   
   var genericLocationData: [FavouriteDataModel] = []
   var bookmarkedList: [FavouriteDataModel] = []

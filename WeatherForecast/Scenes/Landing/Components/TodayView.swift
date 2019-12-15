@@ -113,7 +113,7 @@ public class TodayView: UIView {
   }
   
   func options(model: FavouriteDataModel) {
-    currentLocationLabel.text = "Praque, Czech"
+    currentLocationLabel.text = model.currentLocation
     humidityLabel.text = model.temperature + " | " + model.tempDesc
     guard let url = URL(string: "http://openweathermap.org/img/w/"+model.icon+".png") else { return }
     curentLocationImage.load(url: url)
