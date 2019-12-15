@@ -23,7 +23,7 @@ extension LandingViewController: UICollectionViewDataSource, UICollectionViewDel
                              sizeForItemAt indexPath: IndexPath) -> CGSize {
     
     let width = collectionView.frame.width
-    let height = bookmarkedList.count == 0 ? collectionView.frame.height : 350
+    let height = bookmarkedList.count == 0 ? collectionView.frame.height : 150
     return CGSize(width: width, height: height)
   }
   
