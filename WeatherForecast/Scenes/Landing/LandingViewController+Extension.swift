@@ -40,11 +40,8 @@ extension LandingViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     return cell
   }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Home", bundle: Bundle.main)
-        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        self.navigationController?.pushViewController(homeViewController, animated: false)
+        self.onCollectionDidClick?("Navigate to Home View")
     }
 }
 

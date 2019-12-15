@@ -17,7 +17,9 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   @IBOutlet weak var collectionView: UICollectionView!
   internal var numberOfRecordsInStore: Int = 0
   internal var defaultIndexToShow: Int = 0
-  internal var onAddButtonClick: ((_ tappedText: String) -> Void)?
+    internal var onAddButtonClick: ((_ tappedText: String) -> Void)?
+    internal var onSettingsClick: ((_ tappedText: String) -> Void)?
+  internal var onCollectionDidClick: ((_ tappedText: String) -> Void)?
   var bookMarkList = ["Dilip one", "Dilip two", "Dilip three"]
   var genericLocationData: [FavouriteDataModel] = []
   //var bookMarkList: [FavouriteDataModel] = [] // for empty
@@ -98,11 +100,11 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   }
   
   @objc func onAddButtonTap(sender: AnyObject){
-    self.onAddButtonClick?("Coordinator Pattern Demo")
+    self.onAddButtonClick?("Navigate to MK View")
   }
   
   @objc func onSettingsButtonTapped(sender: AnyObject){
-    
+    self.onSettingsClick?("Navigate to Settings View")
   }
 }
 
