@@ -26,9 +26,9 @@ func retrieveData(complition: ([FavouriteDataModel]) -> Void) {
     let result = try managedContext.fetch(fetchRequest)
     for data in result as! [NSManagedObject] {
       var singleFavouriteModel = FavouriteDataModel()
-      singleFavouriteModel.icon = data.value(forKey: "imageName") as! String
-      singleFavouriteModel.icon = data.value(forKey: "latitude") as? String ?? ""
-      singleFavouriteModel.icon = data.value(forKey: "longitude") as? String ?? ""
+      singleFavouriteModel.icon = data.value(forKey: "weatherIconDesc") as! String
+      singleFavouriteModel.latitude = data.value(forKey: "latitude") as? String ?? ""
+      singleFavouriteModel.longitude = data.value(forKey: "longitude") as? String ?? ""
       singleFavouriteModel.currentLocation = data.value(forKey: "currentLocation") as! String
       singleFavouriteModel.temperature = data.value(forKey: "temperature") as! String
       singleFavouriteModel.humidity = data.value(forKey: "humidity") as! String
@@ -60,41 +60,22 @@ func createData(model: [Home.CircleViewModel.LocationData], mock: Bool){
   //Now let’s create an entity and new user records.
   let userEntity = NSEntityDescription.entity(forEntityName: "FavouriteDataSourceModel", in: managedContext)!
   
-  if mock {
-    for item in 1...5 {
-      let entityObject = NSManagedObject(entity: userEntity, insertInto: managedContext)
-      entityObject.setValue("dadasdada", forKey: "currentLocation")
-      entityObject.setValue("adasdasdas", forKey: "date")
-      entityObject.setValue("dasdsdada", forKey: "humidity")
-      entityObject.setValue("asdasdas", forKey: "imageName")
-      entityObject.setValue("sfefsfs", forKey: "latitude")
-      entityObject.setValue("dasdsgsdf", forKey: "longitude")
-      entityObject.setValue("dgdfhfgf", forKey: "precipitation")
-      entityObject.setValue("sgdgfd", forKey: "pressureCheck")
-      entityObject.setValue("sdfgdgdgd", forKey: "temperature")
-      entityObject.setValue("sdghfbd", forKey: "temperatureDesc")
-      entityObject.setValue("fldsdf", forKey: "weatherIconDesc")
-      entityObject.setValue("rdfgc", forKey: "weatherID")
-      entityObject.setValue("seesdfg", forKey: "wind")
-    }
-  } else {
-    for item in data {
-      let entityObject = NSManagedObject(entity: userEntity, insertInto: managedContext)
-      entityObject.setValue(item.currentLocation, forKey: "currentLocation")
-      entityObject.setValue(item.date, forKey: "date")
-      entityObject.setValue(item.humidity?.labelTextValue, forKey: "humidity")
-      entityObject.setValue(item.imageName, forKey: "imageName")
-      entityObject.setValue(item.precipitation, forKey: "latitude")
-      entityObject.setValue(item.precipitation, forKey: "longitude")
-      entityObject.setValue(item.precipitation, forKey: "precipitation")
-      entityObject.setValue(item.pressureCheck, forKey: "pressureCheck")
-      entityObject.setValue(item.weatherID, forKey: "temperature")
-      entityObject.setValue(item.temperatureDesc, forKey: "temperatureDesc")
-      entityObject.setValue(item.weatherIconDesc, forKey: "weatherIconDesc")
-      entityObject.setValue(item.weatherID, forKey: "weatherID")
-      entityObject.setValue(item.wind?.labelTextValue, forKey: "wind")
-      
-    }
+  for item in data {
+    let entityObject = NSManagedObject(entity: userEntity, insertInto: managedContext)
+    entityObject.setValue(item.currentLocation, forKey: "currentLocation")
+    entityObject.setValue(item.date, forKey: "date")
+    entityObject.setValue(item.humidity?.labelTextValue, forKey: "humidity")
+    entityObject.setValue(item.weatherIconDesc, forKey: "imageName")
+    entityObject.setValue(item.precipitation, forKey: "latitude")
+    entityObject.setValue(item.precipitation, forKey: "longitude")
+    entityObject.setValue(item.precipitation, forKey: "precipitation")
+    entityObject.setValue(item.pressureCheck, forKey: "pressureCheck")
+    entityObject.setValue(item.weatherID, forKey: "temperature")
+    entityObject.setValue(item.temperatureDesc, forKey: "temperatureDesc")
+    entityObject.setValue(item.weatherIconDesc, forKey: "weatherIconDesc")
+    entityObject.setValue(item.weatherID, forKey: "weatherID")
+    entityObject.setValue(item.wind?.labelTextValue, forKey: "wind")
+    
   }
   
   do {
