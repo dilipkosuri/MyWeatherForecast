@@ -20,7 +20,6 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   internal var onAddButtonClick: ((_ tappedText: String) -> Void)?
   internal var onSettingsClick: ((_ tappedText: String) -> Void)?
   internal var onCollectionDidClick: ((_ tappedText: String) -> Void)?
-  internal var onAddButtonClick: ((_ tappedText: String) -> Void)?
   
   var genericLocationData: [FavouriteDataModel] = []
   var bookmarkedList: [FavouriteDataModel] = []
@@ -71,10 +70,14 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   
   func fetchRecords() {
     bookmarkedList = []
-    bookmarkedList = retrieveData()
-    if bookmarkedList.count > 0 {
-      self.collectionView.reloadData()
-    }
+    retrieveData(complition: { bookMarks in
+        if bookMarks.count > 0 {
+            bookmarkedList = bookMarks
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    })
   }
   
   func loadDetailsOfAnItem() {

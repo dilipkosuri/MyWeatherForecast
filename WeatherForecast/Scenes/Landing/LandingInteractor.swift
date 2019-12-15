@@ -3,7 +3,7 @@ import UIKit
 protocol LandingInteractorInterface
 {
   func getLocations(request: Home.GetLocationResult.Request)
-  func getLocationByCoordinate(request: Home.GetLocationResult.Request)
+    func getLocationByCoordinate(request: Home.GetLocationResult.Request, locationName:String)
 }
 
 class LandingInteractor: LandingInteractorInterface
@@ -24,13 +24,13 @@ class LandingInteractor: LandingInteractorInterface
     }
   }
   
-  func getLocationByCoordinate(request: Home.GetLocationResult.Request) {
+  func getLocationByCoordinate(request: Home.GetLocationResult.Request, locationName:String) {
     landingWorker.getCurrentWeather(request: request) { userResult in
       if case .success(let result) = userResult {
         self.generatedCurrentLocationResult = result
       }
       let response = Home.GetLocationResult.CurrentWeatherResponse(result: userResult)
-      self.mapPresenter?.presentCurrentWeatherDataToSaveToStorage(response: response)
+      self.mapPresenter?.presentCurrentWeatherDataToSaveToStorage(response: response, locationName:locationName)
     }
   }
 }
