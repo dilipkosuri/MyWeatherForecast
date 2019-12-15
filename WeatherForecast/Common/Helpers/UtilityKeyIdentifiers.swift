@@ -12,6 +12,8 @@ import Foundation
 class Constants {
   
   static var units = ["Standard", "Metric", "Imperial"]
+  static var BASE_IMAGE_URL = "http://openweathermap.org/img/w/"
+  static var defaultIcon = "01d.png"
   
   /*
    

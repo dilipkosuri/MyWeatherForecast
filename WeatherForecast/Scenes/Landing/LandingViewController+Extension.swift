@@ -37,7 +37,6 @@ extension LandingViewController: UICollectionViewDataSource, UICollectionViewDel
     } else {
       cell.showEmptyView = false
       cell.todayView.options(model: bookmarkedList[indexPath.row])
-        //cell.todayView.humidityLabel.text = bookMarkList[indexPath.row].humidity
     }
     return cell
   }

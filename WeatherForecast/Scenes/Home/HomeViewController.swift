@@ -114,10 +114,6 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
     super.viewDidLoad()
     setupConfiguration()
     setupUI()
-    
-    if let model = favModel {
-        print("favModel \(model)")
-    }
   }
   
   func setupUI() {
@@ -138,7 +134,6 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
     localTime.textColor = UIColor.white
     windDescription.font = windDescription.font.withSize(24)
     temperatureBasedImage.backgroundColor = UIColor.clear
-    
     self.homeScreenView.applyGradient()
   }
   
@@ -148,11 +143,15 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
       humidityLabelText.text = model?.humidity?.labelText ?? "-"
       humidityLabelValue.text = model?.humidity?.labelTextValue ?? "-"
       temperature.text = model?.temperature ?? "-"
-      temperatureBasedImage.image = UIImage(named: "rain.png")
       date.text = model?.date ?? "-"
       weatherDescription.text = model?.temperatureDesc ?? ""
       windDescription.text = (model?.wind?.labelText ?? "-") + "" + (model?.wind?.labelTextValue ?? "-")
       localTime.text = model?.time ?? "-"
+      
+      let imageURL = Constants.BASE_IMAGE_URL + (model?.weatherIconDesc ?? Constants.defaultIcon) + ".png"
+      
+      guard let url = URL(string: imageURL) else { return }
+      temperatureBasedImage.load(url: url)
     }
   }
   
@@ -161,10 +160,15 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
   {
     self.view.backgroundColor =
       UIColor(patternImage: UIImage(named: "rainfall.png") ?? UIImage())
+    if let model = favModel {
+      print("favModel \(model)")
+      var request = Home.GetLocationResult.Request()
+      request.latitude = model.latitude
+      request.longitude = model.longitude
+      var requestDataFor: WeatherReportType = WeatherReportType.Forecast
+      interactor?.getLocations(request: request, requestType: requestDataFor)
+    }
     
-    let request = Home.GetLocationResult.Request()
-    var requestDataFor: WeatherReportType = WeatherReportType.Forecast
-    interactor?.getLocations(request: request, requestType: requestDataFor)
   }
   
   func displayCircleView(viewModel: [Home.CircleViewModel.HomeViewDataSourceModel])

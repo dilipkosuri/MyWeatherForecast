@@ -26,8 +26,8 @@ extension UIView {
   }
   
   func applyGradient() {
-    let colorTop =  UIColor(red: 54.0/255.0, green: 209.0/255.0, blue: 220.0/255.0, alpha: 1.0).cgColor
-    let colorBottom = UIColor(red: 91.0/255.0, green: 134.0/255.0, blue: 229.0/255.0, alpha: 1.0).cgColor
+    let colorTop =  UIColor(red: 69.0/255.0, green: 104.0/255.0, blue: 220.0/255.0, alpha: 1.0).cgColor
+    let colorBottom = UIColor(red: 176.0/255.0, green: 106.0/255.0, blue: 179.0/255.0, alpha: 1.0).cgColor
     
     let gradientLayer = CAGradientLayer()
     gradientLayer.colors = [colorTop, colorBottom]
@@ -38,8 +38,8 @@ extension UIView {
   }
   
   func bookmarkGradient() {
-    let colorTop =  UIColor(red: 255.0/255.0, green: 95.0/255.0, blue: 109.0/255.0, alpha: 1.0).cgColor
-    let colorBottom = UIColor(red: 255.0/255.0, green: 195.0/255.0, blue: 113.0/255.0, alpha: 1.0).cgColor
+    let colorTop =  UIColor(red: 20.0/255.0, green: 30.0/255.0, blue: 48.0/255.0, alpha: 1.0).cgColor
+    let colorBottom = UIColor(red: 36.0/255.0, green: 59.0/255.0, blue: 85.0/255.0, alpha: 1.0).cgColor
     
     let gradientLayer = CAGradientLayer()
     gradientLayer.colors = [colorTop, colorBottom]

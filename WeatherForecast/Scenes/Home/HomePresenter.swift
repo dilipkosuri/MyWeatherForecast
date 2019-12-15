@@ -22,8 +22,8 @@ class HomePresenter: HomePresentationInterface
     
     switch response.result {
     case .success(result: let locationData):
-      var latitude: Double = locationData.city?.coord?.lat ?? 0.0
-      var longitude: Double = locationData.city?.coord?.lon ?? 0.0
+      let latitude: Double = locationData.city?.coord?.lat ?? 0.0
+      let longitude: Double = locationData.city?.coord?.lon ?? 0.0
       
       if let locationResponse = locationData.list {
         displayedClientList = (locationResponse.map {
@@ -41,8 +41,8 @@ class HomePresenter: HomePresentationInterface
             currentLocation: "",
             precipitation: "\($0.temperature?.temp_kf ?? 0)",
             pressureCheck: "\($0.temperature?.pressure ?? 0)",
-            //weatherID: "\($0.weather?.id ?? 0)",
-            //weatherIconDesc: "\($0.weather?.icon)",
+            weatherID: "\($0.weather?.first?.id ?? 0)",
+            weatherIconDesc: $0.weather?.first?.icon ?? "",
             latitude: "\(latitude)",
             longitude: "\(longitude)"
           )
