@@ -42,8 +42,10 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
     let viewController = self
     let interactor = LandingInteractor()
     let presenter = LandingPresenter()
+    let mapPresenter = MKMapViewPresenter()
     viewController.interactor = interactor
     interactor.presenter = presenter
+    interactor.mapPresenter = mapPresenter
     presenter.viewController = viewController
   }
   
@@ -52,6 +54,7 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   override func viewDidLoad() {
     super.viewDidLoad()
     setupConfiguration()
+    setNavigationBar()
   }
   
   func setupConfiguration() {
@@ -62,7 +65,7 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
     var data: [Home.CircleViewModel.LocationData] = []
     //retrieveData()
     //bookMarkList = []
-   // fetchRecords()
+    fetchRecords()
   }
   
   func fetchRecords() {
@@ -87,7 +90,7 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
     let navBar = UINavigationBar(frame: CGRect(x: 0, y: 44, width: screenSize.width, height: 44))
     let navItem = UINavigationItem(title: "Weather Forecast")
     let addItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(onAddButtonTap))
-    let settingsItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.edit, target: self, action: #selector(onSettingsButtonTapped))
+    let settingsItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.organize, target: self, action: #selector(onSettingsButtonTapped))
     navItem.rightBarButtonItems = [addItem, settingsItem]
     navBar.setItems([navItem], animated: false)
     self.navigationItem.title = "Weather Forecast"

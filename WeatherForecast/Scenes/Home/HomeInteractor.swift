@@ -19,7 +19,7 @@ class HomeInteractor: HomeInteractorInterface, HomeDataStore
   
   // MARK: Do something
   func getLocations(request: Home.GetLocationResult.Request, requestType: WeatherReportType) {
-    homeWorker.getLocations(request: request, requestType: requestType) { [weak self] userResult in
+    homeWorker.getLocations(request: request) { [weak self] userResult in
       if case .success(let result) = userResult {
         self?.generateLocationResult = result
       }

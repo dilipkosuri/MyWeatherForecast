@@ -30,13 +30,13 @@ enum Home
            weatherID: String = "", weatherIconDesc: String = "", latitude: String = "", longitude: String = "" ) {
         self.humidity = humidity
         self.temperature = temperature
-        self.day = convertDate(date: day, type: .Server)
+        self.day = day != "" ? convertDate(date: day, type: .Server) : ""
         self.imageName = imageName
         self.temperatureDesc = temperatureDesc
         self.wind = wind
-        self.date = convertDate(date: day, type: .DisplayDate)
-        self.time = convertDate(date: day, type: .DisplayTime)
-        self.dateFromServer = convertDate(date: day, type: .Sorting)
+        self.date = day != "" ? convertDate(date: day, type: .DisplayDate) : ""
+        self.time = day != "" ? convertDate(date: day, type: .DisplayTime) : ""
+        self.dateFromServer = day != "" ? convertDate(date: day, type: .Sorting) : ""
         self.currentLocation = currentLocation
         self.precipitation = precipitation
         self.pressureCheck = pressureCheck
@@ -113,6 +113,10 @@ enum Home
     /// Data struct sent to Presenter
     struct Response {
       let result: UserResult<(LocationResult)>
+    }
+    
+    struct CurrentWeatherResponse {
+      let result: UserResult<(LocationCurrentResult)>
     }
     
     /// Data struct sent to ViewController

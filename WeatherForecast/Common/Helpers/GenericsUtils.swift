@@ -25,7 +25,7 @@ func convertDate(date:String, type: TypeOfConversion) -> String {
     let defaultFormatter = DateFormatter()
     defaultFormatter.dateFormat = defaultDateFormat
     let defaultFormattedDate = defaultFormatter.date(from: date)
-    
+  
     switch type {
     case .Sorting:
         let formatter2 = DateFormatter()

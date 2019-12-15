@@ -2,29 +2,35 @@ import UIKit
 
 protocol LandingInteractorInterface
 {
-  func getLocations(request: Home.GetLocationResult.Request, requestType: WeatherReportType)
+  func getLocations(request: Home.GetLocationResult.Request)
+  func getLocationByCoordinate(request: Home.GetLocationResult.Request)
 }
 
-protocol LandingDataStore
-{
-  //var name: String { get set }
-}
-
-class LandingInteractor: LandingInteractorInterface, LandingDataStore
+class LandingInteractor: LandingInteractorInterface
 {
   var presenter: LandingPresentationInterface?
+  var mapPresenter: MKMapViewPresenter?
   var landingWorker = LandingWorker(with: LocationsRestStore())
   var generateLocationResult: LocationResult?
-  //var name: String = ""
+  var generatedCurrentLocationResult: LocationCurrentResult?
   
-  // MARK: Do something
-  func getLocations(request: Home.GetLocationResult.Request, requestType: WeatherReportType) {
-    landingWorker.getLocations(request: request, requestType: requestType) { [weak self] userResult in
+  func getLocations(request: Home.GetLocationResult.Request) {
+    landingWorker.getLocations(request: request) { [weak self] userResult in
       if case .success(let result) = userResult {
         self?.generateLocationResult = result
       }
       let response = Home.GetLocationResult.Response(result: userResult)
       self?.presenter?.presentCurrentDateDetail(response: response)
+    }
+  }
+  
+  func getLocationByCoordinate(request: Home.GetLocationResult.Request) {
+    landingWorker.getCurrentWeather(request: request) { userResult in
+      if case .success(let result) = userResult {
+        self.generatedCurrentLocationResult = result
+      }
+      let response = Home.GetLocationResult.CurrentWeatherResponse(result: userResult)
+      self.mapPresenter?.presentCurrentWeatherDataToSaveToStorage(response: response)
     }
   }
 }
