@@ -46,23 +46,24 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vE7-h9-nEd" customClass="TodayView" customModule="WeatherForecast" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <rect key="frame" x="10" y="5" width="80" height="90"/>
                                                 </view>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="otW-FZ-PUC" firstAttribute="leading" secondItem="gF6-yV-qir" secondAttribute="leadingMargin" id="5eE-e3-MLs"/>
                                             <constraint firstItem="otW-FZ-PUC" firstAttribute="top" secondItem="gF6-yV-qir" secondAttribute="topMargin" id="9IH-rK-pAp"/>
                                             <constraint firstItem="lRg-rH-LYe" firstAttribute="leading" secondItem="gF6-yV-qir" secondAttribute="leading" constant="20" id="HdF-vB-Gyt"/>
                                             <constraint firstAttribute="trailing" secondItem="lRg-rH-LYe" secondAttribute="trailing" constant="20" id="II2-bs-LAF"/>
-                                            <constraint firstItem="vE7-h9-nEd" firstAttribute="leading" secondItem="gF6-yV-qir" secondAttribute="leading" id="Mvt-g7-NXF"/>
-                                            <constraint firstAttribute="bottom" secondItem="vE7-h9-nEd" secondAttribute="bottom" id="OGi-cn-Zz2"/>
+                                            <constraint firstItem="vE7-h9-nEd" firstAttribute="leading" secondItem="gF6-yV-qir" secondAttribute="leading" constant="10" id="Mvt-g7-NXF"/>
+                                            <constraint firstAttribute="bottom" secondItem="vE7-h9-nEd" secondAttribute="bottom" constant="5" id="OGi-cn-Zz2"/>
                                             <constraint firstItem="lRg-rH-LYe" firstAttribute="centerY" secondItem="gF6-yV-qir" secondAttribute="centerY" id="PxO-cF-1Nk"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="otW-FZ-PUC" secondAttribute="trailing" id="QP0-Ei-aRj"/>
-                                            <constraint firstItem="vE7-h9-nEd" firstAttribute="top" secondItem="gF6-yV-qir" secondAttribute="top" id="SXu-fm-hV5"/>
+                                            <constraint firstItem="vE7-h9-nEd" firstAttribute="top" secondItem="gF6-yV-qir" secondAttribute="top" constant="5" id="SXu-fm-hV5"/>
                                             <constraint firstAttribute="bottom" secondItem="lRg-rH-LYe" secondAttribute="bottom" constant="20" id="avQ-c8-EK1"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="otW-FZ-PUC" secondAttribute="bottom" id="nRs-YY-egG"/>
-                                            <constraint firstAttribute="trailing" secondItem="vE7-h9-nEd" secondAttribute="trailing" id="qbQ-ec-IZr"/>
+                                            <constraint firstAttribute="trailing" secondItem="vE7-h9-nEd" secondAttribute="trailing" constant="10" id="qbQ-ec-IZr"/>
                                             <constraint firstItem="lRg-rH-LYe" firstAttribute="top" secondItem="gF6-yV-qir" secondAttribute="top" constant="20" id="v3d-rJ-NEk"/>
                                             <constraint firstItem="lRg-rH-LYe" firstAttribute="centerX" secondItem="gF6-yV-qir" secondAttribute="centerX" id="vfb-aV-U8W"/>
                                         </constraints>
@@ -115,7 +116,6 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="OtH-Ld-EM8" id="EyZ-a2-ikp"/>
-                        <outlet property="landingView" destination="rnR-fu-6hI" id="WoN-xS-pui"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBz-ci-ds3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
