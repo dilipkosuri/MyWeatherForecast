@@ -97,6 +97,7 @@
 		DAEC9EF323A568ED004A23E5 /* MKMapViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEC9EED23A568ED004A23E5 /* MKMapViewModels.swift */; };
 		DAED5AEC23A58D9D0066B736 /* LocationCurrentResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED5AE523A58D9D0066B736 /* LocationCurrentResult.swift */; };
 		DAED5AEE23A58D9D0066B736 /* Sys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED5AE723A58D9D0066B736 /* Sys.swift */; };
+		DAED5AF123A62B2B0066B736 /* ImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED5AF023A62B2B0066B736 /* ImageView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +198,7 @@
 		DAEC9EED23A568ED004A23E5 /* MKMapViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapViewModels.swift; sourceTree = "<group>"; };
 		DAED5AE523A58D9D0066B736 /* LocationCurrentResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCurrentResult.swift; sourceTree = "<group>"; };
 		DAED5AE723A58D9D0066B736 /* Sys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sys.swift; sourceTree = "<group>"; };
+		DAED5AF023A62B2B0066B736 /* ImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -443,6 +445,7 @@
 			children = (
 				DAB7F78723A0AF95005DA9E5 /* View+Extension.swift */,
 				DAB7F81423A529ED005DA9E5 /* Colors+Extension.swift */,
+				DAED5AF023A62B2B0066B736 /* ImageView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				DA485DC0239D2970009F8BF2 /* Status.swift in Sources */,
 				DA485DC3239D2F7C009F8BF2 /* GenericsUtils.swift in Sources */,
 				DAB7F78823A0AF95005DA9E5 /* View+Extension.swift in Sources */,
+				DAED5AF123A62B2B0066B736 /* ImageView+Extension.swift in Sources */,
 				DA485DD2239E4562009F8BF2 /* AppRouter.swift in Sources */,
 				DAB7F70923A0919C005DA9E5 /* Clouds.swift in Sources */,
 				DAEC9EF323A568ED004A23E5 /* MKMapViewModels.swift in Sources */,

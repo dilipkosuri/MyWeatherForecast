@@ -38,7 +38,7 @@ class MKMapViewPresenter: MKMapViewPresentationInterface
         precipitation: "\(locationData.temperature?.temp_kf ?? 0)",
         pressureCheck: "\(locationData.temperature?.pressure ?? 0)",
         weatherID: "\(locationData.weather?.first?.id ?? 0)",
-        weatherIconDesc: "\(locationData.weather?.first?.icon)",
+        weatherIconDesc: locationData.weather?.first?.icon ?? "",
         latitude: "\(latitude)",
         longitude: "\(longitude)"
       )
