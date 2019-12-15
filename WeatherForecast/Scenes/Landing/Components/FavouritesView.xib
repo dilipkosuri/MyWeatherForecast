@@ -12,7 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavouritesView" customModule="WeatherForecast" customModuleProvider="target">
             <connections>
+                <outlet property="currentLocationLabel" destination="p2Z-YS-rnx" id="90d-th-y8p"/>
+                <outlet property="dayLabel" destination="9qu-sw-Sfk" id="WdC-OQ-72T"/>
                 <outlet property="temperatureLabel" destination="WtN-hX-uZu" id="Q2K-S2-GH7"/>
+                <outlet property="timeWhenAddedToFav" destination="Zox-rE-YCu" id="NpS-hL-RsG"/>
                 <outlet property="view" destination="iy7-Xa-Ow2" id="A7B-jV-vuf"/>
                 <outlet property="weatherDescriptionLabel" destination="Gh6-kS-m1H" id="usa-if-5Vs"/>
                 <outlet property="weatherIconImage" destination="tUZ-Se-H0z" id="Cvu-wD-HSX"/>

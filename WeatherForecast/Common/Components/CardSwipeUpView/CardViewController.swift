@@ -5,6 +5,7 @@ class CardViewController: UIViewController,UITableViewDataSource,UITableViewDele
     @IBOutlet weak var handlerArea: UIView!
     @IBOutlet weak var tableview: UITableView!
     
+    var items = [Home.CircleViewModel.HomeViewDataSourceModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,7 +14,7 @@ class CardViewController: UIViewController,UITableViewDataSource,UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        return items.count
         
     }
     
@@ -21,8 +22,8 @@ class CardViewController: UIViewController,UITableViewDataSource,UITableViewDele
         let cell = tableview.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.selectionStyle = .none
         let cellView = FavouritesView.init(frame: cell.contentView.frame)
+        cellView.options(items: items, intexPath: indexPath)
         cell.addSubview(cellView)
-//        cell.textLabel?.text = "Cell with text \(indexPath.row)"
         return cell
     }
     

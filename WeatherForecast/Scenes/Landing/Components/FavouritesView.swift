@@ -13,6 +13,13 @@ import UIKit
 public class FavouritesView: UIView {
   @IBOutlet weak var view: UIView!
   @IBOutlet weak var weatherIconImage: UIImageView!
+  @IBOutlet weak var dayLabel: UILabel! {
+    didSet {
+        dayLabel.text = ""
+        dayLabel.font = theme.fonts.subHeadlineFont
+        dayLabel.textColor = UIColor(named: "primaryTextColor")
+    }
+  }
   @IBOutlet weak var currentLocationLabel: UILabel! {
     didSet {
       currentLocationLabel.text = ""
@@ -61,4 +68,15 @@ public class FavouritesView: UIView {
     view.frame = self.bounds
     view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
   }
+    
+    func options(items: [Home.CircleViewModel.HomeViewDataSourceModel],
+                 intexPath: IndexPath) {
+        let item = items[intexPath.row]
+        currentLocationLabel.text = item.data.first?.currentLocation ?? ""
+        temperatureLabel.text = item.data.first?.temperature ?? ""
+        timeWhenAddedToFav.text = item.data.first?.time ?? ""
+        weatherDescriptionLabel.text = item.data.first?.temperatureDesc ?? ""
+        dayLabel.text = item.data.first?.day ?? ""
+    }
 }
+
