@@ -14,6 +14,9 @@ protocol MKMapViewControllerInterface: class
 {
   func saveDataToStorage(viewModel: Home.CircleViewModel.LocationData)
 }
+protocol HandleMapSearch: class {
+    func dropPinZoomIn(placemark:MKPlacemark)
+}
 
 class MKMapViewController: UIViewController, Storyboarded {
   
@@ -27,11 +30,11 @@ class MKMapViewController: UIViewController, Storyboarded {
   var localSearch:MKLocalSearch!
   var localSearchResponse:MKLocalSearch.Response!
   var error:NSError!
- // var pointAnnotation:MKPointAnnotation!
   var pinAnnotationView:MKPinAnnotationView!
   var annotation:MKAnnotation!
   var onBackButtonClick: ((_ tapped: Bool) -> Void)?
-  
+  var resultSearchController: UISearchController!
+
   override func viewDidLoad() {
     super.viewDidLoad()
     setCurrentLocation()
@@ -51,31 +54,33 @@ class MKMapViewController: UIViewController, Storyboarded {
     interactor.mapPresenter = mapPresenter
     mapPresenter.viewController = viewController as? MKMapViewControllerInterface
   }
+    
   func setCurrentLocation() {
+    mapView.showsUserLocation = true
     locationManager.delegate = self
     locationManager.desiredAccuracy = kCLLocationAccuracyBest
     locationManager.requestWhenInUseAuthorization()
     locationManager.requestLocation()
-    mapView.delegate = self
   }
   
   func setNavigationBar() {
-    self.navigationItem.title = "Set Bookmarks"
-    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(onSearchButtonAction))
+    //Show only back arrow without text
+    self.navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem()
+
+    let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTableViewController
+    resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+    resultSearchController.searchResultsUpdater = locationSearchTable
+    let searchBar = resultSearchController!.searchBar
+    searchBar.sizeToFit()
+    searchBar.placeholder = "Search for places"
+    navigationItem.titleView = resultSearchController?.searchBar
+    resultSearchController.hidesNavigationBarDuringPresentation = false
+    resultSearchController.dimsBackgroundDuringPresentation = true
+    definesPresentationContext = true
+    locationSearchTable.mapView = mapView
+    locationSearchTable.handleMapSearchDelegate = self
+  }
     
-   // self.navigationItem.hidesBackButton = true
-    let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onBackClick))
-   // self.navigationItem.leftBarButtonItem = newBackButton
-    self.navigationItem.rightBarButtonItems = [searchItem]
-  }
-  
-  @objc func onSearchButtonAction(sender: AnyObject){
-    searchController = UISearchController(searchResultsController: nil)
-    searchController.hidesNavigationBarDuringPresentation = false
-    self.searchController.searchBar.delegate = self
-    present(searchController, animated: true, completion: nil)
-  }
-  
   @objc func longTap(sender: UIGestureRecognizer){
     if sender.state == .began {
       let locationInView = sender.location(in: mapView)
@@ -124,6 +129,7 @@ class MKMapViewController: UIViewController, Storyboarded {
 extension MKMapViewController: MKMapViewDelegate {
   
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    guard !(annotation is MKUserLocation) else { return nil }
     guard annotation is MKPointAnnotation else { print("no mkpointannotaions"); return nil }
     
     let reuseId = "pin"
@@ -140,19 +146,7 @@ extension MKMapViewController: MKMapViewDelegate {
     }
     return pinView
   }
-  
-  func didNextTapped() {
-    print("pin is clicked")
-  }
-  
-  func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-    if control == view.rightCalloutAccessoryView {
-      if let doSomething = view.annotation?.title! {
-        print("do something")
-        // delegate?.didNextTapped()
-      }
-    }
-  }
+
 }
 
 
@@ -167,48 +161,12 @@ extension MKMapViewController : CLLocationManagerDelegate {
     guard let location = locations.first else { return }
     let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
     let region = MKCoordinateRegion(center: location.coordinate, span: span)
-    mapView.setRegion(region, animated: true)
+    self.mapView.setRegion(region, animated: true)
   }
   
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
     print("error:: \(error)")
     
-  }
-}
-
-extension MKMapViewController : UISearchBarDelegate {
-  func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
-    
-    searchBar.resignFirstResponder()
-    dismiss(animated: true, completion: nil)
-    if self.mapView.annotations.count != 0 {
-      annotation = self.mapView.annotations[0]
-      self.mapView.removeAnnotation(annotation)
-    }
-    
-    localSearchRequest = MKLocalSearch.Request()
-    localSearchRequest.naturalLanguageQuery = searchBar.text
-    localSearch = MKLocalSearch(request: localSearchRequest)
-    localSearch.start { (localSearchResponse, error) -> Void in
-      
-      if localSearchResponse == nil{
-        let alertController = UIAlertController(title: nil, message: "Place Not Found", preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
-        return
-      }
-      let locationOnMap = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:     localSearchResponse!.boundingRegion.center.longitude)
-        self.showAlertForCustomBookmarkName(location: locationOnMap)
-
-//      self.pointAnnotation = MKPointAnnotation()
-//      self.pointAnnotation.title = searchBar.text
-    //  self.pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:     localSearchResponse!.boundingRegion.center.longitude)
-      
-      
-//      self.pinAnnotationView = MKPinAnnotationView(annotation: self.pointAnnotation, reuseIdentifier: nil)
-//      self.mapView.centerCoordinate = self.pointAnnotation.coordinate
-//      self.mapView.addAnnotation(self.pinAnnotationView.annotation!)
-    }
   }
 }
 
@@ -222,4 +180,12 @@ extension MKMapViewController: MKMapViewControllerInterface {
     })
     self.mapView.showToast(message: "The location has been added to favourites", controller: self)
   }
+}
+extension MKMapViewController: HandleMapSearch {
+    
+    func dropPinZoomIn(placemark: MKPlacemark){
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
+    }
 }
