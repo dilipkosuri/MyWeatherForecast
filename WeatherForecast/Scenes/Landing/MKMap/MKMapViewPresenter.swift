@@ -28,7 +28,6 @@ class MKMapViewPresenter: MKMapViewPresentationInterface
           labelText: "Humidity",
           labelTextValue: "\(locationData.temperature?.humidity ?? 0)"),
         temperature: "\(locationData.temperature?.temp ?? 0)",
-        day: "",
         imageName: "",
         temperatureDesc: locationData.weather?.first?.description ?? "",
         wind: Home.CircleViewModel.KeyData(

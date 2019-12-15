@@ -19,6 +19,8 @@ struct FavouriteDataModel {
   var tempDesc: String = ""
   var longitude: String = ""
   var latitude: String = ""
+  var minTemp: String = ""
+  var maxTemp: String = ""
 }
 
 import UIKit

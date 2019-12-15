@@ -10,13 +10,6 @@ import UIKit
 @IBDesignable
 final class CircleView: UIView {
   
-  /*
-   // Only override draw() if you perform custom drawing.
-   // An empty implementation adversely affects performance during animation.
-   override func draw(_ rect: CGRect) {
-   // Drawing code
-   }
-   */
   // Dot with border, which you can control completely in Storyboard
   @IBInspectable var mainColor: UIColor = UIColor.blue
     {
@@ -90,7 +83,7 @@ final class CircleView: UIView {
   
   internal func drawRingFittingInsideView(rect: CGRect)->()
   {
-    let hw:CGFloat = ringThickness/2
+    let hw:CGFloat = ringThickness/3
     let circlePath = UIBezierPath(ovalIn: rect.insetBy(dx: hw,dy: hw) )
     
     let shapeLayer = CAShapeLayer()

@@ -74,9 +74,9 @@ public class FavouritesView: UIView {
         let item = items[intexPath.row]
         currentLocationLabel.text = item.data.first?.currentLocation ?? ""
         temperatureLabel.text = item.data.first?.temperature ?? ""
-        timeWhenAddedToFav.text = item.data.first?.time ?? ""
+//        timeWhenAddedToFav.text = item.data.first?.time ?? ""
         weatherDescriptionLabel.text = item.data.first?.temperatureDesc ?? ""
-        dayLabel.text = item.data.first?.day ?? ""
+//        dayLabel.text = item.data.first?.day ?? ""
     }
 }
 
