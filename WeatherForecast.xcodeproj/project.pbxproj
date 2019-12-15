@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		088EB98523A5EF160058EAA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088EB98423A5EF160058EAA5 /* SettingsViewController.swift */; };
 		DA485D03239C0135009F8BF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA485D02239C0135009F8BF2 /* Assets.xcassets */; };
 		DA485D06239C0135009F8BF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA485D04239C0135009F8BF2 /* LaunchScreen.storyboard */; };
 		DA485D11239C0136009F8BF2 /* WeatherForecastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA485D10239C0136009F8BF2 /* WeatherForecastTests.swift */; };
@@ -116,6 +117,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		088EB98423A5EF160058EAA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DA485CF6239C0134009F8BF2 /* WeatherForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA485D02239C0135009F8BF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA485D05239C0135009F8BF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 				DAB7F72E23A09419005DA9E5 /* LandingViewController.swift */,
 				DAB7F79F23A0C7A1005DA9E5 /* Landing.storyboard */,
 				DAB7F7A123A0D5C5005DA9E5 /* LandingViewController+Extension.swift */,
+				088EB98423A5EF160058EAA5 /* SettingsViewController.swift */,
 			);
 			path = Landing;
 			sourceTree = "<group>";
@@ -673,6 +676,7 @@
 				DA485D44239CFE84009F8BF2 /* CityPresenter.swift in Sources */,
 				DAB7F70623A0919C005DA9E5 /* Wind.swift in Sources */,
 				DAB7F6F623A09126005DA9E5 /* HomePresenter.swift in Sources */,
+				088EB98523A5EF160058EAA5 /* SettingsViewController.swift in Sources */,
 				DAB7F79E23A0B7BA005DA9E5 /* ShowEmptyMessageView.swift in Sources */,
 				DAB7F71823A0923E005DA9E5 /* CardViewController.swift in Sources */,
 				DAB7F70C23A0919C005DA9E5 /* Rain.swift in Sources */,
