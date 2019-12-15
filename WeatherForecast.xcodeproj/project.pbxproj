@@ -94,6 +94,8 @@
 		DAB7F80923A4BA57005DA9E5 /* UtilityKeyIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F80823A4BA57005DA9E5 /* UtilityKeyIdentifiers.swift */; };
 		DAB7F80B23A4C992005DA9E5 /* CoreDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F80A23A4C992005DA9E5 /* CoreDataUtils.swift */; };
 		DAB7F81523A529EE005DA9E5 /* Colors+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F81423A529ED005DA9E5 /* Colors+Extension.swift */; };
+		DAD0DE5B23A66C8A00EA316A /* ShortWeatherInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAD0DE5923A66C8A00EA316A /* ShortWeatherInfoView.xib */; };
+		DAD0DE5C23A66C8A00EA316A /* ShortWeatherInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0DE5A23A66C8A00EA316A /* ShortWeatherInfoView.swift */; };
 		DAEC9EF023A568ED004A23E5 /* MKMapViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEC9EEA23A568ED004A23E5 /* MKMapViewPresenter.swift */; };
 		DAEC9EF323A568ED004A23E5 /* MKMapViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEC9EED23A568ED004A23E5 /* MKMapViewModels.swift */; };
 		DAED5AEC23A58D9D0066B736 /* LocationCurrentResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED5AE523A58D9D0066B736 /* LocationCurrentResult.swift */; };
@@ -196,6 +198,8 @@
 		DAB7F80823A4BA57005DA9E5 /* UtilityKeyIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityKeyIdentifiers.swift; sourceTree = "<group>"; };
 		DAB7F80A23A4C992005DA9E5 /* CoreDataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUtils.swift; sourceTree = "<group>"; };
 		DAB7F81423A529ED005DA9E5 /* Colors+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Extension.swift"; sourceTree = "<group>"; };
+		DAD0DE5923A66C8A00EA316A /* ShortWeatherInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShortWeatherInfoView.xib; sourceTree = "<group>"; };
+		DAD0DE5A23A66C8A00EA316A /* ShortWeatherInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortWeatherInfoView.swift; sourceTree = "<group>"; };
 		DAEC9EEA23A568ED004A23E5 /* MKMapViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapViewPresenter.swift; sourceTree = "<group>"; };
 		DAEC9EED23A568ED004A23E5 /* MKMapViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapViewModels.swift; sourceTree = "<group>"; };
 		DAED5AE523A58D9D0066B736 /* LocationCurrentResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCurrentResult.swift; sourceTree = "<group>"; };
@@ -432,6 +436,8 @@
 		DAB7F77D23A0AE83005DA9E5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DAD0DE5A23A66C8A00EA316A /* ShortWeatherInfoView.swift */,
+				DAD0DE5923A66C8A00EA316A /* ShortWeatherInfoView.xib */,
 				DAB7F7FF23A4B15D005DA9E5 /* TodayView.swift */,
 				DAB7F80023A4B15D005DA9E5 /* TodayView.xib */,
 				DAB7F7B623A12A83005DA9E5 /* FavouritesView.swift */,
@@ -631,6 +637,7 @@
 				DAB7F7B923A12A84005DA9E5 /* ShowEmptyMessageView.xib in Resources */,
 				DAB7F7A023A0C7A1005DA9E5 /* Landing.storyboard in Resources */,
 				DAB7F7A723A102E0005DA9E5 /* Montserrat-SemiBold.ttf in Resources */,
+				DAD0DE5B23A66C8A00EA316A /* ShortWeatherInfoView.xib in Resources */,
 				DA485DD8239E46E3009F8BF2 /* City.storyboard in Resources */,
 				DAB7F7A923A102E0005DA9E5 /* Montserrat-Medium.ttf in Resources */,
 				DAB7F79C23A0B7AB005DA9E5 /* FavouritesView.xib in Resources */,
@@ -688,6 +695,7 @@
 				DAB7F71823A0923E005DA9E5 /* CardViewController.swift in Sources */,
 				DAB7F70C23A0919C005DA9E5 /* Rain.swift in Sources */,
 				DAB7F78E23A0B0CF005DA9E5 /* SceneDelegate.swift in Sources */,
+				DAD0DE5C23A66C8A00EA316A /* ShortWeatherInfoView.swift in Sources */,
 				DAEC9EF023A568ED004A23E5 /* MKMapViewPresenter.swift in Sources */,
 				DAB7F80123A4B15D005DA9E5 /* TodayView.swift in Sources */,
 				DA485DCF239E44CB009F8BF2 /* Coordinator.swift in Sources */,

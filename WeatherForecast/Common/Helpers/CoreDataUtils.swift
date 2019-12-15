@@ -63,7 +63,7 @@ func createData(model: [Home.CircleViewModel.LocationData], mock: Bool){
   for item in data {
     let entityObject = NSManagedObject(entity: userEntity, insertInto: managedContext)
     entityObject.setValue(item.currentLocation, forKey: "currentLocation")
-    entityObject.setValue(item.date, forKey: "date")
+    entityObject.setValue(item.dateTime, forKey: "date")
     entityObject.setValue(item.humidity?.labelTextValue, forKey: "humidity")
     entityObject.setValue(item.weatherIconDesc, forKey: "imageName")
     entityObject.setValue(item.precipitation, forKey: "latitude")

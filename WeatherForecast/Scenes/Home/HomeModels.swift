@@ -8,13 +8,9 @@ enum Home
     struct LocationData {
       var humidity: KeyData?
       var temperature: String?
-      var day: String?
       var imageName: String?
       var temperatureDesc: String?
       var wind: KeyData?
-      var date: String?
-      var time: String?
-      var dateFromServer: String?
       var currentLocation: String?
       var precipitation: String?
       var pressureCheck: String?
@@ -22,21 +18,21 @@ enum Home
       var weatherIconDesc: String?
       var latitude: String?
       var longitude: String?
+      var minTemp: Double?
+      var maxTemp: Double?
+      var dt: Double?
+      var dateTime: String = ""
       
-      init(humidity: KeyData = KeyData(), temperature: String = "", day: String = "",
+      init(humidity: KeyData = KeyData(), temperature: String = "",
            imageName: String = "", temperatureDesc: String = "", wind: KeyData = KeyData(),
-           date: String = "", time: String = "", dateFromServer: String = "",
            currentLocation: String = "", precipitation: String = "", pressureCheck: String = "",
-           weatherID: String = "", weatherIconDesc: String = "", latitude: String = "", longitude: String = "" ) {
+           weatherID: String = "", weatherIconDesc: String = "", latitude: String = "", longitude: String = "",
+           minTemp: Double = 0, maxTemp: Double = 0, dt: Double = 0, dateTime: String = "") {
         self.humidity = humidity
         self.temperature = temperature
-        self.day = day != "" ? convertDate(date: day, type: .Server) : ""
         self.imageName = imageName
         self.temperatureDesc = temperatureDesc
         self.wind = wind
-        self.date = day != "" ? convertDate(date: day, type: .DisplayDate) : ""
-        self.time = day != "" ? convertDate(date: day, type: .DisplayTime) : ""
-        self.dateFromServer = day != "" ? convertDate(date: day, type: .Sorting) : ""
         self.currentLocation = currentLocation
         self.precipitation = precipitation
         self.pressureCheck = pressureCheck
@@ -44,35 +40,10 @@ enum Home
         self.weatherIconDesc = weatherIconDesc
         self.latitude = latitude
         self.longitude = longitude
-      }
-      
-      mutating func getWeatherIcon(condition: Int = 0) -> String {
-        switch (condition) {
-        case 0...300 :
-          return "tstorm1"
-        case 301...500 :
-          return "light_rain"
-        case 501...600 :
-          return "shower3"
-        case 601...700 :
-          return "snow4"
-        case 701...771 :
-          return "fog"
-        case 772...799 :
-          return "tstorm3"
-        case 800 :
-          return "sunny"
-        case 801...804 :
-          return "cloudy2"
-        case 900...903, 905...1000  :
-          return "tstorm3"
-        case 903 :
-          return "snow5"
-        case 904 :
-          return "sunny"
-        default :
-          return "dunno"
-        }
+        self.minTemp = minTemp
+        self.maxTemp = maxTemp
+        self.dt = dt
+        self.dateTime = dateTime
       }
     }
     

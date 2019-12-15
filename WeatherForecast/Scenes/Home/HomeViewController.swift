@@ -28,6 +28,7 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
   
   @IBOutlet weak var circleView: CircleView!
   @IBOutlet weak var circleTitleLabel: UILabel!
+  @IBOutlet weak var contentStackView: UIStackView!
   
   typealias HomeScreenData = [Home.CircleViewModel.HomeViewDataSourceModel]
   var cardViewController:CardViewController!
@@ -135,6 +136,7 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
     windDescription.font = windDescription.font.withSize(24)
     temperatureBasedImage.backgroundColor = UIColor.clear
     self.homeScreenView.applyGradient()
+    contentStackView.superview?.bringSubviewToFront(contentStackView)
   }
   
   func setupCircleUI(input: HomeScreenData) {
@@ -143,10 +145,10 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
       humidityLabelText.text = model?.humidity?.labelText ?? "-"
       humidityLabelValue.text = model?.humidity?.labelTextValue ?? "-"
       temperature.text = model?.temperature ?? "-"
-      date.text = model?.date ?? "-"
+      date.text = model?.dateTime ?? "-"
       weatherDescription.text = model?.temperatureDesc ?? ""
       windDescription.text = (model?.wind?.labelText ?? "-") + "" + (model?.wind?.labelTextValue ?? "-")
-      localTime.text = model?.time ?? "-"
+      //localTime.text = model?.time ?? "-"
       
       let imageURL = Constants.BASE_IMAGE_URL + (model?.weatherIconDesc ?? Constants.defaultIcon) + ".png"
       
