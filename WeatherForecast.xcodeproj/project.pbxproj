@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08325E1C23A656040021CFB4 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08325E1B23A656040021CFB4 /* LocationSearchTableViewController.swift */; };
 		088EB98523A5EF160058EAA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088EB98423A5EF160058EAA5 /* SettingsViewController.swift */; };
 		DA485D03239C0135009F8BF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA485D02239C0135009F8BF2 /* Assets.xcassets */; };
 		DA485D06239C0135009F8BF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA485D04239C0135009F8BF2 /* LaunchScreen.storyboard */; };
@@ -118,6 +119,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08325E1B23A656040021CFB4 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		088EB98423A5EF160058EAA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DA485CF6239C0134009F8BF2 /* WeatherForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA485D02239C0135009F8BF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 				DAEC9EED23A568ED004A23E5 /* MKMapViewModels.swift */,
 				DAEC9EEA23A568ED004A23E5 /* MKMapViewPresenter.swift */,
 				DAB7F7BA23A157CD005DA9E5 /* MKMapViewController.swift */,
+				08325E1B23A656040021CFB4 /* LocationSearchTableViewController.swift */,
 			);
 			path = MKMap;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				DAB7F7BB23A157CD005DA9E5 /* MKMapViewController.swift in Sources */,
 				DAB7F70523A0919C005DA9E5 /* Rainfall.swift in Sources */,
 				DAB7F81523A529EE005DA9E5 /* Colors+Extension.swift in Sources */,
+				08325E1C23A656040021CFB4 /* LocationSearchTableViewController.swift in Sources */,
 				DAB7F70823A0919C005DA9E5 /* Weather.swift in Sources */,
 				DA6A7242239EA9D700F0770E /* HomeWorker.swift in Sources */,
 				DA485DDB239E4753009F8BF2 /* CityCoordinator.swift in Sources */,
