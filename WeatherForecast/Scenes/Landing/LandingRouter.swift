@@ -13,6 +13,8 @@ public final class LandingRouter: Coordinator
   public func start() {
     let landingVC = LandingViewController.instantiate(with: "Landing")
     landingVC.onAddButtonClick = doNavigation
+    landingVC.onCollectionDidClick = doNavigationToHomeVC
+    landingVC.onSettingsClick = doNavigationToSettingsVC
     navigationController.pushViewController(landingVC, animated: true)
   }
   
@@ -21,5 +23,12 @@ public final class LandingRouter: Coordinator
     self.navigationController.navigationBar.isHidden = false
     navigationController.pushViewController(mkMapVC, animated: true)
   }
-  
+    private func doNavigationToHomeVC(tappedText: String) {
+        let homeVC = HomeViewController.instantiate(with: "Home")
+        navigationController.pushViewController(homeVC, animated: true)
+    }
+    private func doNavigationToSettingsVC(tappedText: String) {
+        let settingsVC = SettingsViewController.instantiate(with: "Landing")
+        navigationController.pushViewController(settingsVC, animated: true)
+    }
 }
