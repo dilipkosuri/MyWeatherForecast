@@ -21,7 +21,7 @@ class ShortWeatherInfoView: UIView {
   @IBOutlet weak var descriptionLabel: UILabel! {
     didSet {
       descriptionLabel.text = "Forecast: "
-      descriptionLabel.font = theme.fonts.headlineFont
+      descriptionLabel.font = theme.fonts.headlineFontMediumBig
       descriptionLabel.textColor = UIColor(named: "primaryTextColor")
     }
   }
@@ -59,21 +59,15 @@ class ShortWeatherInfoView: UIView {
     commonInit()
   }
   
-  func options(model: FavouriteDataModel) {
+  func options(model: Home.CircleViewModel.LocationData) {
    
-    descriptionLabel.text = model.tempDesc
-    minTempLabelValue.text = model.minTemp
-    maxTempLabel.text = model.maxTemp
+    descriptionLabel.text = model.temperatureDesc
+    minTempLabelValue.text = "\(model.minTemp ?? 0)"
+    maxTempLabelValue.text = "\(model.maxTemp ?? 0)"
     
-    let imageURL = Constants.BASE_IMAGE_URL + (model.icon ) + ".png"
+    let imageURL = Constants.BASE_IMAGE_URL + (model.weatherIconDesc ?? Constants.defaultIcon ) + ".png"
     guard let url = URL(string: imageURL) else { return }
     imageLabel.load(url: url)
-    
-//    currentLocationLabel.text = model.currentLocation
-//    humidityLabel.text = model.temperature + " | " + model.tempDesc
-//    guard let url = URL(string: "http://openweathermap.org/img/w/"+model.icon+".png") else { return }
-//    curentLocationImage.load(url: url)
-    //temperatureLabel.text = model.temperature
   }
   
   required init?(coder aDecoder: NSCoder) {

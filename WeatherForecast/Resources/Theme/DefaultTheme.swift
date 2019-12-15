@@ -21,12 +21,12 @@ public struct DefaultTheme: ThemeStrategy {
     }
     
     struct DefaultFonts: FontScheme {
-        let headlineFont: UIFont = UIFont(name: "Montserrat-Medium", size: 20)!
-        let subHeadlineFont: UIFont = UIFont(name: "Montserrat-Medium", size: 16)!
+        let headlineFontMediumNormal: UIFont = UIFont(name: "Montserrat-Medium", size: 20)!
+        let headlineFontMediumBig: UIFont = UIFont(name: "Montserrat-Medium", size: 24)!
         
         let forecastHeadlineFont: UIFont = UIFont(name: "Montserrat-Semibold", size: 18)!
         let forecastSubHeadlineFont: UIFont = UIFont(name: "Montserrat-Medium", size: 14)!
-        let forecastTemperatureFont: UIFont = UIFont(name: "Montserrat-Light", size: 18)!
+        let forecastTemperatureFont: UIFont = UIFont(name: "Montserrat-Light", size: 24)!
         
         let bodyFont: UIFont = UIFont(name: "Montserrat-Medium", size: 14)!
         

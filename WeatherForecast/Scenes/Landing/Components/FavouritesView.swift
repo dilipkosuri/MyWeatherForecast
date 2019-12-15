@@ -16,14 +16,14 @@ public class FavouritesView: UIView {
   @IBOutlet weak var dayLabel: UILabel! {
     didSet {
         dayLabel.text = ""
-        dayLabel.font = theme.fonts.subHeadlineFont
+        dayLabel.font = theme.fonts.headlineFontMediumNormal
         dayLabel.textColor = UIColor(named: "primaryTextColor")
     }
   }
   @IBOutlet weak var currentLocationLabel: UILabel! {
     didSet {
       currentLocationLabel.text = ""
-      currentLocationLabel.font = theme.fonts.subHeadlineFont
+      currentLocationLabel.font = theme.fonts.headlineFontMediumNormal
       currentLocationLabel.textColor = UIColor(named: "primaryTextColor")
     }
   }
@@ -31,7 +31,7 @@ public class FavouritesView: UIView {
   @IBOutlet weak var temperatureLabel: UILabel! {
     didSet {
       temperatureLabel.text = "---"
-      temperatureLabel.font = theme.fonts.headlineFont
+      temperatureLabel.font = theme.fonts.headlineFontMediumBig
       temperatureLabel.textColor = UIColor(named: "secondaryTextColor")
     }
   }
