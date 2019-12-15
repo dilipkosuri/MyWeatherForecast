@@ -86,15 +86,10 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   }
   
   func setNavigationBar() {
-    let screenSize: CGRect = UIScreen.main.bounds
-    let navBar = UINavigationBar(frame: CGRect(x: 0, y: 44, width: screenSize.width, height: 44))
-    let navItem = UINavigationItem(title: "Weather Forecast")
     let addItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(onAddButtonTap))
-    let settingsItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.organize, target: self, action: #selector(onSettingsButtonTapped))
-    navItem.rightBarButtonItems = [addItem, settingsItem]
-    navBar.setItems([navItem], animated: false)
+    //let settingsItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.organize, target: self, action: #selector(onSettingsButtonTapped))
     self.navigationItem.title = "Weather Forecast"
-    self.navigationItem.rightBarButtonItems = [addItem, settingsItem]
+    self.navigationItem.rightBarButtonItems = [addItem] //[addItem, settingsItem]
   }
   
   @objc func onAddButtonTap(sender: AnyObject){
@@ -104,6 +99,13 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   @objc func onSettingsButtonTapped(sender: AnyObject){
     self.onSettingsClick?("Navigate to Settings View")
   }
+    
+    @IBAction func settingButtonAction(_ sender: Any) {
+        self.onSettingsClick?("Navigate to Settings View")
+    }
+    
+    @IBAction func helpButtonAction(_ sender: Any) {
+    }
 }
 
 extension LandingViewController: LandingViewControllerInterface {
