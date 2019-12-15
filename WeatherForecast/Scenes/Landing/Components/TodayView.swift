@@ -40,22 +40,22 @@ public class TodayView: UIView {
   
   @IBOutlet weak var curentLocationImage: UIImageView! {
     didSet {
-      curentLocationImage.isHidden = true
+      curentLocationImage.isHidden = false
     }
   }
   
   @IBOutlet weak var currentLocationLabel: UILabel! {
     didSet {
       currentLocationLabel.text = ""
-      currentLocationLabel.font = theme.fonts.subHeadlineFont
-      currentLocationLabel.textColor = UIColor(named: "primaryTextColor")
+      currentLocationLabel.font = theme.fonts.headlineFont
+      currentLocationLabel.textColor = UIColor(named: "highlightColor")
     }
   }
   
   @IBOutlet weak var temperatureLabel: UILabel! {
     didSet {
       temperatureLabel.text = "---"
-      temperatureLabel.font = theme.fonts.headlineFont
+      temperatureLabel.font = theme.fonts.forecastHeadlineFont
       temperatureLabel.textColor = UIColor(named: "secondaryTextColor")
     }
   }
@@ -64,7 +64,7 @@ public class TodayView: UIView {
     didSet {
       humidityLabel.text = "---"
       humidityLabel.font = theme.fonts.bodyFont
-      humidityLabel.textColor = UIColor(named: "primaryTextColor")
+      humidityLabel.textColor = UIColor(named: "secondaryColor")
     }
   }
   
@@ -113,12 +113,12 @@ public class TodayView: UIView {
   }
   
   func options(model: FavouriteDataModel) {
-    currentLocationLabel.text = model.currentLocation
-    //temperatureLabel.text = model.temperature
+    currentLocationLabel.text = "Praque, Czech"
     humidityLabel.text = model.temperature + " | " + model.tempDesc
-    precipitationLabel.text = model.precipitation
-    pressureLabel.text = model.pressureCheck
-    windSpeedLabel.text = model.wind
+    guard let url = URL(string: "http://openweathermap.org/img/w/"+model.icon+".png") else { return }
+    curentLocationImage.load(url: url)
+    //temperatureLabel.text = model.temperature
+   
   }
   
   required init?(coder aDecoder: NSCoder) {
