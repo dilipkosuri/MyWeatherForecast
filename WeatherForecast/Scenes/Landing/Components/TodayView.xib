@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -31,20 +30,24 @@
                     <rect key="frame" x="0.0" y="0.0" width="252" height="136"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n7Q-uG-ehZ">
-                            <rect key="frame" x="0.0" y="0.0" width="252" height="70.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="252" height="70"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01d" translatesAutoresizingMaskIntoConstraints="NO" id="HNQ-3A-Zz8">
-                                    <rect key="frame" x="76" y="-15" width="100" height="100.5"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01d" translatesAutoresizingMaskIntoConstraints="NO" id="HNQ-3A-Zz8">
+                                    <rect key="frame" x="76" y="0.0" width="100" height="70"/>
                                     <color key="tintColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="70" id="oWn-Hy-cL6"/>
+                                    </constraints>
                                 </imageView>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="HNQ-3A-Zz8" firstAttribute="top" secondItem="n7Q-uG-ehZ" secondAttribute="top" id="D9A-E2-fOV"/>
                                 <constraint firstItem="HNQ-3A-Zz8" firstAttribute="centerX" secondItem="n7Q-uG-ehZ" secondAttribute="centerX" id="qiT-EN-dbl"/>
-                                <constraint firstItem="HNQ-3A-Zz8" firstAttribute="centerY" secondItem="n7Q-uG-ehZ" secondAttribute="centerY" id="u2L-wk-Q36"/>
+                                <constraint firstItem="HNQ-3A-Zz8" firstAttribute="centerY" secondItem="n7Q-uG-ehZ" secondAttribute="centerY" id="zHZ-MX-ZCX"/>
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="center" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fNn-Za-mca">
-                            <rect key="frame" x="0.0" y="78.5" width="252" height="12"/>
+                            <rect key="frame" x="0.0" y="78" width="252" height="12"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" image="current-location" translatesAutoresizingMaskIntoConstraints="NO" id="6CM-sA-6pS">
                                     <rect key="frame" x="0.0" y="0.0" width="14" height="12"/>
@@ -61,37 +64,38 @@
                             </constraints>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22°C  |  Sunny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDo-Be-8RB">
-                            <rect key="frame" x="0.0" y="98.5" width="252" height="24.5"/>
+                            <rect key="frame" x="0.0" y="98" width="252" height="22"/>
                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9uB-51-nYC">
-                            <rect key="frame" x="0.0" y="131" width="252" height="5"/>
+                            <rect key="frame" x="0.0" y="128" width="252" height="8"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="divider" translatesAutoresizingMaskIntoConstraints="NO" id="5Cb-BX-Qoj">
-                                    <rect key="frame" x="56" y="2" width="140" height="1"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="140" id="R7l-IK-7wr"/>
-                                    </constraints>
+                                    <rect key="frame" x="63" y="3.5" width="126" height="1"/>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="5" id="3a4-DW-vhr"/>
+                                <constraint firstAttribute="height" constant="8" id="3a4-DW-vhr"/>
                                 <constraint firstItem="5Cb-BX-Qoj" firstAttribute="centerX" secondItem="9uB-51-nYC" secondAttribute="centerX" id="XME-C1-hIA"/>
                                 <constraint firstItem="5Cb-BX-Qoj" firstAttribute="centerX" secondItem="9uB-51-nYC" secondAttribute="centerX" id="ddy-ln-ap0"/>
-                                <constraint firstItem="5Cb-BX-Qoj" firstAttribute="centerY" secondItem="9uB-51-nYC" secondAttribute="centerY" id="idH-Dc-LWO"/>
+                                <constraint firstItem="5Cb-BX-Qoj" firstAttribute="width" secondItem="9uB-51-nYC" secondAttribute="width" multiplier="0.5" id="pmX-gw-dRc"/>
+                                <constraint firstItem="5Cb-BX-Qoj" firstAttribute="centerY" secondItem="9uB-51-nYC" secondAttribute="centerY" id="rmK-di-GAb"/>
                             </constraints>
                         </view>
                     </subviews>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="9uB-51-nYC" secondAttribute="bottom" id="2TT-26-ye7"/>
                         <constraint firstItem="fNn-Za-mca" firstAttribute="centerX" secondItem="WlI-63-nII" secondAttribute="centerX" id="XNS-tw-KbF"/>
-                        <constraint firstItem="9uB-51-nYC" firstAttribute="top" secondItem="aDo-Be-8RB" secondAttribute="bottom" id="cUB-Vl-f8i"/>
+                        <constraint firstItem="n7Q-uG-ehZ" firstAttribute="top" secondItem="WlI-63-nII" secondAttribute="top" id="bxR-cB-S7u"/>
+                        <constraint firstItem="aDo-Be-8RB" firstAttribute="leading" secondItem="WlI-63-nII" secondAttribute="leading" id="nHJ-wc-gKh"/>
+                        <constraint firstAttribute="trailing" secondItem="aDo-Be-8RB" secondAttribute="trailing" id="sLj-CA-duC"/>
                     </constraints>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" name="borderColor"/>
+            <color key="backgroundColor" red="0.75820344686508179" green="0.74294489622116089" blue="0.93646854162216187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="WlI-63-nII" secondAttribute="bottom" id="5Yg-Nd-quT"/>
                 <constraint firstItem="WlI-63-nII" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ELy-WN-TyZ"/>
@@ -106,8 +110,5 @@
         <image name="01d" width="100" height="100"/>
         <image name="current-location" width="12" height="12"/>
         <image name="divider" width="140" height="1"/>
-        <namedColor name="borderColor">
-            <color red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

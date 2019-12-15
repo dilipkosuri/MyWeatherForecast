@@ -59,7 +59,7 @@ class LandingViewController: UIViewController, Storyboarded {
   }
     
   func setupConfiguration() {
-    self.landingView.applyGradient()
+    self.view.applyGradient()
     fetchRecords()
   }
   

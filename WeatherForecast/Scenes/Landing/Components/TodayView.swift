@@ -118,7 +118,6 @@ public class TodayView: UIView {
     guard let url = URL(string: "http://openweathermap.org/img/w/"+model.icon+".png") else { return }
     curentLocationImage.load(url: url)
     //temperatureLabel.text = model.temperature
-   
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -130,6 +129,8 @@ public class TodayView: UIView {
     let aView = Bundle.main.loadNibNamed("TodayView", owner: self, options: nil)!.first as! UIView
     self.frame = aView.frame
     addSubview(aView)
+    self.clipsToBounds = true
+    self.layer.cornerRadius = 10
   }
   
 }
