@@ -41,7 +41,8 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
     case expanded
     case collpased
   }
-  
+  //
+  var favModel: FavouriteDataModel?
   var cardVisible = false
   var nextState:CardState {
     return cardVisible ? .collpased : .expanded
@@ -113,6 +114,10 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
     super.viewDidLoad()
     setupConfiguration()
     setupUI()
+    
+    if let model = favModel {
+        print("favModel \(model)")
+    }
   }
   
   func setupUI() {

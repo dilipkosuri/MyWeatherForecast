@@ -42,7 +42,7 @@ extension LandingViewController: UICollectionViewDataSource, UICollectionViewDel
     return cell
   }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.onCollectionDidClick?("Navigate to Home View")
+        self.onCollectionDidClick?(bookmarkedList[indexPath.row])
     }
 }
 

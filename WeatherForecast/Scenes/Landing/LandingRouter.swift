@@ -27,8 +27,9 @@ public final class LandingRouter: Coordinator
     self.navigationController.navigationBar.isHidden = false
     navigationController.pushViewController(mkMapVC, animated: true)
   }
-    private func doNavigationToHomeVC(tappedText: String) {
+    private func doNavigationToHomeVC(favModel: FavouriteDataModel) {
         let homeVC = HomeViewController.instantiate(with: "Home")
+        homeVC.favModel = favModel
         navigationController.pushViewController(homeVC, animated: true)
     }
     private func doNavigationToSettingsVC(tappedText: String) {
