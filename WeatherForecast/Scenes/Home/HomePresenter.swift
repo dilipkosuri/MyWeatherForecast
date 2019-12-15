@@ -61,7 +61,7 @@ class HomePresenter: HomePresentationInterface
       for (key, value) in groupedSortedLocationData {
         homeScreenData.append(HomeScreenDataModel(date: key, data: value))
       }
-      
+      self.viewController?.setupCardView(items: homeScreenData)
       viewController?.displayCircleView(viewModel: homeScreenData)
     case .failure:
       print("Failed")
