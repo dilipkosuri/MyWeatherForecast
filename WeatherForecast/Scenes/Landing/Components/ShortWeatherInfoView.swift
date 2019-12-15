@@ -83,8 +83,9 @@ class ShortWeatherInfoView: UIView {
   
   private func commonInit() {
     let aView = Bundle.main.loadNibNamed("ShortWeatherInfoView", owner: self, options: nil)!.first as! UIView
-    self.frame = aView.frame
+    aView.frame = self.frame
     addSubview(aView)
+    self.clipsToBounds = true
+    self.layer.cornerRadius = 10
   }
-  
 }

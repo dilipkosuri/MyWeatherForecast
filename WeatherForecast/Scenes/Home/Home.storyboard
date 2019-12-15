@@ -137,11 +137,15 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HOq-ey-zjm">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HOq-ey-zjm">
                                         <rect key="frame" x="0.0" y="414" width="374" height="384"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGX-d3-VLr" customClass="ShortWeatherInfoView" customModule="WeatherForecast" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="384"/>
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGX-d3-VLr" customClass="ShortWeatherInfoView" customModule="WeatherForecast" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="192"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z2X-uN-kbr">
+                                                <rect key="frame" x="0.0" y="192" width="374" height="192"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
                                     </stackView>
