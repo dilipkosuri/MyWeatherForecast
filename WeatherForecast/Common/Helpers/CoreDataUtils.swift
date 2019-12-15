@@ -11,9 +11,9 @@ import UIKit
 import CoreData
 
 
-func retrieveData() -> [FavouriteDataModel] {
+func retrieveData(complition: ([FavouriteDataModel]) -> Void) {
   //As we know that container is set up in the AppDelegates so we need to refer that container.
-  guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [] }
+  guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return  }
   
   //We need to create a context from this container
   let managedContext = appDelegate.persistentContainer.viewContext
@@ -44,7 +44,7 @@ func retrieveData() -> [FavouriteDataModel] {
     print("Failed")
   }
   
-  return favModel
+  return complition(favModel)
 }
 
 func createData(model: [Home.CircleViewModel.LocationData], mock: Bool){
