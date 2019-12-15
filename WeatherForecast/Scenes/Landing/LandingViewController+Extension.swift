@@ -14,7 +14,7 @@ extension LandingViewController: UICollectionViewDataSource, UICollectionViewDel
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return (bookMarkList.count == 0) ? 1 : bookMarkList.count
+    return (bookmarkedList.count == 0) ? 1 : bookmarkedList.count
   }
   
   
@@ -23,7 +23,7 @@ extension LandingViewController: UICollectionViewDataSource, UICollectionViewDel
                              sizeForItemAt indexPath: IndexPath) -> CGSize {
     
     let width = collectionView.frame.width
-    let height = bookMarkList.count == 0 ? collectionView.frame.height : 350
+    let height = bookmarkedList.count == 0 ? collectionView.frame.height : 350
     return CGSize(width: width, height: height)
   }
   
@@ -32,10 +32,11 @@ extension LandingViewController: UICollectionViewDataSource, UICollectionViewDel
     
     let cell: WeatherCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! WeatherCell
     
-    if bookMarkList.count == 0 {
+    if bookmarkedList.count == 0 {
       cell.showEmptyView = true
     } else {
       cell.showEmptyView = false
+      cell.todayView.options(model: bookmarkedList[indexPath.row])
         //cell.todayView.humidityLabel.text = bookMarkList[indexPath.row].humidity
     }
     return cell

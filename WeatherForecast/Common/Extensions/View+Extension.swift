@@ -69,7 +69,7 @@ extension UIView {
     let c3 = NSLayoutConstraint(item: toastContainer, attribute: .bottom, relatedBy: .equal, toItem: controller.view, attribute: .bottom, multiplier: 1, constant: -0)
     controller.view.addConstraints([c1, c2, c3])
 
-    UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
+    UIView.animate(withDuration: 3.0, delay: 0.0, options: .curveEaseIn, animations: {
       toastContainer.alpha = 1.0
     }, completion: { _ in
       UIView.animate(withDuration: 0.5, delay: 1.5, options: .curveEaseOut, animations: {
