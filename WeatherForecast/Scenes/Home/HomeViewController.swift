@@ -7,6 +7,7 @@ public protocol HomeViewControllerDelegate: class {
 
 protocol HomeViewControllerInterface: class
 {
+  func setupCardView(items: [Home.CircleViewModel.HomeViewDataSourceModel])
   func displayCircleView(viewModel: [Home.CircleViewModel.HomeViewDataSourceModel])
 }
 
@@ -111,7 +112,6 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
   {
     super.viewDidLoad()
     setupConfiguration()
-    setupCardView()
     setupUI()
   }
   
@@ -169,18 +169,19 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
 }
 
 extension HomeViewController {
-  func setupCardView() {
-    visualEffectView = UIVisualEffectView(frame: self.view.bounds)
-    self.view.addSubview(visualEffectView)
-    
-    cardViewController = CardViewController(nibName:"CardViewController",bundle:nil)
-    self.addChild(cardViewController)
-    self.view.addSubview(cardViewController.view)
-    cardViewController.view.frame = CGRect(x:0,y:self.view.frame.height - cardHandleAreaHeight,width:self.view.frame.width,height:cardHeight)
-    cardViewController.view.clipsToBounds = true
-    
-    let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panned(recognizer:)))
-    cardViewController.handlerArea.addGestureRecognizer(panGestureRecognizer)
+    func setupCardView(items: [Home.CircleViewModel.HomeViewDataSourceModel]) {
+        visualEffectView = UIVisualEffectView(frame: self.view.bounds)
+        self.view.addSubview(visualEffectView)
+        
+        cardViewController = CardViewController(nibName:"CardViewController",bundle:nil)
+        cardViewController.items = items
+        self.addChild(cardViewController)
+        self.view.addSubview(cardViewController.view)
+        cardViewController.view.frame = CGRect(x:0,y:self.view.frame.height - cardHandleAreaHeight,width:self.view.frame.width,height:cardHeight)
+        cardViewController.view.clipsToBounds = true
+        
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panned(recognizer:)))
+        cardViewController.handlerArea.addGestureRecognizer(panGestureRecognizer)
   }
   
   @objc func panned(recognizer:UIPanGestureRecognizer) {
