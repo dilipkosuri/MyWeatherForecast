@@ -82,7 +82,7 @@ func createData(model: [Home.CircleViewModel.LocationData], mock: Bool){
       let entityObject = NSManagedObject(entity: userEntity, insertInto: managedContext)
       entityObject.setValue(item.currentLocation, forKey: "currentLocation")
       entityObject.setValue(item.date, forKey: "date")
-      entityObject.setValue(item.humidity, forKey: "humidity")
+      entityObject.setValue(item.humidity?.labelTextValue, forKey: "humidity")
       entityObject.setValue(item.imageName, forKey: "imageName")
       entityObject.setValue(item.precipitation, forKey: "latitude")
       entityObject.setValue(item.precipitation, forKey: "longitude")
@@ -90,9 +90,9 @@ func createData(model: [Home.CircleViewModel.LocationData], mock: Bool){
       entityObject.setValue(item.pressureCheck, forKey: "pressureCheck")
       entityObject.setValue(item.weatherID, forKey: "temperature")
       entityObject.setValue(item.temperatureDesc, forKey: "temperatureDesc")
-      entityObject.setValue(item.temperatureDesc, forKey: "weatherIconDesc")
-      entityObject.setValue(item.temperatureDesc, forKey: "weatherID")
-      entityObject.setValue(item.wind, forKey: "wind")
+      entityObject.setValue(item.weatherIconDesc, forKey: "weatherIconDesc")
+      entityObject.setValue(item.weatherID, forKey: "weatherID")
+      entityObject.setValue(item.wind?.labelTextValue, forKey: "wind")
       
     }
   }

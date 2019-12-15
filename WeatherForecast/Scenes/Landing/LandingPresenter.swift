@@ -6,8 +6,7 @@ protocol LandingPresentationInterface
   func presentWeekDetail(response: Home.GetLocationResult.Response)
 }
 
-class LandingPresenter: LandingPresentationInterface
-{
+class LandingPresenter: LandingPresentationInterface {
   weak var viewController: LandingViewControllerInterface?
   typealias DisplayedClientList = Home.CircleViewModel
   typealias LandingScreenDataModel = Home.CircleViewModel.HomeViewDataSourceModel

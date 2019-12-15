@@ -9,6 +9,7 @@ protocol LandingViewControllerInterface: class
 
 class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDelegate {
   
+  @IBOutlet var landingView: UIView!
   var interactor: LandingInteractorInterface?
   let reuseIdentifier = "weatherCellIdentifier";
   internal var insideSpace: CGFloat = 8
@@ -41,8 +42,10 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
     let viewController = self
     let interactor = LandingInteractor()
     let presenter = LandingPresenter()
+    let mapPresenter = MKMapViewPresenter()
     viewController.interactor = interactor
     interactor.presenter = presenter
+    interactor.mapPresenter = mapPresenter
     presenter.viewController = viewController
   }
   
@@ -51,15 +54,35 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   override func viewDidLoad() {
     super.viewDidLoad()
     setupConfiguration()
+    setNavigationBar()
   }
   
   func setupConfiguration() {
+    self.landingView.applyGradient()
     //deleteData()
     var sampleData = [Home.CircleViewModel.LocationData]()
     //createData(model: sampleData, mock: true)
     var data: [Home.CircleViewModel.LocationData] = []
     //retrieveData()
     //bookMarkList = []
+    fetchRecords()
+  }
+  
+  func fetchRecords() {
+    let bookmarkedList: [FavouriteDataModel] = retrieveData()
+    var locationCoordinates: [String: String] = [:]
+    if bookmarkedList.count > 0 {
+      for item  in bookmarkedList {
+        locationCoordinates[item.latitude] = item.longitude
+        // call interactor to fetch each record item
+        // call getLocations from interactor with WeatherReportType as CurrentWeather
+      }
+    }
+  }
+  
+  func loadDetailsOfAnItem() {
+    // load 5 days forcast
+    // call interactor data getLocations with WeatherReportType as Forecast
   }
   
   func setNavigationBar() {
@@ -67,7 +90,7 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
     let navBar = UINavigationBar(frame: CGRect(x: 0, y: 44, width: screenSize.width, height: 44))
     let navItem = UINavigationItem(title: "Weather Forecast")
     let addItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(onAddButtonTap))
-    let settingsItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.edit, target: self, action: #selector(onSettingsButtonTapped))
+    let settingsItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.organize, target: self, action: #selector(onSettingsButtonTapped))
     navItem.rightBarButtonItems = [addItem, settingsItem]
     navBar.setItems([navItem], animated: false)
     self.navigationItem.title = "Weather Forecast"
