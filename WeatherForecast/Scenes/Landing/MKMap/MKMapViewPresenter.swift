@@ -30,7 +30,7 @@ class MKMapViewPresenter: MKMapViewPresentationInterface
         temperature: "\(locationData.temperature?.temp ?? 0)",
         day: "",
         imageName: "",
-        temperatureDesc: locationData.weather?.description ?? "",
+        temperatureDesc: locationData.weather?.first?.description ?? "",
         wind: Home.CircleViewModel.KeyData(
           labelText: "Wind",
           labelTextValue: "\(locationData.wind?.speed ?? 0)"),

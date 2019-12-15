@@ -17,12 +17,13 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   @IBOutlet weak var collectionView: UICollectionView!
   internal var numberOfRecordsInStore: Int = 0
   internal var defaultIndexToShow: Int = 0
-    internal var onAddButtonClick: ((_ tappedText: String) -> Void)?
-    internal var onSettingsClick: ((_ tappedText: String) -> Void)?
+  internal var onAddButtonClick: ((_ tappedText: String) -> Void)?
+  internal var onSettingsClick: ((_ tappedText: String) -> Void)?
   internal var onCollectionDidClick: ((_ tappedText: String) -> Void)?
-  var bookMarkList = ["Dilip one", "Dilip two", "Dilip three"]
+  internal var onAddButtonClick: ((_ tappedText: String) -> Void)?
+  
   var genericLocationData: [FavouriteDataModel] = []
-  //var bookMarkList: [FavouriteDataModel] = [] // for empty
+  var bookmarkedList: [FavouriteDataModel] = []
   typealias HomeScreenData = [Home.CircleViewModel.HomeViewDataSourceModel]
   
   // MARK: Object lifecycle
@@ -52,7 +53,6 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   }
   
   // MARK: View lifecycle
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     setupConfiguration()
@@ -61,24 +61,19 @@ class LandingViewController: UIViewController, Storyboarded, CLLocationManagerDe
   
   func setupConfiguration() {
     self.landingView.applyGradient()
-    //deleteData()
-    var sampleData = [Home.CircleViewModel.LocationData]()
-    //createData(model: sampleData, mock: true)
-    var data: [Home.CircleViewModel.LocationData] = []
-    //retrieveData()
-    //bookMarkList = []
+    fetchRecords()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(false)
     fetchRecords()
   }
   
   func fetchRecords() {
-    let bookmarkedList: [FavouriteDataModel] = retrieveData()
-    var locationCoordinates: [String: String] = [:]
+    bookmarkedList = []
+    bookmarkedList = retrieveData()
     if bookmarkedList.count > 0 {
-      for item  in bookmarkedList {
-        locationCoordinates[item.latitude] = item.longitude
-        // call interactor to fetch each record item
-        // call getLocations from interactor with WeatherReportType as CurrentWeather
-      }
+      self.collectionView.reloadData()
     }
   }
   

@@ -100,20 +100,25 @@ public class TodayView: UIView {
     }
   }
   
-  @IBOutlet weak var shareButton: UIButton! {
-    didSet {
-      shareButton.setTitleColor(UIColor(named: "shareColor"), for: .normal)
-      shareButton.titleLabel?.font = theme.fonts.subHeadlineFont
-    }
-  }
+//  @IBOutlet weak var shareButton: UIButton! {
+//    didSet {
+//      shareButton.setTitleColor(UIColor(named: "shareColor"), for: .normal)
+//      shareButton.titleLabel?.font = theme.fonts.subHeadlineFont
+//    }
+//  }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     commonInit()
   }
   
-  func options(model: FavouriteDataSourceModel) {
-    
+  func options(model: FavouriteDataModel) {
+    currentLocationLabel.text = model.currentLocation
+    //temperatureLabel.text = model.temperature
+    humidityLabel.text = model.temperature + " | " + model.tempDesc
+    precipitationLabel.text = model.precipitation
+    pressureLabel.text = model.pressureCheck
+    windSpeedLabel.text = model.wind
   }
   
   required init?(coder aDecoder: NSCoder) {

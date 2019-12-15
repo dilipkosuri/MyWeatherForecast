@@ -3,6 +3,7 @@ import UIKit
 public final class LandingRouter: Coordinator
 {
   private let navigationController: UINavigationController
+  var onBackButtonTap: ((_ tapped: Bool) -> Void)?
   
   // MARK: Routing
   init(navigationController: UINavigationController) {
@@ -20,6 +21,9 @@ public final class LandingRouter: Coordinator
   
   private func doNavigation(tappedText: String) {
     let mkMapVC = MKMapViewController.instantiate(with: "Landing")
+    mkMapVC.onBackButtonClick = { _ in
+      self.onBackButtonTap?(true)
+    }
     self.navigationController.navigationBar.isHidden = false
     navigationController.pushViewController(mkMapVC, animated: true)
   }

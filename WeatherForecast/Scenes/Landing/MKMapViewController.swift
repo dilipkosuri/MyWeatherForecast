@@ -30,6 +30,7 @@ class MKMapViewController: UIViewController, Storyboarded {
   var pointAnnotation:MKPointAnnotation!
   var pinAnnotationView:MKPinAnnotationView!
   var annotation:MKAnnotation!
+  var onBackButtonClick: ((_ tapped: Bool) -> Void)?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -61,8 +62,13 @@ class MKMapViewController: UIViewController, Storyboarded {
   func setNavigationBar() {
     self.navigationItem.title = "Set Bookmarks"
     let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(onSearchButtonAction))
+    
+    self.navigationItem.hidesBackButton = true
+    let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onBackClick))
+    self.navigationItem.leftBarButtonItem = newBackButton
     self.navigationItem.rightBarButtonItems = [searchItem]
   }
+  
   @objc func onSearchButtonAction(sender: AnyObject){
     searchController = UISearchController(searchResultsController: nil)
     searchController.hidesNavigationBarDuringPresentation = false
@@ -89,6 +95,10 @@ class MKMapViewController: UIViewController, Storyboarded {
       alertController.addAction(cancelAction)
       self.present(alertController, animated: true, completion: nil)
     }
+  }
+  
+  @objc func onBackClick(sender: UIBarButtonItem) {
+    onBackButtonClick?(true)
   }
   
   func addAnnotation(location: CLLocationCoordinate2D, title:String){

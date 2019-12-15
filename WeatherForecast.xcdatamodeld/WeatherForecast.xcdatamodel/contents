@@ -1,24 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="FavouriteDataSourceModel" representedClassName="FavouriteDataSourceModel" syncable="YES" codeGenerationType="class">
-        <attribute name="currentLocation" optional="YES" attributeType="String"/>
-        <attribute name="date" optional="YES" attributeType="String"/>
-        <attribute name="humidity" optional="YES" attributeType="String"/>
-        <attribute name="imageName" optional="YES" attributeType="String"/>
-        <attribute name="latitude" optional="YES" attributeType="String"/>
-        <attribute name="longitude" optional="YES" attributeType="String"/>
-        <attribute name="precipitation" optional="YES" attributeType="String"/>
-        <attribute name="pressureCheck" optional="YES" attributeType="String"/>
-        <attribute name="temperature" optional="YES" attributeType="String"/>
-        <attribute name="temperatureDesc" optional="YES" attributeType="String"/>
-        <attribute name="weatherIconDesc" optional="YES" attributeType="String"/>
-        <attribute name="weatherID" optional="YES" attributeType="String"/>
-        <attribute name="wind" optional="YES" attributeType="String"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MasterLocation"/>
+        <attribute name="currentLocation" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="date" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="humidity" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="imageName" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="latitude" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="longitude" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="precipitation" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="pressureCheck" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="temperature" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="temperatureDesc" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="weatherIconDesc" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="weatherID" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="wind" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
     </entity>
-    <entity name="MasterLocation" representedClassName="MasterLocation" syncable="YES" codeGenerationType="class"/>
+    <entity name="UnitsDataSourceModel" representedClassName="UnitsDataSourceModel" syncable="YES" codeGenerationType="class">
+        <attribute name="metImp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="temperature" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="FavouriteDataSourceModel" positionX="-63" positionY="-18" width="128" height="253"/>
-        <element name="MasterLocation" positionX="-526.00390625" positionY="-7.6875" width="128" height="43"/>
+        <element name="FavouriteDataSourceModel" positionX="-63" positionY="-18" width="128" height="240"/>
+        <element name="UnitsDataSourceModel" positionX="-526.00390625" positionY="-7.6875" width="128" height="75"/>
     </elements>
 </model>

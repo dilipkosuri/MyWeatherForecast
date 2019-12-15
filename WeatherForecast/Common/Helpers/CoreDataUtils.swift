@@ -106,16 +106,11 @@ func createData(model: [Home.CircleViewModel.LocationData], mock: Bool){
 }
 
 func deleteData(){
-  
   //As we know that container is set up in the AppDelegates so we need to refer that container.
   guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-  
   //We need to create a context from this container
   let managedContext = appDelegate.persistentContainer.viewContext
-  
   let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavouriteDataSourceModel")
-  //fetchRequest.predicate = NSPredicate(format: "username = %@", "Ankur3")
-  
   do
   {
     let test = try managedContext.fetch(fetchRequest)
