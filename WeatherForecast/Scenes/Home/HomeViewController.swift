@@ -15,7 +15,6 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
 {
   var interactor: HomeInteractorInterface?
   var router: (NSObjectProtocol)?
-  @IBOutlet var homeScreenView: UIView!
   internal weak var delegate: HomeViewControllerDelegate?
   @IBOutlet weak var humidityLabelText: UILabel!
   @IBOutlet weak var humidityLabelValue: UILabel!
@@ -118,6 +117,10 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
   }
   
   func setupUI() {
+    //Show only back arrow without text
+    self.navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem()
+    self.navigationItem.title = favModel?.currentLocation ?? "Weather Details"
+
     self.view.bringSubviewToFront(circleTitleLabel)
     self.view.sendSubviewToBack(circleView)
     humidityLabelText.font = humidityLabelText.font.withSize(24)
@@ -135,7 +138,7 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
     localTime.textColor = UIColor.white
     windDescription.font = windDescription.font.withSize(24)
     temperatureBasedImage.backgroundColor = UIColor.clear
-    self.homeScreenView.applyGradient()
+    self.view.applyGradient()
     contentStackView.superview?.bringSubviewToFront(contentStackView)
   }
   
@@ -149,7 +152,7 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
       weatherDescription.text = model?.temperatureDesc ?? ""
       windDescription.text = (model?.wind?.labelText ?? "-") + "" + (model?.wind?.labelTextValue ?? "-")
       //localTime.text = model?.time ?? "-"
-      
+
       let imageURL = Constants.BASE_IMAGE_URL + (model?.weatherIconDesc ?? Constants.defaultIcon) + ".png"
       
       guard let url = URL(string: imageURL) else { return }

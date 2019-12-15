@@ -147,15 +147,10 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="k3U-dM-f3B">
-                                <rect key="frame" x="20" y="314" width="374" height="267.5"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H7Q-2R-arx">
+                                <rect key="frame" x="20" y="314" width="374" height="268"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H7Q-2R-arx">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="267.5"/>
-                                    </view>
-                                </subviews>
-                            </stackView>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="fuo-cP-tt1" firstAttribute="top" secondItem="CEs-Kf-B3e" secondAttribute="topMargin" constant="20" id="HH6-4j-hM0"/>
@@ -170,7 +165,6 @@
                         <outlet property="circleView" destination="PEq-bY-f1J" id="ZLM-uk-Kmi"/>
                         <outlet property="contentStackView" destination="64a-CY-NbA" id="UbQ-ST-lF4"/>
                         <outlet property="date" destination="hKT-Jy-LBV" id="7tp-df-zCK"/>
-                        <outlet property="homeScreenView" destination="CEs-Kf-B3e" id="dQn-8Z-Lss"/>
                         <outlet property="humidityLabelText" destination="10A-8J-lGt" id="htB-2f-Nkf"/>
                         <outlet property="humidityLabelValue" destination="fyu-Sj-LFE" id="PvH-Yp-ukR"/>
                         <outlet property="localTime" destination="b35-jR-z7y" id="shd-jp-iyH"/>
