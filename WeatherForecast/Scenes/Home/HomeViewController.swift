@@ -15,22 +15,27 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
 {
   var interactor: HomeInteractorInterface?
   var router: (NSObjectProtocol)?
-  @IBOutlet var homeScreenView: UIView!
   internal weak var delegate: HomeViewControllerDelegate?
   @IBOutlet weak var humidityLabelText: UILabel!
   @IBOutlet weak var humidityLabelValue: UILabel!
+  
+  @IBOutlet weak var temperatureLabel: UILabel!
   @IBOutlet weak var temperature: UILabel!
+  
   @IBOutlet weak var temperatureBasedImage: UIImageView!
   @IBOutlet weak var date: UILabel!
   @IBOutlet weak var weatherDescription: UILabel!
   @IBOutlet weak var windDescription: UILabel!
-  @IBOutlet weak var localTime: UILabel!
+  @IBOutlet weak var windLabel: UILabel!
   
   @IBOutlet weak var circleView: CircleView!
   @IBOutlet weak var circleTitleLabel: UILabel!
   @IBOutlet weak var contentStackView: UIStackView!
   
+  @IBOutlet weak var shortWeatherInfoContentView: UIStackView!
+  
   typealias HomeScreenData = [Home.CircleViewModel.HomeViewDataSourceModel]
+  typealias LocationData = Home.CircleViewModel.LocationData
   var cardViewController:CardViewController!
   
   var cardHeight:CGFloat  {
@@ -118,43 +123,72 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
   }
   
   func setupUI() {
-    self.view.bringSubviewToFront(circleTitleLabel)
+    //Show only back arrow without text
+    self.navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem()
+    self.navigationItem.title = favModel?.currentLocation ?? "Weather Details"
+
     self.view.sendSubviewToBack(circleView)
-    humidityLabelText.font = humidityLabelText.font.withSize(24)
-    humidityLabelValue.font = humidityLabelValue.font.withSize(32)
-    temperature.font = temperature.font.withSize(32)
-    date.font = date.font.withSize(32)
-    weatherDescription.font = weatherDescription.font.withSize(20)
-    localTime.font = localTime.font.withSize(20)
-    humidityLabelText.textColor = UIColor.white
-    humidityLabelValue.textColor = UIColor.white
-    temperature.textColor = UIColor.white
-    date.textColor = UIColor.white
-    windDescription.textColor = UIColor.white
-    weatherDescription.textColor = UIColor.white
-    localTime.textColor = UIColor.white
-    windDescription.font = windDescription.font.withSize(24)
+    
+    humidityLabelText.text = "Humidity"
+    humidityLabelText.font = self.view.theme.fonts.headlineFontMediumNormal
+    humidityLabelText.textColor = UIColor(named: "highlightColor")
+    
+    humidityLabelValue.font = self.view.theme.fonts.headlineFontMediumBig
+    humidityLabelValue.textColor = UIColor(named: "highlightColor")
+    
+    date.textColor = UIColor(named: "highlightColor")
+    date.font = self.view.theme.fonts.headlineFontMediumNormal
+    
+    windDescription.textColor = UIColor(named: "highlightColor")
+    windDescription.font = self.view.theme.fonts.headlineFontMediumBig
+    
+    weatherDescription.textColor = UIColor(named: "highlightColor")
+    weatherDescription.font = self.view.theme.fonts.headlineFontMediumBig
+    
     temperatureBasedImage.backgroundColor = UIColor.clear
-    self.homeScreenView.applyGradient()
+    
+    temperatureLabel.text = "Temperature"
+    temperatureLabel.textColor = UIColor(named: "highlightColor")
+    temperatureLabel.font = self.view.theme.fonts.headlineFontMediumNormal
+    
+    temperature.font = self.view.theme.fonts.headlineFontMediumBig
+    temperature.textColor = UIColor(named: "highlightColor")
+    
+    windLabel.text = "Wind"
+    windLabel.font = self.view.theme.fonts.headlineFontMediumNormal
+    windLabel.textColor = UIColor(named: "highlightColor")
+    
+    self.view.applyGradient()
     contentStackView.superview?.bringSubviewToFront(contentStackView)
   }
   
   func setupCircleUI(input: HomeScreenData) {
     if input.count > 0 {
-      let model = input.first?.data.first
-      humidityLabelText.text = model?.humidity?.labelText ?? "-"
-      humidityLabelValue.text = model?.humidity?.labelTextValue ?? "-"
-      temperature.text = model?.temperature ?? "-"
-      date.text = model?.dateTime ?? "-"
-      weatherDescription.text = model?.temperatureDesc ?? ""
-      windDescription.text = (model?.wind?.labelText ?? "-") + "" + (model?.wind?.labelTextValue ?? "-")
-      //localTime.text = model?.time ?? "-"
-      
-      let imageURL = Constants.BASE_IMAGE_URL + (model?.weatherIconDesc ?? Constants.defaultIcon) + ".png"
-      
+      let model = input.first?.data.first ?? LocationData()
+      humidityLabelText.text = model.humidity?.labelText ?? "-"
+      humidityLabelValue.text = model.humidity?.labelTextValue ?? "-"
+      temperature.text = model.temperature ?? "-"
+      date.text = model.dateTime
+      weatherDescription.text = model.temperatureDesc ?? ""
+      windDescription.text = model.wind?.labelTextValue ?? "-"
+      let imageURL = Constants.BASE_IMAGE_URL + (model.weatherIconDesc ?? Constants.defaultIcon) + ".png"
       guard let url = URL(string: imageURL) else { return }
       temperatureBasedImage.load(url: url)
     }
+
+    if let currentLocationData = input.first?.data {
+      for i in 0..<shortWeatherInfoContentView.arrangedSubviews.count {
+        shortWeatherInfoContentView.arrangedSubviews[i].removeFromSuperview()
+      }
+      
+      for item in currentLocationData {
+        let showShortWeatherInfo = ShortWeatherInfoView()
+        showShortWeatherInfo.options(model: item)
+        shortWeatherInfoContentView.addArrangedSubview(showShortWeatherInfo)
+      }
+      shortWeatherInfoContentView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
   }
   
   // MARK: Do something

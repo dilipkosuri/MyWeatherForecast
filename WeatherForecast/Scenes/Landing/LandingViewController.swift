@@ -9,7 +9,6 @@ protocol LandingViewControllerInterface: class
 
 class LandingViewController: UIViewController, Storyboarded {
   
-  @IBOutlet var landingView: UIView!
   var interactor: LandingInteractorInterface?
   let reuseIdentifier = "weatherCellIdentifier";
   internal var insideSpace: CGFloat = 8

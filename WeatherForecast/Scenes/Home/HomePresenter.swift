@@ -30,7 +30,7 @@ class HomePresenter: HomePresentationInterface
               labelTextValue: "\($0.temperature?.humidity ?? 0)"),
             temperature: "\($0.temperature?.temp ?? 0)",
             imageName: "",
-            temperatureDesc: "",
+            temperatureDesc: $0.weather?.first?.description ?? "",
             wind: Home.CircleViewModel.KeyData(
               labelText: "Wind",
               labelTextValue: "\($0.wind?.speed ?? 0)"),
@@ -44,15 +44,16 @@ class HomePresenter: HomePresentationInterface
             minTemp: $0.temperature?.temp_min ?? 0,
             maxTemp: $0.temperature?.temp_max ?? 0,
             dt: Double($0.dt ?? 0),
-            dateTime: timeOfDataCalculation(dateInMillis: Double($0.dt ?? 0)))
+            dateTime: timeOfDataCalculation(dateInMillis: Double($0.dt ?? 0)),
+            dateFromServer: convertDate(date:$0.dt_txt ?? "", type: .Server))
         })
       }
       
       // sort the elements as per date
-      let sortedLocationData = displayedClientList.sorted(by: { "\($0.dt ?? 0)".compare("\($1.dt ?? 0)" ) == .orderedDescending })
+      let sortedLocationData = displayedClientList.sorted(by: { $0.dateFromServer.compare($1.dateFromServer) == .orderedDescending })
       
       // group the above sorted items as per date
-      let groupedSortedLocationData = Dictionary(grouping: sortedLocationData, by: { "\($0.dt!)" })
+      let groupedSortedLocationData = Dictionary(grouping: sortedLocationData, by: { $0.dateFromServer })
       // var grouping = group.
       
       var homeScreenData = [HomeScreenDataModel]()

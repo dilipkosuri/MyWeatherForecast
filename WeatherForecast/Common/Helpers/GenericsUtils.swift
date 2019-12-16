@@ -38,7 +38,8 @@ func convertDate(date:String, type: TypeOfConversion) -> String {
     time =  dateFormatter.string(from: currentDate)
   case .Server:
     let formatter2 = DateFormatter()
-    formatter2.dateFormat = "dd-MMM, YYYY hh:mm aa"
+    //formatter2.dateFormat = "dd-MMM, YYYY hh:mm aa"
+    formatter2.dateFormat = "dd-MMM"
     time = formatter2.string(from: defaultFormattedDate!)
   case .DisplayDate:
     let formatter2 = DateFormatter()

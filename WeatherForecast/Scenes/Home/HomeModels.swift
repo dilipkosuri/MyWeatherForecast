@@ -22,12 +22,25 @@ enum Home
       var maxTemp: Double?
       var dt: Double?
       var dateTime: String = ""
+      var dateFromServer: String = ""
       
-      init(humidity: KeyData = KeyData(), temperature: String = "",
-           imageName: String = "", temperatureDesc: String = "", wind: KeyData = KeyData(),
-           currentLocation: String = "", precipitation: String = "", pressureCheck: String = "",
-           weatherID: String = "", weatherIconDesc: String = "", latitude: String = "", longitude: String = "",
-           minTemp: Double = 0, maxTemp: Double = 0, dt: Double = 0, dateTime: String = "") {
+      init(humidity: KeyData = KeyData(),
+           temperature: String = "",
+           imageName: String = "",
+           temperatureDesc: String = "",
+           wind: KeyData = KeyData(),
+           currentLocation: String = "",
+           precipitation: String = "",
+           pressureCheck: String = "",
+           weatherID: String = "",
+           weatherIconDesc: String = "",
+           latitude: String = "",
+           longitude: String = "",
+           minTemp: Double = 0,
+           maxTemp: Double = 0,
+           dt: Double = 0,
+           dateTime: String = "",
+           dateFromServer: String = "") {
         self.humidity = humidity
         self.temperature = temperature
         self.imageName = imageName
@@ -44,6 +57,7 @@ enum Home
         self.maxTemp = maxTemp
         self.dt = dt
         self.dateTime = dateTime
+        self.dateFromServer = dateFromServer
       }
     }
     
