@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		08325E1C23A656040021CFB4 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08325E1B23A656040021CFB4 /* LocationSearchTableViewController.swift */; };
-		088EB98523A5EF160058EAA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088EB98423A5EF160058EAA5 /* SettingsViewController.swift */; };
 		08FE86D823A75D29008B89CD /* HomeViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FE86D723A75D29008B89CD /* HomeViewController+Extension.swift */; };
 		DA485D03239C0135009F8BF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA485D02239C0135009F8BF2 /* Assets.xcassets */; };
 		DA485D06239C0135009F8BF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA485D04239C0135009F8BF2 /* LaunchScreen.storyboard */; };
@@ -49,6 +48,51 @@
 		DA6A7242239EA9D700F0770E /* HomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A7241239EA9D700F0770E /* HomeWorker.swift */; };
 		DA706E9423A6D60300060D26 /* HelpScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA706E9323A6D60300060D26 /* HelpScreenViewController.swift */; };
 		DA706E9923A6DD8900060D26 /* Web_Assets in Resources */ = {isa = PBXBuildFile; fileRef = DA706E9823A6DD8900060D26 /* Web_Assets */; };
+		DA706E9A23A7492C00060D26 /* LocationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6FA23A0919C005DA9E5 /* LocationResult.swift */; };
+		DA706E9B23A7493500060D26 /* LocationCurrentResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED5AE523A58D9D0066B736 /* LocationCurrentResult.swift */; };
+		DA706E9C23A7494500060D26 /* LandingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F72F23A09419005DA9E5 /* LandingRouter.swift */; };
+		DA706E9D23A7494E00060D26 /* HomeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6F023A09126005DA9E5 /* HomeModels.swift */; };
+		DA706E9E23A7498700060D26 /* HomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A7241239EA9D700F0770E /* HomeWorker.swift */; };
+		DA706E9F23A7499300060D26 /* Coord.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F70123A0919C005DA9E5 /* Coord.swift */; };
+		DA706EA023A7499E00060D26 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F70323A0919C005DA9E5 /* City.swift */; };
+		DA706EA123A749A100060D26 /* Clouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6FF23A0919C005DA9E5 /* Clouds.swift */; };
+		DA706EA223A749A500060D26 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F70023A0919C005DA9E5 /* List.swift */; };
+		DA706EA323A749AA00060D26 /* Rain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F70223A0919C005DA9E5 /* Rain.swift */; };
+		DA706EA423A749AC00060D26 /* Rainfall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6FB23A0919C005DA9E5 /* Rainfall.swift */; };
+		DA706EA523A749AE00060D26 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6FD23A0919C005DA9E5 /* Temperature.swift */; };
+		DA706EA623A749B100060D26 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6FE23A0919C005DA9E5 /* Weather.swift */; };
+		DA706EA723A749B300060D26 /* Wind.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6FC23A0919C005DA9E5 /* Wind.swift */; };
+		DA706EA823A749C800060D26 /* Sys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED5AE723A58D9D0066B736 /* Sys.swift */; };
+		DA706EA923A749CF00060D26 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F72E23A09419005DA9E5 /* LandingViewController.swift */; };
+		DA706EAA23A749DF00060D26 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F7FF23A4B15D005DA9E5 /* TodayView.swift */; };
+		DA706EAB23A749E600060D26 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6EE23A09126005DA9E5 /* HomeViewController.swift */; };
+		DA706EAC23A749FA00060D26 /* MKMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F7BA23A157CD005DA9E5 /* MKMapViewController.swift */; };
+		DA706EAE23A74A0500060D26 /* ShortWeatherInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0DE5A23A66C8A00EA316A /* ShortWeatherInfoView.swift */; };
+		DA706EAF23A74A0C00060D26 /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F7B623A12A83005DA9E5 /* FavouritesView.swift */; };
+		DA706EB023A74A0F00060D26 /* ShowEmptyMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F79D23A0B7BA005DA9E5 /* ShowEmptyMessageView.swift */; };
+		DA706EB123A74A1100060D26 /* LandingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F72B23A09418005DA9E5 /* LandingInteractor.swift */; };
+		DA706EB223A74A1300060D26 /* LandingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F72C23A09418005DA9E5 /* LandingModels.swift */; };
+		DA706EB323A74A1600060D26 /* LandingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F72D23A09419005DA9E5 /* LandingPresenter.swift */; };
+		DA706EB423A74A1C00060D26 /* LandingViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F7A123A0D5C5005DA9E5 /* LandingViewController+Extension.swift */; };
+		DA706EB523A74A2100060D26 /* HelpScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA706E9323A6D60300060D26 /* HelpScreenViewController.swift */; };
+		DA706EB623A74A2400060D26 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6ED23A09126005DA9E5 /* HomeInteractor.swift */; };
+		DA706EB723A74A2900060D26 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6EF23A09126005DA9E5 /* HomePresenter.swift */; };
+		DA706EB823A74A2C00060D26 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6EB23A09126005DA9E5 /* HomeRouter.swift */; };
+		DA706EB923A74A3300060D26 /* LandingWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F73723A0A041005DA9E5 /* LandingWorker.swift */; };
+		DA706EBA23A74A5300060D26 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F78723A0AF95005DA9E5 /* View+Extension.swift */; };
+		DA706EBB23A74A5600060D26 /* DefaultTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F79123A0B0EE005DA9E5 /* DefaultTheme.swift */; };
+		DA706EBC23A74A5A00060D26 /* ThemeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F79223A0B0EE005DA9E5 /* ThemeProtocols.swift */; };
+		DA706EBD23A74A6300060D26 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F71223A09228005DA9E5 /* CircleView.swift */; };
+		DA706EBE23A74A7800060D26 /* UtilityKeyIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F80823A4BA57005DA9E5 /* UtilityKeyIdentifiers.swift */; };
+		DA706EBF23A74A7D00060D26 /* MKMapViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEC9EEA23A568ED004A23E5 /* MKMapViewPresenter.swift */; };
+		DA706EC023A74A8200060D26 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08325E1B23A656040021CFB4 /* LocationSearchTableViewController.swift */; };
+		DA706EC123A74A8800060D26 /* CoreDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F80A23A4C992005DA9E5 /* CoreDataUtils.swift */; };
+		DA706EC223A74AA700060D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F78B23A0B0CF005DA9E5 /* AppDelegate.swift */; };
+		DA706EC323A74AB400060D26 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F71623A0923E005DA9E5 /* CardViewController.swift */; };
+		DA706EC423A74ABA00060D26 /* ImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED5AF023A62B2B0066B736 /* ImageView+Extension.swift */; };
+		DA706EC623A7529800060D26 /* GenericUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA706EC523A7529800060D26 /* GenericUtilsTests.swift */; };
+		DA706EC823A763B100060D26 /* CoreDataUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA706EC723A763B100060D26 /* CoreDataUtilsTests.swift */; };
+		DA706ECB23A7722800060D26 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA706ECA23A7722800060D26 /* SettingsViewController.swift */; };
 		DAB7F6F223A09126005DA9E5 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6EB23A09126005DA9E5 /* HomeRouter.swift */; };
 		DAB7F6F423A09126005DA9E5 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6ED23A09126005DA9E5 /* HomeInteractor.swift */; };
 		DAB7F6F523A09126005DA9E5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6EE23A09126005DA9E5 /* HomeViewController.swift */; };
@@ -125,7 +169,6 @@
 
 /* Begin PBXFileReference section */
 		08325E1B23A656040021CFB4 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
-		088EB98423A5EF160058EAA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		08FE86D723A75D29008B89CD /* HomeViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Extension.swift"; sourceTree = "<group>"; };
 		DA485CF6239C0134009F8BF2 /* WeatherForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA485D02239C0135009F8BF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -156,6 +199,9 @@
 		DA6A7241239EA9D700F0770E /* HomeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorker.swift; sourceTree = "<group>"; };
 		DA706E9323A6D60300060D26 /* HelpScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpScreenViewController.swift; sourceTree = "<group>"; };
 		DA706E9823A6DD8900060D26 /* Web_Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Web_Assets; sourceTree = "<group>"; };
+		DA706EC523A7529800060D26 /* GenericUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericUtilsTests.swift; sourceTree = "<group>"; };
+		DA706EC723A763B100060D26 /* CoreDataUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUtilsTests.swift; sourceTree = "<group>"; };
+		DA706ECA23A7722800060D26 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DAB7F6EB23A09126005DA9E5 /* HomeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		DAB7F6ED23A09126005DA9E5 /* HomeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		DAB7F6EE23A09126005DA9E5 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -284,6 +330,8 @@
 			children = (
 				DA485D10239C0136009F8BF2 /* WeatherForecastTests.swift */,
 				DA485D12239C0136009F8BF2 /* Info.plist */,
+				DA706EC523A7529800060D26 /* GenericUtilsTests.swift */,
+				DA706EC723A763B100060D26 /* CoreDataUtilsTests.swift */,
 			);
 			path = WeatherForecastTests;
 			sourceTree = "<group>";
@@ -430,13 +478,13 @@
 				DAEC9EE823A568AD004A23E5 /* MKMap */,
 				DAB7F77D23A0AE83005DA9E5 /* Components */,
 				DAB7F72B23A09418005DA9E5 /* LandingInteractor.swift */,
+				DA706ECA23A7722800060D26 /* SettingsViewController.swift */,
 				DAB7F72C23A09418005DA9E5 /* LandingModels.swift */,
 				DAB7F72D23A09419005DA9E5 /* LandingPresenter.swift */,
 				DAB7F72F23A09419005DA9E5 /* LandingRouter.swift */,
 				DAB7F72E23A09419005DA9E5 /* LandingViewController.swift */,
 				DAB7F79F23A0C7A1005DA9E5 /* Landing.storyboard */,
 				DAB7F7A123A0D5C5005DA9E5 /* LandingViewController+Extension.swift */,
-				088EB98423A5EF160058EAA5 /* SettingsViewController.swift */,
 				DA706E9323A6D60300060D26 /* HelpScreenViewController.swift */,
 			);
 			path = Landing;
@@ -681,6 +729,7 @@
 				DAED5AEC23A58D9D0066B736 /* LocationCurrentResult.swift in Sources */,
 				DAB7F71423A09228005DA9E5 /* CircleView.swift in Sources */,
 				DA485DC0239D2970009F8BF2 /* Status.swift in Sources */,
+				DA706ECB23A7722800060D26 /* SettingsViewController.swift in Sources */,
 				DA485DC3239D2F7C009F8BF2 /* GenericsUtils.swift in Sources */,
 				DAB7F78823A0AF95005DA9E5 /* View+Extension.swift in Sources */,
 				DAED5AF123A62B2B0066B736 /* ImageView+Extension.swift in Sources */,
@@ -700,7 +749,6 @@
 				DA485D44239CFE84009F8BF2 /* CityPresenter.swift in Sources */,
 				DAB7F70623A0919C005DA9E5 /* Wind.swift in Sources */,
 				DAB7F6F623A09126005DA9E5 /* HomePresenter.swift in Sources */,
-				088EB98523A5EF160058EAA5 /* SettingsViewController.swift in Sources */,
 				DAB7F79E23A0B7BA005DA9E5 /* ShowEmptyMessageView.swift in Sources */,
 				DAB7F71823A0923E005DA9E5 /* CardViewController.swift in Sources */,
 				DAB7F70C23A0919C005DA9E5 /* Rain.swift in Sources */,
@@ -746,21 +794,65 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA706EB023A74A0F00060D26 /* ShowEmptyMessageView.swift in Sources */,
 				DA485DD3239E4562009F8BF2 /* AppRouter.swift in Sources */,
+				DA706E9E23A7498700060D26 /* HomeWorker.swift in Sources */,
+				DA706EB223A74A1300060D26 /* LandingModels.swift in Sources */,
+				DA706EB323A74A1600060D26 /* LandingPresenter.swift in Sources */,
+				DA706EB523A74A2100060D26 /* HelpScreenViewController.swift in Sources */,
 				DA485DBB239D1D13009F8BF2 /* Rest.swift in Sources */,
+				DA706EC423A74ABA00060D26 /* ImageView+Extension.swift in Sources */,
+				DA706EAB23A749E600060D26 /* HomeViewController.swift in Sources */,
+				DA706EBD23A74A6300060D26 /* CircleView.swift in Sources */,
 				DA485D11239C0136009F8BF2 /* WeatherForecastTests.swift in Sources */,
+				DA706EAE23A74A0500060D26 /* ShortWeatherInfoView.swift in Sources */,
+				DA706EBE23A74A7800060D26 /* UtilityKeyIdentifiers.swift in Sources */,
+				DA706EAA23A749DF00060D26 /* TodayView.swift in Sources */,
+				DA706EB823A74A2C00060D26 /* HomeRouter.swift in Sources */,
+				DA706EAC23A749FA00060D26 /* MKMapViewController.swift in Sources */,
+				DA706EA023A7499E00060D26 /* City.swift in Sources */,
+				DA706EB123A74A1100060D26 /* LandingInteractor.swift in Sources */,
+				DA706EA323A749AA00060D26 /* Rain.swift in Sources */,
+				DA706EBF23A74A7D00060D26 /* MKMapViewPresenter.swift in Sources */,
+				DA706EA423A749AC00060D26 /* Rainfall.swift in Sources */,
+				DA706EA823A749C800060D26 /* Sys.swift in Sources */,
+				DA706EC223A74AA700060D26 /* AppDelegate.swift in Sources */,
+				DA706EBC23A74A5A00060D26 /* ThemeProtocols.swift in Sources */,
+				DA706E9A23A7492C00060D26 /* LocationResult.swift in Sources */,
+				DA706EA623A749B100060D26 /* Weather.swift in Sources */,
 				DA485DD0239E44CB009F8BF2 /* Coordinator.swift in Sources */,
+				DA706EB423A74A1C00060D26 /* LandingViewController+Extension.swift in Sources */,
 				DA485D68239D06EA009F8BF2 /* LocationsRestStore.swift in Sources */,
+				DA706EAF23A74A0C00060D26 /* FavouritesView.swift in Sources */,
+				DA706EA723A749B300060D26 /* Wind.swift in Sources */,
 				DA485D4F239CFE84009F8BF2 /* CityInteractor.swift in Sources */,
+				DA706EBA23A74A5300060D26 /* View+Extension.swift in Sources */,
+				DA706EB723A74A2900060D26 /* HomePresenter.swift in Sources */,
+				DA706EA123A749A100060D26 /* Clouds.swift in Sources */,
 				DA485DDC239E4753009F8BF2 /* CityCoordinator.swift in Sources */,
 				DA485DB9239D1D13009F8BF2 /* Error.swift in Sources */,
 				DA485DC4239D2F7C009F8BF2 /* GenericsUtils.swift in Sources */,
+				DA706EA923A749CF00060D26 /* LandingViewController.swift in Sources */,
+				DA706EC623A7529800060D26 /* GenericUtilsTests.swift in Sources */,
+				DA706EA223A749A500060D26 /* List.swift in Sources */,
 				DA485D4B239CFE84009F8BF2 /* CityModels.swift in Sources */,
+				DA706EBB23A74A5600060D26 /* DefaultTheme.swift in Sources */,
+				DA706E9B23A7493500060D26 /* LocationCurrentResult.swift in Sources */,
+				DA706EC323A74AB400060D26 /* CardViewController.swift in Sources */,
+				DA706EB623A74A2400060D26 /* HomeInteractor.swift in Sources */,
 				DA485D49239CFE84009F8BF2 /* CityRouter.swift in Sources */,
+				DA706EB923A74A3300060D26 /* LandingWorker.swift in Sources */,
 				DA485D47239CFE84009F8BF2 /* CityWorker.swift in Sources */,
 				DA485D45239CFE84009F8BF2 /* CityPresenter.swift in Sources */,
 				DA485D4D239CFE84009F8BF2 /* CityViewController.swift in Sources */,
+				DA706E9F23A7499300060D26 /* Coord.swift in Sources */,
+				DA706E9D23A7494E00060D26 /* HomeModels.swift in Sources */,
+				DA706EC823A763B100060D26 /* CoreDataUtilsTests.swift in Sources */,
 				DA485DC1239D2970009F8BF2 /* Status.swift in Sources */,
+				DA706EC123A74A8800060D26 /* CoreDataUtils.swift in Sources */,
+				DA706E9C23A7494500060D26 /* LandingRouter.swift in Sources */,
+				DA706EA523A749AE00060D26 /* Temperature.swift in Sources */,
+				DA706EC023A74A8200060D26 /* LocationSearchTableViewController.swift in Sources */,
 				DA485DCD239E10CA009F8BF2 /* Storyboarded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

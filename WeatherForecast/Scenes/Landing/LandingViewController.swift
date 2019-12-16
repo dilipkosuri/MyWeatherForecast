@@ -101,14 +101,7 @@ class LandingViewController: UIViewController, Storyboarded {
   }
     
     @IBAction func  clearCacheAction(_ sender: Any) {
-      deleteData()
-      bookmarkedList = []
-      self.collectionView.reloadData()
-      self.collectionView.performBatchUpdates({ [weak self] in
-        let visibleItems = self?.collectionView.indexPathsForVisibleItems ?? []
-        self?.collectionView.reloadItems(at: visibleItems)
-        }, completion: { (_) in
-      })
+     
     }
   
    @IBAction func settingButtonAction(_ sender: Any) {

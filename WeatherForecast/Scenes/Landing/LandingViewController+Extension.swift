@@ -52,7 +52,7 @@ class WeatherCell: UICollectionViewCell {
   @IBOutlet weak var emptyImgView: UIImageView!
   @IBOutlet weak var emptyTextLabel: UILabel! {
     didSet {
-      emptyTextLabel.text = "Looks like you have not pinned your favourite locations yet.."
+      emptyTextLabel.text = "Looks like you have not pinned your favourite locations yet.\n\nYou might want to click on \"+\" icon above to start adding"
       emptyTextLabel.font = theme.fonts.headlineFontMediumBig
       emptyTextLabel.textColor = UIColor(named: "highlightColor")
     }
@@ -60,7 +60,7 @@ class WeatherCell: UICollectionViewCell {
   @IBOutlet weak var todayView: TodayView!
   @IBOutlet weak var emptyLabelSecondText: UILabel! {
     didSet {
-      emptyLabelSecondText.text = "You might click on + icon above to do so..."
+      emptyLabelSecondText.text = ""
       emptyLabelSecondText.font = theme.fonts.headlineFontMediumBig
       emptyLabelSecondText.textColor = UIColor(named: "highlightColor")
     }

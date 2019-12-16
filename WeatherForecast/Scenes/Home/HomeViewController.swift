@@ -191,6 +191,15 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
       var request = Home.GetLocationResult.Request()
       request.latitude = model.latitude
       request.longitude = model.longitude
+      
+      if Constants.defaultTemperatureMetric == "fahrenheit" {
+        request.units = "imperial"
+      } else if Constants.defaultTemperatureMetric == "celcius" {
+        request.units = "metric"
+      } else {
+        request.units = ""
+      }
+      
       var requestDataFor: WeatherReportType = WeatherReportType.Forecast
       interactor?.getLocations(request: request, requestType: requestDataFor)
     }

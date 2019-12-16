@@ -50,6 +50,33 @@ func convertDate(date:String, type: TypeOfConversion) -> String {
   return time
 }
 
+
+func getFahrenheit(valueInKelvin: Double?) -> Double {
+  if let kelvin = valueInKelvin {
+    return ((kelvin - 273.15) * 1.8) + 32
+  } else {
+    return 0
+  }
+}
+
+func getCelsius(valueInKelvin: Double?) -> Double {
+  if let kelvin = valueInKelvin {
+    return kelvin - 273.15
+  } else {
+    return 0
+  }
+}
+
+func getTemperatureConverted(temperature: Double) -> Double {
+  if Constants.defaultTemperatureMetric == "celcius" {
+    return getCelsius(valueInKelvin: temperature)
+  } else if Constants.defaultTemperatureMetric == "fahrenheit" {
+     return getFahrenheit(valueInKelvin: temperature)
+  } else {
+    return temperature
+  }
+}
+
 func timeOfDataCalculation(dateInMillis: Double = 0) -> String {
   let date = Date(timeIntervalSince1970: dateInMillis)
   

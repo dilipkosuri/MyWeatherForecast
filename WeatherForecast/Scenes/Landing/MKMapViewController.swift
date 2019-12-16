@@ -116,8 +116,15 @@ class MKMapViewController: UIViewController, Storyboarded {
     var request = Home.GetLocationResult.Request()
     request.latitude = "\(location.latitude)"
     request.longitude = "\(location.longitude)"
-    request.units = "metric"
-   // let requestDataFor: WeatherReportType = WeatherReportType.Forecast
+    
+    if Constants.defaultTemperatureMetric == "fahrenheit" {
+      request.units = "imperial"
+    } else if Constants.defaultTemperatureMetric == "celcius" {
+      request.units = "metric"
+    } else {
+      request.units = ""
+    }
+    // let requestDataFor: WeatherReportType = WeatherReportType.Forecast
     interactor?.getLocationByCoordinate(request: request, locationName: title)
     self.mapView.addAnnotation(annotation)
     let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
@@ -174,10 +181,8 @@ extension MKMapViewController: MKMapViewControllerInterface {
   func saveDataToStorage(viewModel: Home.CircleViewModel.LocationData) {
     createData(model: [viewModel], mock: false)
     print(viewModel)
-    retrieveData(complition: { bookMarks in
-        print("******** \n")
-        print(bookMarks)
-    })
+//    retrieveData(complition: { _ in
+//    })
     self.mapView.showToast(message: "The location has been added to favourites", controller: self)
   }
 }

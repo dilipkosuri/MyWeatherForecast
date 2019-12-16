@@ -1,86 +1,109 @@
-
 import UIKit
+import Foundation
 
 class SettingsViewController: UIViewController, Storyboarded, UIPickerViewDataSource, UIPickerViewDelegate {
- 
-  @IBOutlet weak var pickerMetric: UIPickerView!
+  
+  
+  @IBOutlet weak var myTextField: UITextField!
+  @IBOutlet weak var myLabel: UILabel!
+  @IBOutlet weak var topPickerView: UIPickerView!
   @IBOutlet weak var metricLabel: UILabel!
-  @IBOutlet weak var metricTextLabel: UILabel!
-  @IBOutlet weak var metricTemperatureTextLabel: UILabel!
+  @IBOutlet weak var resetBookmarks: UIButton!
+  
+  var arrayOf2 = Array(1...2)
+  
+  var labelString = ""
+  let anotherPicker = UIPickerView()
   
   let pickerMetricData: [String] = Constants.unitsMeasurement
   let pickerTemperatureData: [String] = Constants.temperatureMeasurement
-  var metricData: [[String]] = [[String]]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    topPickerView.delegate = self
+    
+    topPickerView.delegate?.pickerView?(topPickerView, didSelectRow: pickerTemperatureData.firstIndex(of: Constants.defaultTemperatureMetric) ?? 0, inComponent: 0)
+    topPickerView.selectRow(pickerTemperatureData.firstIndex(of: Constants.defaultTemperatureMetric) ?? 0,
+                            inComponent: 0, animated: true)
+    createAnotherPicker()
+    createToolbar()
     setupUI()
-    setupConfiguration()
-  }
-  
-  func setupConfiguration() {
-    self.navigationItem.title = "Change preferences"
-    self.pickerMetric.delegate = self
-    self.pickerMetric.dataSource = self
-    metricData = [pickerMetricData, pickerTemperatureData]
-    self.pickerMetric.delegate = self
-    self.pickerMetric.dataSource = self
-    pickerMetric.selectRow(pickerMetricData.firstIndex(of: Constants.defaultUnitsMetric) ?? 0, inComponent: 0, animated: true)
-    pickerMetric.selectRow(pickerTemperatureData.firstIndex(of: Constants.defaultTemperatureMetric) ?? 0, inComponent: 1, animated: true)
-  }
-  
-  func setupUI() {
-    metricLabel.textColor = UIColor(named: "highlightColor")
-    metricLabel.text = "You may choose to change the default settings"
-    metricLabel.font = self.view.theme.fonts.headlineFontMediumBig
-    
-    metricTextLabel.textColor = UIColor(named: "highlightColor")
-    metricTextLabel.text = "Units"
-    metricTextLabel.font = self.view.theme.fonts.headlineFontMediumBig
-    
-    metricTemperatureTextLabel.textColor = UIColor(named: "highlightColor")
-    metricTemperatureTextLabel.text = "Temperature"
-    metricTemperatureTextLabel.font = self.view.theme.fonts.headlineFontMediumBig
-    
     self.view.applyGradient()
   }
   
+  func createAnotherPicker() {
+    anotherPicker.delegate = self
+    anotherPicker.delegate?.pickerView?(anotherPicker, didSelectRow: pickerMetricData.firstIndex(of: Constants.defaultUnitsMetric) ?? 0, inComponent: 0)
+    anotherPicker.selectRow(pickerMetricData.firstIndex(of: Constants.defaultUnitsMetric) ?? 0,
+                            inComponent: 0, animated: true)
+    myTextField.inputView = anotherPicker
+  }
+  
+  func createToolbar() {
+    let toolbar = UIToolbar()
+    toolbar.sizeToFit()
+    let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(closePickerView))
+    toolbar.setItems([doneButton], animated: false)
+    toolbar.isUserInteractionEnabled = true
+    myTextField.inputAccessoryView = toolbar
+  }
+  
+  func setupUI() {
+    myLabel.textColor = UIColor(named: "highlightColor")
+    myLabel.text = "Metric setting "
+    myLabel.font = self.view.theme.fonts.headlineFontMediumBig
+    
+    metricLabel.textColor = UIColor(named: "highlightColor")
+    metricLabel.text = "Temperature setting "
+    metricLabel.font = self.view.theme.fonts.headlineFontMediumBig
+    
+    resetBookmarks.setTitleColor(UIColor(named: "highlightColor"), for: .normal)
+    resetBookmarks.titleLabel?.font = self.view.theme.fonts.headlineFontMediumBig
+    resetBookmarks.backgroundColor = UIColor(named: "primaryTextColor")
+    resetBookmarks.setTitle("Reset Bookmarks", for: .normal)
+    
+  }
+  
+  @IBAction func resetBookmarks(_ sender: UIButton) {
+    deleteData()
+  }
+  
+  @objc func closePickerView() {
+    view.endEditing(true)
+  }
+  
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
-    return 2
+    return 1
   }
   
   func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-  return pickerMetricData.count
+    if pickerView == topPickerView{
+      return pickerTemperatureData.count
+    } else{
+      return pickerMetricData.count
+    }
   }
   
-  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-  return metricData[component][row]
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+  {
+    if pickerView == topPickerView{
+      return String(pickerTemperatureData[row])
+    } else{
+      return String(pickerMetricData[row])
+    }
   }
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    
-    if component == 0 {
-      Constants.defaultUnitsMetric = String(pickerMetricData[row])
+    if pickerView == topPickerView{
+      Constants.defaultTemperatureMetric = String(pickerTemperatureData[row])
+      //myLabel.text = "Temperature set as: \(dropdownValue)"
+      print(String(pickerTemperatureData[row]))
     }
     else{
-      Constants.defaultTemperatureMetric = String(pickerTemperatureData[row])
+      myTextField.text =  pickerMetricData[row]
+      Constants.defaultUnitsMetric = String(pickerMetricData[row])
     }
   }
-  
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder)
-    {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
-    // MARK: Setup
-    private func setup()
-    {
-    }
 }
+
