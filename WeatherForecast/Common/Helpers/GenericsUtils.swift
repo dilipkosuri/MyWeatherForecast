@@ -68,13 +68,14 @@ func getCelsius(valueInKelvin: Double?) -> Double {
 }
 
 func getTemperatureConverted(temperature: Double) -> Double {
-  if Constants.defaultTemperatureMetric == "celcius" {
-    return getCelsius(valueInKelvin: temperature)
-  } else if Constants.defaultTemperatureMetric == "fahrenheit" {
-     return getFahrenheit(valueInKelvin: temperature)
-  } else {
-    return temperature
+  if Constants.defaultTemperatureMetric != Constants.defaultTemperatureMetric {
+    if Constants.defaultTemperatureMetric == "celcius" {
+      return getCelsius(valueInKelvin: temperature)
+    } else if Constants.defaultTemperatureMetric == "fahrenheit" {
+      return getFahrenheit(valueInKelvin: temperature)
+    }
   }
+  return 0
 }
 
 func timeOfDataCalculation(dateInMillis: Double = 0) -> String {

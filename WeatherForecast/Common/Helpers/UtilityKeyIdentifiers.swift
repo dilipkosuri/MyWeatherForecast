@@ -13,6 +13,7 @@ class Constants {
   static var BASE_IMAGE_URL = "http://openweathermap.org/img/w/"
   static var defaultIcon = "01d.png"
   static var temperatureMeasurement = ["fahrenheit", "celcius", "kelvin"]
+  static var defaultTemperatureUnit = "kelvin"
   static var defaultUnitsMetric = "metric"
   static var defaultTemperatureMetric = "kelvin"
 }
