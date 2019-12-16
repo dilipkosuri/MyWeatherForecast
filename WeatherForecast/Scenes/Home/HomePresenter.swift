@@ -28,12 +28,12 @@ class HomePresenter: HomePresentationInterface
             humidity: Home.CircleViewModel.KeyData(
               labelText: "Humidity",
               labelTextValue: "\($0.temperature?.humidity ?? 0)"),
-            temperature: "\($0.temperature?.temp ?? 0)",
+            temperature: "\(getTemperatureConverted(temperature: $0.temperature?.temp ?? 0))",
             imageName: "",
             temperatureDesc: $0.weather?.first?.description ?? "",
             wind: Home.CircleViewModel.KeyData(
               labelText: "Wind",
-              labelTextValue: "\($0.wind?.speed ?? 0)"),
+              labelTextValue: "\($0.wind?.speed ?? 0) m/s"),
             currentLocation: "",
             precipitation: "\($0.temperature?.temp_kf ?? 0)",
             pressureCheck: "\($0.temperature?.pressure ?? 0)",
@@ -41,10 +41,11 @@ class HomePresenter: HomePresentationInterface
             weatherIconDesc: $0.weather?.first?.icon ?? "",
             latitude: "\(latitude)",
             longitude: "\(longitude)",
-            minTemp: $0.temperature?.temp_min ?? 0,
-            maxTemp: $0.temperature?.temp_max ?? 0,
+            minTemp: getTemperatureConverted(temperature: $0.temperature?.temp_min ?? 0),
+            maxTemp: getTemperatureConverted(temperature: $0.temperature?.temp_max ?? 0),
             dt: Double($0.dt ?? 0),
-            dateTime: timeOfDataCalculation(dateInMillis: Double($0.dt ?? 0)),
+           // dateTime: timeOfDataCalculation(dateInMillis: Double($0.dt ?? 0)),
+            dateTime: $0.dt_txt ?? "",
             dateFromServer: convertDate(date:$0.dt_txt ?? "", type: .Server))
         })
       }
@@ -57,12 +58,14 @@ class HomePresenter: HomePresentationInterface
       // var grouping = group.
       
       var homeScreenData = [HomeScreenDataModel]()
+      var datesData = [String]()
       // iterate the dictionary which is sorted and grouped by date and assign the values to the model for the UI rendering.
       for (key, value) in groupedSortedLocationData {
         homeScreenData.append(HomeScreenDataModel(date: key, data: value))
+        datesData.append(key)
       }
       self.viewController?.setupCardView(items: homeScreenData)
-      viewController?.displayCircleView(viewModel: homeScreenData)
+      self.viewController?.displayCircleView(viewModel: homeScreenData, dateArray:datesData)
     case .failure:
       print("Failed")
     }

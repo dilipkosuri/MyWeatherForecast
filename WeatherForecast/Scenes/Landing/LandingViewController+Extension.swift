@@ -52,7 +52,7 @@ class WeatherCell: UICollectionViewCell {
   @IBOutlet weak var emptyImgView: UIImageView!
   @IBOutlet weak var emptyTextLabel: UILabel! {
     didSet {
-      emptyTextLabel.text = "Looks like you have not pinned your favourite locations yet.."
+      emptyTextLabel.text = "Looks like you have not pinned your favourite locations yet.\n\nYou might want to click on \"+\" icon above to start adding"
       emptyTextLabel.font = theme.fonts.headlineFontMediumBig
       emptyTextLabel.textColor = UIColor(named: "highlightColor")
     }
@@ -60,7 +60,7 @@ class WeatherCell: UICollectionViewCell {
   @IBOutlet weak var todayView: TodayView!
   @IBOutlet weak var emptyLabelSecondText: UILabel! {
     didSet {
-      emptyLabelSecondText.text = "You might click on + icon above to do so..."
+      emptyLabelSecondText.text = ""
       emptyLabelSecondText.font = theme.fonts.headlineFontMediumBig
       emptyLabelSecondText.textColor = UIColor(named: "highlightColor")
     }
@@ -77,15 +77,15 @@ class WeatherCell: UICollectionViewCell {
   
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        layer.shadowColor = UIColor.lightGray.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        layer.shadowRadius = 5.0
-        layer.shadowOpacity = 1.0
-        layer.masksToBounds = false
-        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
-        layer.backgroundColor = UIColor.clear.cgColor
+//        layer.shadowColor = UIColor.lightGray.cgColor
+//        layer.shadowOffset = CGSize(width: 0, height: 2.0)
+//        layer.shadowRadius = 5.0
+//        layer.shadowOpacity = 1.0
+//        layer.masksToBounds = false
+//        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
+//        layer.backgroundColor = UIColor.clear.cgColor
 
-        contentView.layer.masksToBounds = true
-        layer.cornerRadius = 10
+//        contentView.layer.masksToBounds = true
+//        layer.cornerRadius = 10
     }
 }

@@ -8,7 +8,7 @@ public protocol HomeViewControllerDelegate: class {
 protocol HomeViewControllerInterface: class
 {
   func setupCardView(items: [Home.CircleViewModel.HomeViewDataSourceModel])
-  func displayCircleView(viewModel: [Home.CircleViewModel.HomeViewDataSourceModel])
+    func displayCircleView(viewModel: [Home.CircleViewModel.HomeViewDataSourceModel], dateArray:[String])
 }
 
 class HomeViewController: UIViewController, HomeViewControllerInterface, Storyboarded
@@ -31,13 +31,14 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
   @IBOutlet weak var circleView: CircleView!
   @IBOutlet weak var circleTitleLabel: UILabel!
   @IBOutlet weak var contentStackView: UIStackView!
-  
-  @IBOutlet weak var shortWeatherInfoContentView: UIStackView!
-  
+    
   typealias HomeScreenData = [Home.CircleViewModel.HomeViewDataSourceModel]
   typealias LocationData = Home.CircleViewModel.LocationData
   var cardViewController:CardViewController!
   
+    @IBOutlet weak var shortWeatherInfoCollectionView: UICollectionView!
+    var shortWeatherInfoArray: [Home.CircleViewModel.HomeViewDataSourceModel] = []
+    var collectionDatesArray: [String] = []
   var cardHeight:CGFloat  {
     return self.view.frame.height * 0.6
   }
@@ -162,7 +163,7 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
     contentStackView.superview?.bringSubviewToFront(contentStackView)
   }
   
-  func setupCircleUI(input: HomeScreenData) {
+  func setupCircleUI(input: HomeScreenData,  datesArray:[String]) {
     if input.count > 0 {
       let model = input.first?.data.first ?? LocationData()
       humidityLabelText.text = model.humidity?.labelText ?? "-"
@@ -174,21 +175,12 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
       let imageURL = Constants.BASE_IMAGE_URL + (model.weatherIconDesc ?? Constants.defaultIcon) + ".png"
       guard let url = URL(string: imageURL) else { return }
       temperatureBasedImage.load(url: url)
+      shortWeatherInfoArray = input
+      collectionDatesArray = datesArray.sorted()
+        DispatchQueue.main.async {
+            self.shortWeatherInfoCollectionView.reloadData()
+        }
     }
-
-    if let currentLocationData = input.first?.data {
-      for i in 0..<shortWeatherInfoContentView.arrangedSubviews.count {
-        shortWeatherInfoContentView.arrangedSubviews[i].removeFromSuperview()
-      }
-      
-      for item in currentLocationData {
-        let showShortWeatherInfo = ShortWeatherInfoView()
-        showShortWeatherInfo.options(model: item)
-        shortWeatherInfoContentView.addArrangedSubview(showShortWeatherInfo)
-      }
-      shortWeatherInfoContentView.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
   }
   
   // MARK: Do something
@@ -201,27 +193,36 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
       var request = Home.GetLocationResult.Request()
       request.latitude = model.latitude
       request.longitude = model.longitude
+      
+      if Constants.defaultTemperatureMetric == "fahrenheit" {
+        request.units = "imperial"
+      } else if Constants.defaultTemperatureMetric == "celcius" {
+        request.units = "metric"
+      } else {
+        request.units = ""
+      }
+      
       var requestDataFor: WeatherReportType = WeatherReportType.Forecast
       interactor?.getLocations(request: request, requestType: requestDataFor)
     }
     
   }
   
-  func displayCircleView(viewModel: [Home.CircleViewModel.HomeViewDataSourceModel])
+  func displayCircleView(viewModel: [Home.CircleViewModel.HomeViewDataSourceModel], dateArray:[String])
   {
-    setupCircleUI(input: viewModel)
+    setupCircleUI(input: viewModel, datesArray:dateArray)
   }
 }
 
 extension HomeViewController {
     func setupCardView(items: [Home.CircleViewModel.HomeViewDataSourceModel]) {
-        visualEffectView = UIVisualEffectView(frame: self.view.bounds)
-        self.view.addSubview(visualEffectView)
+        visualEffectView = UIVisualEffectView(frame: CGRect.init(x: 0, y: self.view.frame.height-70, width: self.view.frame.width, height: 70))
+       // self.view.addSubview(visualEffectView)
         
         cardViewController = CardViewController(nibName:"CardViewController",bundle:nil)
         cardViewController.items = items
         self.addChild(cardViewController)
-        self.view.addSubview(cardViewController.view)
+      //  self.view.addSubview(cardViewController.view)
         cardViewController.view.frame = CGRect(x:0,y:self.view.frame.height - cardHandleAreaHeight,width:self.view.frame.width,height:cardHeight)
         cardViewController.view.clipsToBounds = true
         

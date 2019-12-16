@@ -50,10 +50,38 @@ func convertDate(date:String, type: TypeOfConversion) -> String {
   return time
 }
 
+
+func getFahrenheit(valueInKelvin: Double?) -> Double {
+  if let kelvin = valueInKelvin {
+    return ((kelvin - 273.15) * 1.8) + 32
+  } else {
+    return 0
+  }
+}
+
+func getCelsius(valueInKelvin: Double?) -> Double {
+  if let kelvin = valueInKelvin {
+    return kelvin - 273.15
+  } else {
+    return 0
+  }
+}
+
+func getTemperatureConverted(temperature: Double) -> Double {
+  if Constants.defaultTemperatureMetric != Constants.defaultTemperatureMetric {
+    if Constants.defaultTemperatureMetric == "celcius" {
+      return getCelsius(valueInKelvin: temperature).roundToPlaces(places: 2)
+    } else if Constants.defaultTemperatureMetric == "fahrenheit" {
+      return getFahrenheit(valueInKelvin: temperature).roundToPlaces(places: 2)
+    }
+  }
+  return temperature.roundToPlaces(places: 2)
+}
+
 func timeOfDataCalculation(dateInMillis: Double = 0) -> String {
-  let date = Date(timeIntervalSince1970: dateInMillis)
+  //let date = Date(timeIntervalSince1970: dateInMillis)
   
-  let defaultFormattedDate = DateFormatter().date(from: "\(date)")
+  //let defaultFormattedDate = DateFormatter().date(from: "\(date)")
   let dateVar = Date.init(timeIntervalSinceNow: TimeInterval(dateInMillis)/1000)
   let dateFormatter = DateFormatter()
   dateFormatter.dateFormat = "dd MMM, hh:mm aa"
@@ -62,9 +90,9 @@ func timeOfDataCalculation(dateInMillis: Double = 0) -> String {
 }
 
 func returnDateFormat(dateInMillis: Double = 0) -> String {
-  let date = Date(timeIntervalSince1970: dateInMillis)
+  //let date = Date(timeIntervalSince1970: dateInMillis)
   
-  let defaultFormattedDate = DateFormatter().date(from: "\(date)")
+  //let defaultFormattedDate = DateFormatter().date(from: "\(date)")
   let dateVar = Date.init(timeIntervalSinceNow: TimeInterval(dateInMillis)/1000)
   let dateFormatter = DateFormatter()
   dateFormatter.dateFormat = "dd MMM"

@@ -13,7 +13,7 @@ class LandingPresenter: LandingPresentationInterface {
   var displayedClientList: [Home.CircleViewModel.LocationData] = [Home.CircleViewModel.LocationData]()
   
   func presentCurrentDateDetail(response: Home.GetLocationResult.Response) {
-   
+    // need to use this if bookmarked items are individually called for updated data after the launch
     typealias ViewModel = Home.GetLocationResult.ViewModel
     typealias DisplayedGroup = Home.CircleViewModel
     
