@@ -78,9 +78,9 @@ func getTemperatureConverted(temperature: Double) -> Double {
 }
 
 func timeOfDataCalculation(dateInMillis: Double = 0) -> String {
-  let date = Date(timeIntervalSince1970: dateInMillis)
+  //let date = Date(timeIntervalSince1970: dateInMillis)
   
-  let defaultFormattedDate = DateFormatter().date(from: "\(date)")
+  //let defaultFormattedDate = DateFormatter().date(from: "\(date)")
   let dateVar = Date.init(timeIntervalSinceNow: TimeInterval(dateInMillis)/1000)
   let dateFormatter = DateFormatter()
   dateFormatter.dateFormat = "dd MMM, hh:mm aa"
@@ -89,9 +89,9 @@ func timeOfDataCalculation(dateInMillis: Double = 0) -> String {
 }
 
 func returnDateFormat(dateInMillis: Double = 0) -> String {
-  let date = Date(timeIntervalSince1970: dateInMillis)
+  //let date = Date(timeIntervalSince1970: dateInMillis)
   
-  let defaultFormattedDate = DateFormatter().date(from: "\(date)")
+  //let defaultFormattedDate = DateFormatter().date(from: "\(date)")
   let dateVar = Date.init(timeIntervalSinceNow: TimeInterval(dateInMillis)/1000)
   let dateFormatter = DateFormatter()
   dateFormatter.dateFormat = "dd MMM"

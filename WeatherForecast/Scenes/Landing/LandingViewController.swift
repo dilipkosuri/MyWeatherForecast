@@ -99,10 +99,6 @@ class LandingViewController: UIViewController, Storyboarded {
   @objc func onSettingsButtonTapped(sender: AnyObject){
     self.onSettingsClick?("Navigate to Settings View")
   }
-    
-    @IBAction func  clearCacheAction(_ sender: Any) {
-     
-    }
   
    @IBAction func settingButtonAction(_ sender: Any) {
      self.onSettingsClick?("Navigate to Settings View")

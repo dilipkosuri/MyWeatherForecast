@@ -9,9 +9,7 @@ class SettingsViewController: UIViewController, Storyboarded, UIPickerViewDataSo
   @IBOutlet weak var topPickerView: UIPickerView!
   @IBOutlet weak var metricLabel: UILabel!
   @IBOutlet weak var resetBookmarks: UIButton!
-  
-  var arrayOf2 = Array(1...2)
-  
+    
   var labelString = ""
   let anotherPicker = UIPickerView()
   
