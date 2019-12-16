@@ -15,7 +15,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shortWeatherInfoArray.count
+        return collectionDatesArray.count
     }
     
     
@@ -31,7 +31,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell: WeatherInfoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherInfoCell", for: indexPath as IndexPath) as! WeatherInfoCell
-        cell.weatherInfo.options(model: shortWeatherInfoArray[indexPath.row], cellSize: cell.frame.size)
+        cell.weatherInfo.options(model: shortWeatherInfoArray, dateKey: collectionDatesArray[indexPath.row], cellSize: cell.frame.size)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

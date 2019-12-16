@@ -54,12 +54,23 @@ class ShortWeatherInfoView: UIView {
     }
   }
   
-  override init(frame: CGRect) {
+    @IBOutlet weak var imageView_3AM: UIImageView!
+    @IBOutlet weak var label_3AM: UILabel!
+    
+    @IBOutlet weak var imageView_9AM: UIImageView!
+    @IBOutlet weak var label_9AM: UILabel!
+
+    @IBOutlet weak var imageView_6PM: UIImageView!
+    @IBOutlet weak var label_6PM: UILabel!
+    
+    @IBOutlet weak var imageView_9PM: UIImageView!
+    @IBOutlet weak var label_9PM: UILabel!
+    override init(frame: CGRect) {
     super.init(frame: frame)
     commonInit()
   }
   
-    func options(model: Home.CircleViewModel.LocationData, cellSize: CGSize) {
+    func options(model: [Home.CircleViewModel.HomeViewDataSourceModel], dateKey: String, cellSize: CGSize) {
         self.frame.size = cellSize
         let aView = Bundle.main.loadNibNamed("ShortWeatherInfoView", owner: self, options: nil)!.first as! UIView
         aView.frame = self.frame
@@ -68,14 +79,42 @@ class ShortWeatherInfoView: UIView {
         self.layoutIfNeeded()
         self.clipsToBounds = true
         self.layer.cornerRadius = 10
-        descriptionLabel.text = model.temperatureDesc
-        minTempLabelValue.text = "\(model.minTemp ?? 0)"
-        maxTempLabelValue.text = "\(model.maxTemp ?? 0)"
         
-        let imageURL = Constants.BASE_IMAGE_URL + (model.weatherIconDesc ?? Constants.defaultIcon ) + ".png"
-        guard let url = URL(string: imageURL) else { return }
-        imageLabel.load(url: url)
+        descriptionLabel.text = dateKey //model.temperatureDesc
 
+        let newModel : [Home.CircleViewModel.HomeViewDataSourceModel] = model.filter({ $0.date == dateKey })
+        print("newModel \(newModel)")
+        if newModel.count > 0 {
+            let locationData : [Home.CircleViewModel.LocationData] = newModel[0].data
+            for item in locationData {
+                
+                if item.dateTime.contains("03:00:00") {
+                    let imageURL = Constants.BASE_IMAGE_URL + (item.weatherIconDesc ?? Constants.defaultIcon ) + ".png"
+                    if let url = URL(string: imageURL) {
+                        self.imageView_3AM.loadImage(url: url)
+                    }
+                    self.label_3AM.text = item.temperature
+                } else if item.dateTime.contains("09:00:00") {
+                    let imageURL = Constants.BASE_IMAGE_URL + (item.weatherIconDesc ?? Constants.defaultIcon ) + ".png"
+                    if let url = URL(string: imageURL) {
+                        self.imageView_9AM.loadImage(url: url)
+                    }
+                    self.label_9AM.text = item.temperature
+                } else if item.dateTime.contains("15:00:00") {
+                    let imageURL = Constants.BASE_IMAGE_URL + (item.weatherIconDesc ?? Constants.defaultIcon ) + ".png"
+                    if let url = URL(string: imageURL) {
+                        self.imageView_6PM.loadImage(url: url)
+                    }
+                    self.label_6PM.text = item.temperature
+                } else if item.dateTime.contains("21:00:00") {
+                    let imageURL = Constants.BASE_IMAGE_URL + (item.weatherIconDesc ?? Constants.defaultIcon ) + ".png"
+                    if let url = URL(string: imageURL) {
+                        self.imageView_9PM.loadImage(url: url)
+                    }
+                    self.label_9PM.text = item.temperature
+                }
+            }
+        }
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -86,4 +125,18 @@ class ShortWeatherInfoView: UIView {
   private func commonInit() {
    
   }
+}
+
+extension UIImageView {
+    func loadImage(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
 }

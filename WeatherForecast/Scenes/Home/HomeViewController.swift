@@ -8,7 +8,7 @@ public protocol HomeViewControllerDelegate: class {
 protocol HomeViewControllerInterface: class
 {
   func setupCardView(items: [Home.CircleViewModel.HomeViewDataSourceModel])
-  func displayCircleView(viewModel: [Home.CircleViewModel.HomeViewDataSourceModel])
+    func displayCircleView(viewModel: [Home.CircleViewModel.HomeViewDataSourceModel], dateArray:[String])
 }
 
 class HomeViewController: UIViewController, HomeViewControllerInterface, Storyboarded
@@ -37,7 +37,8 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
   var cardViewController:CardViewController!
   
     @IBOutlet weak var shortWeatherInfoCollectionView: UICollectionView!
-    var shortWeatherInfoArray: [Home.CircleViewModel.LocationData] = []
+    var shortWeatherInfoArray: [Home.CircleViewModel.HomeViewDataSourceModel] = []
+    var collectionDatesArray: [String] = []
   var cardHeight:CGFloat  {
     return self.view.frame.height * 0.6
   }
@@ -162,7 +163,7 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
     contentStackView.superview?.bringSubviewToFront(contentStackView)
   }
   
-  func setupCircleUI(input: HomeScreenData) {
+  func setupCircleUI(input: HomeScreenData,  datesArray:[String]) {
     if input.count > 0 {
       let model = input.first?.data.first ?? LocationData()
       humidityLabelText.text = model.humidity?.labelText ?? "-"
@@ -174,7 +175,8 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
       let imageURL = Constants.BASE_IMAGE_URL + (model.weatherIconDesc ?? Constants.defaultIcon) + ".png"
       guard let url = URL(string: imageURL) else { return }
       temperatureBasedImage.load(url: url)
-      shortWeatherInfoArray = input.first?.data ?? []
+      shortWeatherInfoArray = input
+      collectionDatesArray = datesArray.sorted()
         DispatchQueue.main.async {
             self.shortWeatherInfoCollectionView.reloadData()
         }
@@ -206,21 +208,21 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
     
   }
   
-  func displayCircleView(viewModel: [Home.CircleViewModel.HomeViewDataSourceModel])
+  func displayCircleView(viewModel: [Home.CircleViewModel.HomeViewDataSourceModel], dateArray:[String])
   {
-    setupCircleUI(input: viewModel)
+    setupCircleUI(input: viewModel, datesArray:dateArray)
   }
 }
 
 extension HomeViewController {
     func setupCardView(items: [Home.CircleViewModel.HomeViewDataSourceModel]) {
         visualEffectView = UIVisualEffectView(frame: CGRect.init(x: 0, y: self.view.frame.height-70, width: self.view.frame.width, height: 70))
-        self.view.addSubview(visualEffectView)
+       // self.view.addSubview(visualEffectView)
         
         cardViewController = CardViewController(nibName:"CardViewController",bundle:nil)
         cardViewController.items = items
         self.addChild(cardViewController)
-        self.view.addSubview(cardViewController.view)
+      //  self.view.addSubview(cardViewController.view)
         cardViewController.view.frame = CGRect(x:0,y:self.view.frame.height - cardHandleAreaHeight,width:self.view.frame.width,height:cardHeight)
         cardViewController.view.clipsToBounds = true
         

@@ -44,7 +44,8 @@ class HomePresenter: HomePresentationInterface
             minTemp: getTemperatureConverted(temperature: $0.temperature?.temp_min ?? 0),
             maxTemp: getTemperatureConverted(temperature: $0.temperature?.temp_max ?? 0),
             dt: Double($0.dt ?? 0),
-            dateTime: timeOfDataCalculation(dateInMillis: Double($0.dt ?? 0)),
+           // dateTime: timeOfDataCalculation(dateInMillis: Double($0.dt ?? 0)),
+            dateTime: $0.dt_txt ?? "",
             dateFromServer: convertDate(date:$0.dt_txt ?? "", type: .Server))
         })
       }
@@ -57,12 +58,14 @@ class HomePresenter: HomePresentationInterface
       // var grouping = group.
       
       var homeScreenData = [HomeScreenDataModel]()
+      var datesData = [String]()
       // iterate the dictionary which is sorted and grouped by date and assign the values to the model for the UI rendering.
       for (key, value) in groupedSortedLocationData {
         homeScreenData.append(HomeScreenDataModel(date: key, data: value))
+        datesData.append(key)
       }
       self.viewController?.setupCardView(items: homeScreenData)
-      self.viewController?.displayCircleView(viewModel: homeScreenData)
+      self.viewController?.displayCircleView(viewModel: homeScreenData, dateArray:datesData)
     case .failure:
       print("Failed")
     }
