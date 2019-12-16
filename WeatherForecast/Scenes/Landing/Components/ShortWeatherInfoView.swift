@@ -59,15 +59,23 @@ class ShortWeatherInfoView: UIView {
     commonInit()
   }
   
-  func options(model: Home.CircleViewModel.LocationData) {
-   
-    descriptionLabel.text = model.temperatureDesc
-    minTempLabelValue.text = "\(model.minTemp ?? 0)"
-    maxTempLabelValue.text = "\(model.maxTemp ?? 0)"
-    
-    let imageURL = Constants.BASE_IMAGE_URL + (model.weatherIconDesc ?? Constants.defaultIcon ) + ".png"
-    guard let url = URL(string: imageURL) else { return }
-    imageLabel.load(url: url)
+    func options(model: Home.CircleViewModel.LocationData, cellSize: CGSize) {
+        self.frame.size = cellSize
+        let aView = Bundle.main.loadNibNamed("ShortWeatherInfoView", owner: self, options: nil)!.first as! UIView
+        aView.frame = self.frame
+        addSubview(aView)
+        self.layoutSubviews()
+        self.layoutIfNeeded()
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 10
+        descriptionLabel.text = model.temperatureDesc
+        minTempLabelValue.text = "\(model.minTemp ?? 0)"
+        maxTempLabelValue.text = "\(model.maxTemp ?? 0)"
+        
+        let imageURL = Constants.BASE_IMAGE_URL + (model.weatherIconDesc ?? Constants.defaultIcon ) + ".png"
+        guard let url = URL(string: imageURL) else { return }
+        imageLabel.load(url: url)
+
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -76,10 +84,6 @@ class ShortWeatherInfoView: UIView {
   }
   
   private func commonInit() {
-    let aView = Bundle.main.loadNibNamed("ShortWeatherInfoView", owner: self, options: nil)!.first as! UIView
-    aView.frame = self.frame
-    addSubview(aView)
-    self.clipsToBounds = true
-    self.layer.cornerRadius = 10
+   
   }
 }

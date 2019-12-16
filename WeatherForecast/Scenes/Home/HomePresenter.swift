@@ -62,7 +62,7 @@ class HomePresenter: HomePresentationInterface
         homeScreenData.append(HomeScreenDataModel(date: key, data: value))
       }
       self.viewController?.setupCardView(items: homeScreenData)
-      viewController?.displayCircleView(viewModel: homeScreenData)
+      self.viewController?.displayCircleView(viewModel: homeScreenData)
     case .failure:
       print("Failed")
     }

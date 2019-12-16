@@ -31,13 +31,13 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
   @IBOutlet weak var circleView: CircleView!
   @IBOutlet weak var circleTitleLabel: UILabel!
   @IBOutlet weak var contentStackView: UIStackView!
-  
-  @IBOutlet weak var shortWeatherInfoContentView: UIStackView!
-  
+    
   typealias HomeScreenData = [Home.CircleViewModel.HomeViewDataSourceModel]
   typealias LocationData = Home.CircleViewModel.LocationData
   var cardViewController:CardViewController!
   
+    @IBOutlet weak var shortWeatherInfoCollectionView: UICollectionView!
+    var shortWeatherInfoArray: [Home.CircleViewModel.LocationData] = []
   var cardHeight:CGFloat  {
     return self.view.frame.height * 0.6
   }
@@ -174,21 +174,11 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
       let imageURL = Constants.BASE_IMAGE_URL + (model.weatherIconDesc ?? Constants.defaultIcon) + ".png"
       guard let url = URL(string: imageURL) else { return }
       temperatureBasedImage.load(url: url)
+      shortWeatherInfoArray = input.first?.data ?? []
+        DispatchQueue.main.async {
+            self.shortWeatherInfoCollectionView.reloadData()
+        }
     }
-
-    if let currentLocationData = input.first?.data {
-      for i in 0..<shortWeatherInfoContentView.arrangedSubviews.count {
-        shortWeatherInfoContentView.arrangedSubviews[i].removeFromSuperview()
-      }
-      
-      for item in currentLocationData {
-        let showShortWeatherInfo = ShortWeatherInfoView()
-        showShortWeatherInfo.options(model: item)
-        shortWeatherInfoContentView.addArrangedSubview(showShortWeatherInfo)
-      }
-      shortWeatherInfoContentView.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
   }
   
   // MARK: Do something
@@ -215,7 +205,7 @@ class HomeViewController: UIViewController, HomeViewControllerInterface, Storybo
 
 extension HomeViewController {
     func setupCardView(items: [Home.CircleViewModel.HomeViewDataSourceModel]) {
-        visualEffectView = UIVisualEffectView(frame: self.view.bounds)
+        visualEffectView = UIVisualEffectView(frame: CGRect.init(x: 0, y: self.view.frame.height-70, width: self.view.frame.width, height: 70))
         self.view.addSubview(visualEffectView)
         
         cardViewController = CardViewController(nibName:"CardViewController",bundle:nil)

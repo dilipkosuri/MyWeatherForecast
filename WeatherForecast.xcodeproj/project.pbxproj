@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		08325E1C23A656040021CFB4 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08325E1B23A656040021CFB4 /* LocationSearchTableViewController.swift */; };
 		088EB98523A5EF160058EAA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088EB98423A5EF160058EAA5 /* SettingsViewController.swift */; };
+		08FE86D823A75D29008B89CD /* HomeViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FE86D723A75D29008B89CD /* HomeViewController+Extension.swift */; };
 		DA485D03239C0135009F8BF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA485D02239C0135009F8BF2 /* Assets.xcassets */; };
 		DA485D06239C0135009F8BF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA485D04239C0135009F8BF2 /* LaunchScreen.storyboard */; };
 		DA485D11239C0136009F8BF2 /* WeatherForecastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA485D10239C0136009F8BF2 /* WeatherForecastTests.swift */; };
@@ -125,6 +126,7 @@
 /* Begin PBXFileReference section */
 		08325E1B23A656040021CFB4 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		088EB98423A5EF160058EAA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		08FE86D723A75D29008B89CD /* HomeViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Extension.swift"; sourceTree = "<group>"; };
 		DA485CF6239C0134009F8BF2 /* WeatherForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA485D02239C0135009F8BF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA485D05239C0135009F8BF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 				DAB7F6EF23A09126005DA9E5 /* HomePresenter.swift */,
 				DAB7F6EB23A09126005DA9E5 /* HomeRouter.swift */,
 				DAB7F6EE23A09126005DA9E5 /* HomeViewController.swift */,
+				08FE86D723A75D29008B89CD /* HomeViewController+Extension.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				DA485DCF239E44CB009F8BF2 /* Coordinator.swift in Sources */,
 				DAB7F73423A09419005DA9E5 /* LandingPresenter.swift in Sources */,
 				DAB7F73223A09419005DA9E5 /* LandingInteractor.swift in Sources */,
+				08FE86D823A75D29008B89CD /* HomeViewController+Extension.swift in Sources */,
 				DAB7F73523A09419005DA9E5 /* LandingViewController.swift in Sources */,
 				DA485D4A239CFE84009F8BF2 /* CityModels.swift in Sources */,
 				DAB7F70423A0919C005DA9E5 /* LocationResult.swift in Sources */,
