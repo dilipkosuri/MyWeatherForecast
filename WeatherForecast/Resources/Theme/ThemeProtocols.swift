@@ -8,8 +8,8 @@ protocol ThemeStrategy {
 }
 
 protocol FontScheme {
-    var headlineFont: UIFont {get}
-    var subHeadlineFont: UIFont {get}
+    var headlineFontMediumBig: UIFont {get}
+    var headlineFontMediumNormal: UIFont {get}
     
     var forecastHeadlineFont: UIFont {get}
     var forecastSubHeadlineFont: UIFont {get}

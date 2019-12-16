@@ -85,21 +85,21 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qK6-va-Nk4">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="26.5"/>
-                                        <state key="normal" image="settings"/>
+                                        <state key="normal" image="Icons_Accent_settings"/>
                                         <connections>
                                             <action selector="settingButtonAction:" destination="KJ8-kd-UHe" eventType="touchUpInside" id="cfJ-Zo-mdm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLo-eX-sW9">
                                         <rect key="frame" x="0.0" y="46.5" width="50" height="27"/>
-                                        <state key="normal" image="delete"/>
+                                        <state key="normal" image="ic_close"/>
                                         <connections>
                                             <action selector="clearCacheAction:" destination="KJ8-kd-UHe" eventType="touchUpInside" id="nUy-i2-vHL"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQL-Q6-J5u">
                                         <rect key="frame" x="0.0" y="93.5" width="50" height="26.5"/>
-                                        <state key="normal" image="dunno"/>
+                                        <state key="normal" image="ic_questions-circular-button"/>
                                         <connections>
                                             <action selector="helpButtonAction:" destination="KJ8-kd-UHe" eventType="touchUpInside" id="Ido-2d-oNo"/>
                                         </connections>
@@ -327,9 +327,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="delete" width="512" height="512"/>
-        <image name="dunno" width="64" height="64"/>
-        <image name="settings" width="512" height="512"/>
+        <image name="Icons_Accent_settings" width="18" height="18"/>
+        <image name="ic_close" width="14" height="14"/>
+        <image name="ic_questions-circular-button" width="22" height="22"/>
         <namedColor name="appleColor">
             <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

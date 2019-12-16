@@ -49,7 +49,7 @@ public class TodayView: UIView {
   @IBOutlet weak var currentLocationLabel: UILabel! {
     didSet {
       currentLocationLabel.text = ""
-      currentLocationLabel.font = theme.fonts.headlineFont
+      currentLocationLabel.font = theme.fonts.headlineFontMediumBig
       currentLocationLabel.textColor = UIColor(named: "highlightColor")
     }
   }

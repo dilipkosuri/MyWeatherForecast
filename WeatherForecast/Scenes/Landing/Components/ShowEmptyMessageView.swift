@@ -16,7 +16,7 @@ public class ShowEmptyMessageView: UIView {
   @IBOutlet weak var primaryTextLabel: UILabel! {
     didSet {
       primaryTextLabel.text = "Looks like you have not pinned your favourite locations yet."
-      primaryTextLabel.font = theme.fonts.subHeadlineFont
+      primaryTextLabel.font = theme.fonts.headlineFontMediumNormal
       primaryTextLabel.textColor = UIColor(named: "primaryTextColor")
     }
   }
@@ -24,7 +24,7 @@ public class ShowEmptyMessageView: UIView {
   @IBOutlet weak var helpTextSecondary: UILabel! {
     didSet {
       helpTextSecondary.text = "just add it up.. click on + above and hook it up"
-      helpTextSecondary.font = theme.fonts.subHeadlineFont
+      helpTextSecondary.font = theme.fonts.headlineFontMediumNormal
       helpTextSecondary.textColor = UIColor(named: "primaryTextColor")
     }
   }

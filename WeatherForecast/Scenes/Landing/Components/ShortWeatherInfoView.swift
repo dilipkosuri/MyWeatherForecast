@@ -21,7 +21,7 @@ class ShortWeatherInfoView: UIView {
   @IBOutlet weak var descriptionLabel: UILabel! {
     didSet {
       descriptionLabel.text = "Forecast: "
-      descriptionLabel.font = theme.fonts.headlineFont
+      descriptionLabel.font = theme.fonts.headlineFontMediumBig
       descriptionLabel.textColor = UIColor(named: "primaryTextColor")
     }
   }
