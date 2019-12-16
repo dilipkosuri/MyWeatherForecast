@@ -70,12 +70,12 @@ func getCelsius(valueInKelvin: Double?) -> Double {
 func getTemperatureConverted(temperature: Double) -> Double {
   if Constants.defaultTemperatureMetric != Constants.defaultTemperatureMetric {
     if Constants.defaultTemperatureMetric == "celcius" {
-      return getCelsius(valueInKelvin: temperature)
+      return getCelsius(valueInKelvin: temperature).roundToPlaces(places: 2)
     } else if Constants.defaultTemperatureMetric == "fahrenheit" {
-      return getFahrenheit(valueInKelvin: temperature)
+      return getFahrenheit(valueInKelvin: temperature).roundToPlaces(places: 2)
     }
   }
-  return 0
+  return temperature.roundToPlaces(places: 2)
 }
 
 func timeOfDataCalculation(dateInMillis: Double = 0) -> String {
