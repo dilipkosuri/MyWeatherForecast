@@ -4,8 +4,10 @@ class CardViewController: UIViewController,UITableViewDataSource,UITableViewDele
 
     @IBOutlet weak var handlerArea: UIView!
     @IBOutlet weak var tableview: UITableView!
-    
+    typealias LocationData = [Home.CircleViewModel.LocationData]
     var items = [Home.CircleViewModel.HomeViewDataSourceModel]()
+    var locationData = [Home.CircleViewModel.LocationData]()
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +24,7 @@ class CardViewController: UIViewController,UITableViewDataSource,UITableViewDele
         let cell = tableview.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.selectionStyle = .none
         let cellView = FavouritesView.init(frame: cell.contentView.frame)
-        cellView.options(items: items, intexPath: indexPath)
+        cellView.options(items: items[indexPath.row])
         cell.addSubview(cellView)
         return cell
     }

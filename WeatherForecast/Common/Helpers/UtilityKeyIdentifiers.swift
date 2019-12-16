@@ -11,9 +11,13 @@ import Foundation
 
 class Constants {
   
-  static var units = ["Standard", "Metric", "Imperial"]
+  static var unitsMeasurement = ["standard", "metric", "imperial"]
   static var BASE_IMAGE_URL = "http://openweathermap.org/img/w/"
   static var defaultIcon = "01d.png"
+  static var temperatureMeasurement = ["fahrenheit", "celcius", "kelvin"]
+  
+  static var defaultUnitsMetric = "metric"
+  static var defaultTemperatureMetric = "kelvin"
   
   /*
    

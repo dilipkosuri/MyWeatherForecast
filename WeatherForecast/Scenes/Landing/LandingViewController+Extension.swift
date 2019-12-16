@@ -48,14 +48,28 @@ extension LandingViewController: UICollectionViewDataSource, UICollectionViewDel
 
 class WeatherCell: UICollectionViewCell {
   @IBOutlet weak var emptyImgView: UIImageView!
-  @IBOutlet weak var emptyTextLabel: UILabel!
+  @IBOutlet weak var emptyTextLabel: UILabel! {
+    didSet {
+      emptyTextLabel.text = "Looks like you have not pinned your favourite locations yet.."
+      emptyTextLabel.font = theme.fonts.headlineFontMediumBig
+      emptyTextLabel.textColor = UIColor(named: "highlightColor")
+    }
+  }
   @IBOutlet weak var todayView: TodayView!
+  @IBOutlet weak var emptyLabelSecondText: UILabel! {
+    didSet {
+      emptyLabelSecondText.text = "You might click on + icon above to do so..."
+      emptyLabelSecondText.font = theme.fonts.headlineFontMediumBig
+      emptyLabelSecondText.textColor = UIColor(named: "highlightColor")
+    }
+  }
   
   var showEmptyView : Bool = false {
     didSet {
       todayView.isHidden = showEmptyView
-      emptyImgView.isHidden = !showEmptyView
+     // emptyImgView.isHidden = !showEmptyView
       emptyTextLabel.isHidden = !showEmptyView
+      emptyLabelSecondText.isHidden = !showEmptyView
     }
   }
   

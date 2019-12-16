@@ -102,13 +102,6 @@ public class TodayView: UIView {
     }
   }
   
-//  @IBOutlet weak var shareButton: UIButton! {
-//    didSet {
-//      shareButton.setTitleColor(UIColor(named: "shareColor"), for: .normal)
-//      shareButton.titleLabel?.font = theme.fonts.subHeadlineFont
-//    }
-//  }
-  
   override init(frame: CGRect) {
     super.init(frame: frame)
     commonInit()

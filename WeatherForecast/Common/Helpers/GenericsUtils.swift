@@ -50,14 +50,23 @@ func convertDate(date:String, type: TypeOfConversion) -> String {
 }
 
 func timeOfDataCalculation(dateInMillis: Double = 0) -> String {
-  var date = Date(timeIntervalSince1970: dateInMillis)
+  let date = Date(timeIntervalSince1970: dateInMillis)
   
   let defaultFormattedDate = DateFormatter().date(from: "\(date)")
-  print(defaultFormattedDate)
-  let milisecond = dateInMillis
-  let dateVar = Date.init(timeIntervalSinceNow: TimeInterval(milisecond)/1000)
-  var dateFormatter = DateFormatter()
+  let dateVar = Date.init(timeIntervalSinceNow: TimeInterval(dateInMillis)/1000)
+  let dateFormatter = DateFormatter()
   dateFormatter.dateFormat = "dd MMM, hh:mm aa"
+  print(dateFormatter.string(from: dateVar))
+  return dateFormatter.string(from: dateVar)
+}
+
+func returnDateFormat(dateInMillis: Double = 0) -> String {
+  let date = Date(timeIntervalSince1970: dateInMillis)
+  
+  let defaultFormattedDate = DateFormatter().date(from: "\(date)")
+  let dateVar = Date.init(timeIntervalSinceNow: TimeInterval(dateInMillis)/1000)
+  let dateFormatter = DateFormatter()
+  dateFormatter.dateFormat = "dd MMM"
   print(dateFormatter.string(from: dateVar))
   return dateFormatter.string(from: dateVar)
 }

@@ -20,6 +20,7 @@ class LandingViewController: UIViewController, Storyboarded {
   internal var onAddButtonClick: ((_ tappedText: String) -> Void)?
   internal var onSettingsClick: ((_ tappedText: String) -> Void)?
   internal var onCollectionDidClick: ((_ favModel: FavouriteDataModel) -> Void)?
+  internal var onHelpButtonClick: ((_ isOnClick: Bool) -> Void)?
   
   var genericLocationData: [FavouriteDataModel] = []
   var bookmarkedList: [FavouriteDataModel] = []
@@ -100,11 +101,23 @@ class LandingViewController: UIViewController, Storyboarded {
     self.onSettingsClick?("Navigate to Settings View")
   }
     
-    @IBAction func settingButtonAction(_ sender: Any) {
-        self.onSettingsClick?("Navigate to Settings View")
+    @IBAction func  clearCacheAction(_ sender: Any) {
+      deleteData()
+      bookmarkedList = []
+      self.collectionView.reloadData()
+      self.collectionView.performBatchUpdates({ [weak self] in
+        let visibleItems = self?.collectionView.indexPathsForVisibleItems ?? []
+        self?.collectionView.reloadItems(at: visibleItems)
+        }, completion: { (_) in
+      })
     }
+  
+   @IBAction func settingButtonAction(_ sender: Any) {
+     self.onSettingsClick?("Navigate to Settings View")
+   }
     
     @IBAction func helpButtonAction(_ sender: Any) {
+      self.onHelpButtonClick?(true)
     }
 }
 

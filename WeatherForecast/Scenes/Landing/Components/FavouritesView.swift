@@ -15,9 +15,9 @@ public class FavouritesView: UIView {
   @IBOutlet weak var weatherIconImage: UIImageView!
   @IBOutlet weak var dayLabel: UILabel! {
     didSet {
-        dayLabel.text = ""
-        dayLabel.font = theme.fonts.subHeadlineFont
-        dayLabel.textColor = UIColor(named: "primaryTextColor")
+      dayLabel.text = ""
+      dayLabel.font = theme.fonts.headlineFontMediumNormal
+      dayLabel.textColor = UIColor(named: "primaryTextColor")
     }
   }
   @IBOutlet weak var currentLocationLabel: UILabel! {
@@ -67,16 +67,20 @@ public class FavouritesView: UIView {
     addSubview(view)
     view.frame = self.bounds
     view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    self.view.applyGradient()
   }
+  
+  func options(items: Home.CircleViewModel.HomeViewDataSourceModel) {
+    let modelData = items.data.first
+    currentLocationLabel.text = modelData?.currentLocation
+    dayLabel.text = ""
+    temperatureLabel.text = "\(modelData?.minTemp ?? 0) | \(modelData?.maxTemp ?? 0)"
+    timeWhenAddedToFav.text = returnDateFormat(dateInMillis: modelData?.dt ?? 0)
+    weatherDescriptionLabel.text = modelData?.temperatureDesc
     
-    func options(items: [Home.CircleViewModel.HomeViewDataSourceModel],
-                 intexPath: IndexPath) {
-        let item = items[intexPath.row]
-        currentLocationLabel.text = item.data.first?.currentLocation ?? ""
-        temperatureLabel.text = item.data.first?.temperature ?? ""
-//        timeWhenAddedToFav.text = item.data.first?.time ?? ""
-        weatherDescriptionLabel.text = item.data.first?.temperatureDesc ?? ""
-//        dayLabel.text = item.data.first?.day ?? ""
-    }
+//    let imageURL = Constants.BASE_IMAGE_URL + (modelData?.weatherIconDesc ?? Constants.defaultIcon ) + ".png"
+//    guard let url = URL(string: imageURL) else { return }
+//    weatherIconImage.load(url: url)
+  }
 }
 

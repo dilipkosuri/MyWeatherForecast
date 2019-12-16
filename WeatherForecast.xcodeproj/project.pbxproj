@@ -46,6 +46,8 @@
 		DA485DDB239E4753009F8BF2 /* CityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA485DDA239E4753009F8BF2 /* CityCoordinator.swift */; };
 		DA485DDC239E4753009F8BF2 /* CityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA485DDA239E4753009F8BF2 /* CityCoordinator.swift */; };
 		DA6A7242239EA9D700F0770E /* HomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A7241239EA9D700F0770E /* HomeWorker.swift */; };
+		DA706E9423A6D60300060D26 /* HelpScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA706E9323A6D60300060D26 /* HelpScreenViewController.swift */; };
+		DA706E9923A6DD8900060D26 /* Web_Assets in Resources */ = {isa = PBXBuildFile; fileRef = DA706E9823A6DD8900060D26 /* Web_Assets */; };
 		DAB7F6F223A09126005DA9E5 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6EB23A09126005DA9E5 /* HomeRouter.swift */; };
 		DAB7F6F423A09126005DA9E5 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6ED23A09126005DA9E5 /* HomeInteractor.swift */; };
 		DAB7F6F523A09126005DA9E5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F6EE23A09126005DA9E5 /* HomeViewController.swift */; };
@@ -150,6 +152,8 @@
 		DA485DD7239E46E3009F8BF2 /* City.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = City.storyboard; sourceTree = "<group>"; };
 		DA485DDA239E4753009F8BF2 /* CityCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCoordinator.swift; sourceTree = "<group>"; };
 		DA6A7241239EA9D700F0770E /* HomeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorker.swift; sourceTree = "<group>"; };
+		DA706E9323A6D60300060D26 /* HelpScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpScreenViewController.swift; sourceTree = "<group>"; };
+		DA706E9823A6DD8900060D26 /* Web_Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Web_Assets; sourceTree = "<group>"; };
 		DAB7F6EB23A09126005DA9E5 /* HomeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		DAB7F6ED23A09126005DA9E5 /* HomeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		DAB7F6EE23A09126005DA9E5 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -258,6 +262,7 @@
 		DA485CF8239C0134009F8BF2 /* WeatherForecast */ = {
 			isa = PBXGroup;
 			children = (
+				DA706E9823A6DD8900060D26 /* Web_Assets */,
 				DAB7F78F23A0B0D5005DA9E5 /* Resources */,
 				DAB7F78A23A0B071005DA9E5 /* Support */,
 				DAB7F70E23A091BB005DA9E5 /* Common */,
@@ -429,6 +434,7 @@
 				DAB7F79F23A0C7A1005DA9E5 /* Landing.storyboard */,
 				DAB7F7A123A0D5C5005DA9E5 /* LandingViewController+Extension.swift */,
 				088EB98423A5EF160058EAA5 /* SettingsViewController.swift */,
+				DA706E9323A6D60300060D26 /* HelpScreenViewController.swift */,
 			);
 			path = Landing;
 			sourceTree = "<group>";
@@ -639,6 +645,7 @@
 				DAB7F7A723A102E0005DA9E5 /* Montserrat-SemiBold.ttf in Resources */,
 				DAD0DE5B23A66C8A00EA316A /* ShortWeatherInfoView.xib in Resources */,
 				DA485DD8239E46E3009F8BF2 /* City.storyboard in Resources */,
+				DA706E9923A6DD8900060D26 /* Web_Assets in Resources */,
 				DAB7F7A923A102E0005DA9E5 /* Montserrat-Medium.ttf in Resources */,
 				DAB7F79C23A0B7AB005DA9E5 /* FavouritesView.xib in Resources */,
 			);
@@ -721,6 +728,7 @@
 				DAB7F81523A529EE005DA9E5 /* Colors+Extension.swift in Sources */,
 				08325E1C23A656040021CFB4 /* LocationSearchTableViewController.swift in Sources */,
 				DAB7F70823A0919C005DA9E5 /* Weather.swift in Sources */,
+				DA706E9423A6D60300060D26 /* HelpScreenViewController.swift in Sources */,
 				DA6A7242239EA9D700F0770E /* HomeWorker.swift in Sources */,
 				DA485DDB239E4753009F8BF2 /* CityCoordinator.swift in Sources */,
 				DA485D4C239CFE84009F8BF2 /* CityViewController.swift in Sources */,
